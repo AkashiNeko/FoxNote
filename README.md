@@ -1,0 +1,2 @@
+# foxnote
+blog of akashi
