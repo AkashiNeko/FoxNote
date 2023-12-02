@@ -1,0 +1,28 @@
+- Initializing and preparing data
+✔ Initializing and preparing data - done in 135ms
+│     page meta
+         │          ~~~~
+         ╵          }
+
+Error: Build failed with 1 error:
+blog/.vuepress/theme.ts:52:9: ERROR: Expected "}" but found "meta"
+    at failureErrorWithLog (/home/akashi/foxnote/node_modules/esbuild/lib/main.js:1650:15)
+    at /home/akashi/foxnote/node_modules/esbuild/lib/main.js:1058:25
+    at runOnEndCallbacks (/home/akashi/foxnote/node_modules/esbuild/lib/main.js:1485:45)
+    at buildResponseToResult (/home/akashi/foxnote/node_modules/esbuild/lib/main.js:1056:7)
+    at /home/akashi/foxnote/node_modules/esbuild/lib/main.js:1085:16
+    at responseCallbacks.<computed> (/home/akashi/foxnote/node_modules/esbuild/lib/main.js:703:9)
+    at handleIncomingPacket (/home/akashi/foxnote/node_modules/esbuild/lib/main.js:763:9)
+    at Socket.readFromStdout (/home/akashi/foxnote/node_modules/esbuild/lib/main.js:679:7)
+    at Socket.emit (node:events:514:28)
+    at addChunk (node:internal/streams/readable:376:12)
+
+    at handleIncomingPacket (/home/akashi/foxnote/node_modules/esbuild/lib/main.js:763:9)
+    at Socket.readFromStdout (/home/akashi/foxnote/node_modules/esbuild/lib/main.js:679:7)
+    at Socket.emit (node:events:514:28)
+    at addChunk (node:internal/streams/readable:376:12) {
+  errors: [Getter/Setter],
+  warnings: [Getter/Setter]
+}
+
+Node.js v20.9.0
