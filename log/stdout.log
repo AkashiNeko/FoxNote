@@ -1,0 +1,49 @@
+
+> foxnote@2.0.0 docs:dev
+> vuepress dev blog
+
+
+  vite v5.0.4 dev server running at:
+
+  ➜  Local:   http://localhost:1080/
+  ➜  Network: http://192.168.1.3:1080/
+info page posts/io-multiplexing-select.md is created
+9:03:21 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesComponents.js
+9:03:21 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesData.js
+9:03:21 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesRoutes.js
+info page posts/test.md is removed
+9:03:21 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesComponents.js
+9:03:21 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesData.js
+9:03:21 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesRoutes.js
+info page posts/.~io-multiplexing-select.md is created
+info page posts/.~io-multiplexing-select.md is modified
+info page posts/io-multiplexing-select.md is modified
+9:04:09 AM [vite] hmr update /@fs/home/akashi/foxnote/blog/.vuepress/.temp/pages/posts/io-multiplexing-select.html.vue
+9:04:09 AM [vite] hmr update /@fs/home/akashi/foxnote/blog/.vuepress/.temp/pages/posts/io-multiplexing-select.html.js
+9:04:09 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesComponents.js
+9:04:09 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesData.js
+9:04:09 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesRoutes.js
+info page posts/.~io-multiplexing-select.md is removed
+9:04:09 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesComponents.js
+9:04:09 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesData.js
+9:04:09 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesRoutes.js
+info page posts/.~io-multiplexing-select.md is created
+info page posts/.~io-multiplexing-select.md is modified
+info page posts/io-multiplexing-select.md is modified
+9:05:09 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesComponents.js
+9:05:09 AM [vite] hmr update /@fs/home/akashi/foxnote/blog/.vuepress/.temp/pages/posts/io-multiplexing-select.html.js
+9:05:09 AM [vite] hmr update /@fs/home/akashi/foxnote/blog/.vuepress/.temp/pages/posts/io-multiplexing-select.html.vue
+9:05:09 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesData.js
+9:05:09 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesRoutes.js
+info page posts/.~io-multiplexing-select.md is removed
+9:05:09 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesComponents.js
+9:05:09 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesData.js
+9:05:09 AM [vite] page reload /home/akashi/foxnote/blog/.vuepress/.temp/internal/pagesRoutes.js
+info config dependency blog/.vuepress/theme.ts is modified
+
+  vite v5.0.4 dev server running at:
+
+  ➜  Local:   http://localhost:1080/
+  ➜  Network: http://192.168.1.3:1080/
+tip dev server has restarted, please refresh your browser
+info config dependency blog/.vuepress/theme.ts is modified
