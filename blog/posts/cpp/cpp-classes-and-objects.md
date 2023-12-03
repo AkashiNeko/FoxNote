@@ -1,13 +1,13 @@
 ---
 title: C++类和对象
-icon: pen-to-square
 date: 2022-08-09
+isOriginal: true
+icon: pen-to-square
 category:
   - C++
 tag:
   - Class
   - Object
-  - Program
 ---
 
 ## 1. 什么是类
@@ -19,10 +19,10 @@ tag:
 ~~~cpp
 class MyClass {
 
-    // 成员方法
+	// 成员方法
 	void function();
 
-    // 成员变量
+	// 成员变量
 	int i;
 
 }; // 这是一个C++类的声明
@@ -67,7 +67,7 @@ protected:
 MyClass mc;
 mc.func1(); // 可以访问，f 是 "公有的"
 mc.a = 10;  // 无法访问，a 是 "私有的"
-mc.i++;     // 无法访问，i 是 "保护的"
+mc.i++;	 // 无法访问，i 是 "保护的"
 ~~~
 
 结构体的默认访问权限为public，类则是private，默认是无法从外部访问的。
@@ -79,8 +79,8 @@ mc.i++;     // 无法访问，i 是 "保护的"
 ~~~cpp
 class A {
 public:
-    static int i;
-    using MyInt = int;
+	static int i;
+	using MyInt = int;
 };
 
 // 类外访问
@@ -142,7 +142,7 @@ public:
 	void public_method();
 
 private:
-    // 声明
+	// 声明
 	void private_method();
 };
 
@@ -199,11 +199,11 @@ A().print();
 
 ~~~cpp
 class A {
-    int num;
+	int num;
 public:
-    void setNum(int n) {
-        num = n;
-    }
+	void setNum(int n) {
+		num = n;
+	}
 };
 
 // 调用方法
@@ -216,7 +216,7 @@ a.setNum(10); // 将a中的num值修改为10
 ~~~cpp
 // 编译器会将setNum处理成以下的形式
 void setNum(A* const this, int n) {
-    this->num = n;
+	this->num = n;
 }
 ~~~
 
@@ -233,14 +233,14 @@ const A* const this
 
 ~~~cpp
 class A {
-    int num;
+	int num;
 public:
-    void setNum(int n) {
-        num = n;
-    }
-    int getNum() const {
-        return num;
-    }
+	void setNum(int n) {
+		num = n;
+	}
+	int getNum() const {
+		return num;
+	}
 };
 
 // const的使用
@@ -382,7 +382,7 @@ class A {
 	int a_;
 
 public:
-    // 声明友元类
+	// 声明友元类
 	friend class B;
 };
 
@@ -418,8 +418,8 @@ class C {
 public:
 	void fun() {
 		A a1;
-        // a1.a_ = 1; 错误！
-        // A和C之间没有友元关系
+		// a1.a_ = 1; 错误！
+		// A和C之间没有友元关系
 	}
 };
 ~~~
@@ -435,7 +435,7 @@ class A {
 public:
 	//B定义在A的内部
 	class B {
-        int b_;
+		int b_;
 	public:
 		void fun() {
 			cout << i_ << endl;

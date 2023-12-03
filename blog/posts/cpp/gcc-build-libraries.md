@@ -1,7 +1,8 @@
 ---
 title: gcc生成静态库和动态库
-icon: pen-to-square
 date: 2022-02-12
+isOriginal: true
+icon: pen-to-square
 category:
   - C++
 tag:

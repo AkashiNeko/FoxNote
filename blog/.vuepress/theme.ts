@@ -11,6 +11,11 @@ export default hopeTheme({
         email: "akashineko@qq.com",
     },
 
+    fullscreen: true,
+    print: true,
+
+    darkmode: "switch",
+
     iconAssets: "fontawesome-with-brands",
 
     logo: "/logo/akashi.jpg",
@@ -25,7 +30,7 @@ export default hopeTheme({
     // sidebar
     sidebar,
 
-    footer: "qwq",
+    footer: "FoxNote | 芝士狐狸",
 
     displayFooter: true,
 
@@ -55,6 +60,13 @@ export default hopeTheme({
     },
 
     plugins: {
+
+        prismjs: {
+            light: "vs",
+            dark: "vsc-dark-plus",
+        },
+        // prismjs: false,
+
         blog: true,
 
         // install @waline/client before enabling it

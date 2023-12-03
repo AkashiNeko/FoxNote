@@ -24,5 +24,5 @@ projects:
     desc: www.bilibili.com
     link: https://space.bilibili.com/107816649
 
-bgImage: /bg.jpg
+bgImage: /bg.png
 ---
