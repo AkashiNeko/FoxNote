@@ -11,11 +11,6 @@ export default hopeTheme({
         email: "akashineko@qq.com",
     },
 
-    // fullscreen: true,
-    // print: true,
-
-    darkmode: "switch",
-
     iconAssets: "fontawesome-with-brands",
 
     logo: "/logo/akashi.jpg",
@@ -43,7 +38,6 @@ export default hopeTheme({
             BiliBili: "https://space.bilibili.com/107816649",
             Email: "mailto:akashineko@qq.com",
             Gmail: "mailto:akashinekof@gmail.com",
-            QQ: "https://qm.qq.com/q/nd2UQjxTFe",
             Qzone: "https://user.qzone.qq.com/1006554341/main",
         },
     },
