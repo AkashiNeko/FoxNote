@@ -7,6 +7,7 @@ category:
   - C++
 tag:
   - IO
+article: false
 ---
 
 **要做成库的代码文件**

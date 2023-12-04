@@ -18,6 +18,7 @@ export default sidebar({
             children: [
                 "io-models",
                 "io-select",
+                "io-poll",
             ],
         },
         {

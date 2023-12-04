@@ -1,5 +1,5 @@
 ---
-title: 五种IO模型
+title: 五种常用IO模型
 date: 2023-12-02
 isOriginal: true
 icon: pen-to-square
