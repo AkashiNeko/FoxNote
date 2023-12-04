@@ -3,16 +3,30 @@ import { sidebar } from "vuepress-theme-hope";
 export default sidebar({
     "/": [
         {
-            text: "C++",
+            text: "C++学习笔记",
             icon: "book",
             prefix: "posts/cpp/",
-            children: "structure",
+            children: [
+                "classes-and-objects",
+                "default-method-in-class",
+            ],
         },
         {
-            text: "Linux",
+            text: "Linux操作系统",
             icon: "book",
             prefix: "posts/linux/",
-            children: "structure",
+            children: [
+                "io-models",
+                "io-select",
+            ],
+        },
+        {
+            text: "Shell相关",
+            icon: "book",
+            prefix: "posts/shell/",
+            children: [
+                "csi-chars",
+            ],
         },
     ],
 });

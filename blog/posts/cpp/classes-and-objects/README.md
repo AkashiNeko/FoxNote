@@ -1,5 +1,5 @@
 ---
-title: C++类和对象
+title: 类和对象入门
 date: 2022-08-09
 isOriginal: true
 icon: pen-to-square

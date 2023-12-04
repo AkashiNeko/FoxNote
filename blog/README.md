@@ -4,7 +4,7 @@ layout: BlogHome
 icon: home
 title: 主页
 heroImage: /logo/logo.png
-heroAlt: 啊？
+heroAlt: qwq
 heroText: FoxNote
 heroFullScreen: true
 tagline: 芝士狐狸

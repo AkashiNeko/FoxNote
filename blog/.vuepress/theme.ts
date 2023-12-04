@@ -11,8 +11,8 @@ export default hopeTheme({
         email: "akashineko@qq.com",
     },
 
-    fullscreen: true,
-    print: true,
+    // fullscreen: true,
+    // print: true,
 
     darkmode: "switch",
 
@@ -30,7 +30,7 @@ export default hopeTheme({
     // sidebar
     sidebar,
 
-    footer: "FoxNote | 芝士狐狸",
+    footer: "FoxNote  |  芝士狐狸",
 
     displayFooter: true,
 
@@ -62,7 +62,7 @@ export default hopeTheme({
     plugins: {
 
         prismjs: {
-            light: "vs",
+            light: "ateliersulphurpool-light",
             dark: "vsc-dark-plus",
         },
         // prismjs: false,

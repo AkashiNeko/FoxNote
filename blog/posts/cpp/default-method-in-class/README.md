@@ -1,5 +1,5 @@
 ---
-title: 类中的默认成员方法
+title: 默认成员方法
 date: 2022-08-14
 isOriginal: true
 icon: pen-to-square
