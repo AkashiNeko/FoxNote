@@ -8,7 +8,7 @@ export default sidebar({
             prefix: "posts/cpp/",
             children: [
                 "classes-and-objects",
-                "default-method-in-class",
+                "class-default-functions",
             ],
         },
         {
