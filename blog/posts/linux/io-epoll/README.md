@@ -22,144 +22,171 @@ article: false
 
 :::
 
-### 接口说明
+### 相关的接口
+
+`epoll` 主要使用以下三个接口，分别用于 `epoll` 的创建、控制和等待。
 
 ~~~c
 #include <sys/epoll.h>
 
-
 int epoll_create(int size);
-~~~
+int epoll_ctl(int epfd, int op, int fd, struct epoll_event* event);
+int epoll_wait(int epfd, struct epoll_event* events, int maxevents, int timeout);
 
-### pollfd
-
-`pollfd` 是一个结构体，表示了要关注的fd以及其上的事件。
-
-~~~c
-struct pollfd {
-    int   fd;       /* file descriptor */
-    short events;   /* requested events */
-    short revents;  /* returned events */
+struct epoll_event {
+    uint32_t events;      /* Epoll events */
+    epoll_data_t data;    /* User data variable */
 };
 ~~~
 
-其中 `events` 和 `revents` 可能的取值有：
+## 2. 接口的使用
 
-::: details events 和 revents 的取值
+### epoll_create 接口
 
-`POLLIN`：有数据可读取。
-
-`POLLPRI`：文件描述符上存在异常情况。可能的情况包括：
-
-- TCP套接字上存在带外数据（参见tcp(7)）。
-- 包模式的伪终端主设备看到从设备状态的变化（参见ioctl_tty(2)）。
-- cgroup.events文件已被修改（参见cgroups(7)）。
-
-`POLLOUT`：可写入数据，但如果写入的数据大小大于套接字或管道中可用空间，仍然会阻塞（除非设置了O_NONBLOCK）。
-
-`POLLRDHUP`（自Linux 2.6.17起）：流套接字的对等方关闭了连接，或关闭了连接的写半部分。要获得此定义，必须在包含任何头文件之前定义_GNU_SOURCE特性测试宏。
-
-`POLLERR`：错误条件（仅在revents中返回；在events中被忽略）。当引用管道的写端的文件描述符在读端关闭时，此位也会被设置。
-
-`POLLHUP`：挂断（仅在revents中返回；在events中被忽略）。请注意，当从管道或流套接字等通道读取时，此事件仅表示对等方关闭了通道的一端。随后从通道读取的数据在消耗完通道中的所有未处理数据后，将返回0（文件末尾）。
-
-`POLLNVAL`：无效请求：文件描述符未打开（仅在revents中返回；在events中被忽略）。
-
-- 在定义了_XOPEN_SOURCE的情况下，还有以下宏，它们除了列出的位信息外，不提供其他信息：
-
-`POLLRDNORM`：等效于POLLIN。
-`POLLRDBAND`：可以读取优先级带数据（在Linux上通常不使用）。
-`POLLWRNORM`：等效于POLLOUT。
-`POLLWRBAND`：可以写入优先级数据。
-
-Linux还了解 `POLLMSG` ，但不使用它。
-
-::: details 原文
-
-~~~text
-POLLIN: There is data to read.
-
-POLLPRI: There is some exceptional condition on the file descriptor. Possibilities include:
-- There is out-of-band data on a TCP socket (see tcp(7)).
-- A pseudoterminal master in packet mode has seen a state change on the slave (see ioctl_tty(2)).
-- A cgroup.events file has been modified (see cgroups(7)).
-
-POLLOUT: Writing is now possible, though a write larger than the available space in a socket or pipe will still block (unless O_NONBLOCK is set).
-
-POLLRDHUP (since Linux 2.6.17): Stream socket peer closed connection, or shut down writing half of connection. The _GNU_SOURCE feature test macro must be defined (before including any header files) in order to obtain this definition.
-
-POLLERR: Error condition (only returned in revents; ignored in events). This bit is also set for a file descriptor referring to the write end of a pipe when the read end has been closed.
-
-POLLHUP: Hang up (only returned in revents; ignored in events). Note that when reading from a channel such as a pipe or a stream socket, this event merely indicates that the peer closed its end of the channel. Subsequent reads from the channel will return 0 (end of file) only after all outstanding data in the channel has been consumed.
-
-POLLNVAL: Invalid request: fd not open (only returned in revents; ignored in events).
-
-When compiling with _XOPEN_SOURCE defined, one also has the following, which convey no further information beyond the bits listed above:
-
-POLLRDNORM: Equivalent to POLLIN.
-
-POLLRDBAND: Priority band data can be read (generally unused on Linux).
-
-POLLWRNORM: Equivalent to POLLOUT.
-
-POLLWRBAND: Priority data may be written.
-
-Linux also knows about, but does not use POLLMSG.
+~~~cpp
+int epoll_create(int size);
 ~~~
+
+用于创建一个 `epoll`，成功后返回一个fd，且当这个fd不再需要时，应该使用 `close()` 关闭。
+
+::: info 参数 size
+
+参数 `size` 在Linux2.6.8之后已弃用，可以被忽略，但是必须是一个大于0的值。
+
+::: details NOTES 原文
+
+**In the initial epoll_create() implementation, the size argument informed the kernel of the number of file  descriptors that the  caller  expected  to  add to the epoll instance.  The kernel used this information as a hint for the amount of space to initially allocate in internal data structures describing events.  (If ecessary, the kernel would allocate  more  space  if the  caller’s  usage  exceeded  the  hint given in size.) Nowadays, this hint is no longer required (the kernel dynamically sizes the required data structures without needing the hint), but size must still be greater than zero, in order to ensure backward compatibility when new epoll applications are run on older kernels.**
+
+在最初的epoll_create()实现中，size参数用于告知内核调用者预期将添加到epoll实例中的文件描述符数量。内核将此信息用作初始分配给描述事件的内部数据结构的空间的提示。（如果需要，内核会根据调用者的使用情况分配更多的空间，超过了size中给出的提示）如今，不再需要这个提示（内核会动态调整所需的数据结构的大小，而不需要提示），但size仍然必须大于零，以确保在旧内核上运行新的epoll应用程序时保持向后兼容性。
 
 :::
 
-## 2. 接口的使用
+### epoll_ctl 接口
 
-### 接口参数
+~~~cpp
+int epoll_ctl(int epfd, int op, int fd, struct epoll_event* event);
+~~~
 
-`poll` 有三个参数：
+用于对fd关注列表（interest list with fd）执行添加、修改或删除操作。
 
 ::: info 参数列表
 
-1. `fds`：一个数组，表示要关注的fd以及事件集合。
-2. `nfds`：数组的长度，即遍历时的结束范围。
-3. `timeout`：等待的超时时间，单位为毫秒。设为-1时阻塞等待，设为0时立即返回不阻塞。
+- `epfd`：`epoll` 实例的文件描述符，即 `epoll_create()` 的返回值。
+- `op`：operator，要执行的操作，有以下三种取值。
+  - `EPOLL_CTL_ADD`：向fd关注列表中添加一个fd。
+  - `EPOLL_CTL_MOD`：修改fd关注列表中指定fd要关注的 `event` 事件。
+  - `EPOLL_CTL_DEL`：从fd关注列表中删除一个fd，忽略 `event` 参数，可以设为 `nullptr`。
+- `fd`：要操作的fd。
+- `event`：要关注的事件。
 
 :::
 
-`fds` 是 `pollfd` 类型的数组，作为输入参数时， `pollfd` 中设置需要关注的fd，以及将 `events` 设为该fd上要关注的事件。
+### epoll_wait 接口
 
-::: info 示例
-
-比如需要关注4号fd上的 `POLLIN` 和 `POLLPRI` 事件，则该pollfd应该被设置为：
-
-~~~json
-fd: 4
-events: POLLIN | POLLPRI
-revents: 0
+~~~cpp
+int epoll_wait(int epfd, struct epoll_event* events, int maxevents, int timeout);
 ~~~
 
-如果 `poll` 成功地捕捉到了该fd上的 `POLLIN` 事件，则 `revents` 会被修改：
+用于等待fd关注列表中的fd，返回fd关注列表中具有可用事件的文件描述符的信息。
 
-~~~json
-fd: 4
-events: POLLIN | POLLPRI
-revents: POLLIN
+::: info 参数列表
+
+- `epfd`：`epoll` 实例的文件描述符，即 `epoll_create()` 的返回值。
+- `events`：要关注的事件，是一个数组，作为输出型参数。
+- `maxevents`：传入的数组的长度。`epoll_wait` 最多返回 `maxevents` 个事件。
+- `timeout`：等待超时时间。和 `poll` 相同，单位为毫秒，设为-1阻塞等待，设为0立即返回。
+
+:::
+
+### epoll_event 结构体
+
+~~~cpp
+struct epoll_event {
+    uint32_t events;      /* Epoll events */
+    epoll_data_t data;    /* User data variable */
+};
+
+typedef union epoll_data {
+    void *ptr;
+    int fd;
+    uint32_t u32;
+    uint64_t u64;
+} epoll_data_t;
+~~~
+
+`epoll_event` 指定了当相应fd就绪时内核应保存并返回的数据。
+
+::: info events的取值
+
+`EPOLLIN`：关联的文件可用于读取操作。
+
+`EPOLLOUT`：关联的文件可用于写入操作。
+
+`EPOLLRDHUP`：流套接字对等方关闭连接或关闭连接的写半部分。
+
+`EPOLLPRI`：文件描述符上存在异常条件。
+
+`EPOLLERR`：关联的文件描述符发生错误条件。
+
+`EPOLLHUP`：关联的文件描述符发生挂断。
+
+`EPOLLET`：请求使用边缘触发模式进行关联文件描述符的通知。
+
+`EPOLLONESHOT`：请求一次性通知关联文件描述符的事件，并在通知后禁用该文件描述符的事件监听。
+
+`EPOLLWAKEUP`：确保在挂起或休眠时不会发生事件丢失。
+
+`EPOLLEXCLUSIVE`：设置关联的 epoll 文件描述符的独占唤醒模式，以避免在某些情况下出现雷鸣群问题。
+
+::: details 更多（手册原文）
+
+~~~text
+EPOLLIN
+The associated file is available for read(2) operations.
+
+EPOLLOUT
+The associated file is available for write(2) operations.
+
+EPOLLRDHUP (since Linux 2.6.17)
+Stream socket peer closed connection, or shut down writing half of the connection. (This flag is especially useful for writing simple code to detect peer shutdown when using edge-triggered monitoring.)
+
+EPOLLPRI
+There is an exceptional condition on the file descriptor. See the discussion of POLLPRI in poll(2).
+
+EPOLLERR
+Error condition happened on the associated file descriptor. This event is also reported for the write end of a pipe when the read end has been closed.
+epoll_wait(2) will always report this event; it is not necessary to set it in events when calling epoll_ctl().
+
+EPOLLHUP
+Hang up happened on the associated file descriptor.
+epoll_wait(2) will always wait for this event; it is not necessary to set it in events when calling epoll_ctl().
+Note that when reading from a channel such as a pipe or a stream socket, this event merely indicates that the peer closed its end of the channel. Subsequent reads from the channel will return 0 (end of file) only after all outstanding data in the channel has been consumed.
+
+And the available input flags are:
+
+EPOLLET
+Requests edge-triggered notification for the associated file descriptor. The default behavior for epoll is level-triggered. See epoll(7) for more detailed information about edge-triggered and level-triggered notification.
+
+EPOLLONESHOT (since Linux 2.6.2)
+Requests one-shot notification for the associated file descriptor. This means that after an event notified for the file descriptor by epoll_wait(2), the file descriptor is disabled in the interest list, and no other events will be reported by the epoll interface. The user must call epoll_ctl() with EPOLL_CTL_MOD to rearm the file descriptor with a new event mask.
+
+EPOLLWAKEUP (since Linux 3.5)
+If EPOLLONESHOT and EPOLLET are clear and the process has the CAP_BLOCK_SUSPEND capability, ensure that the system does not enter "suspend" or "hibernate" while this event is pending or being processed. The event is considered as being "processed" from the time when it is returned by a call to epoll_wait(2) until the next call to epoll_wait(2) on the same epoll(7) file descriptor, the closure of that file descriptor, the removal of the event file descriptor with EPOLL_CTL_DEL, or the clearing of EPOLLWAKEUP for the event file descriptor with EPOLL_CTL_MOD. See also BUGS.
+
+EPOLLEXCLUSIVE (since Linux 4.5)
+Sets an exclusive wakeup mode for the epoll file descriptor that is being attached to the target file descriptor, fd. When a wakeup event occurs and multiple epoll file descriptors are attached to the same target file using EPOLLEXCLUSIVE, one or more of the epoll file descriptors will receive an event with epoll_wait(2). The default in this scenario (when EPOLLEXCLUSIVE is not set) is for all epoll file descriptors to receive an event. EPOLLEXCLUSIVE is thus useful for avoiding thundering herd problems in certain scenarios.
+If the same file descriptor is in multiple epoll instances, some with the EPOLLEXCLUSIVE flag and others without, then events will be provided to all epoll instances that did not specify EPOLLEXCLUSIVE, and at least one of the epoll instances that did specify EPOLLEXCLUSIVE.
+The following values may be specified in conjunction with EPOLLEXCLUSIVE: EPOLLIN, EPOLLOUT, EPOLLWAKEUP, and EPOLLET. EPOLLHUP and EPOLLERR can also be specified, but this is not required: as usual, these events are always reported if they occur, regardless of whether they are specified in events. Attempts to specify other values in events yield the error EINVAL.
+EPOLLEXCLUSIVE may be used only in an EPOLL_CTL_ADD operation; attempts to employ it with EPOLL_CTL_MOD yield an error. If EPOLLEXCLUSIVE has been set using epoll_ctl(), then a subsequent EPOLL_CTL_MOD on the same epfd, fd pair yields an error. A call to epoll_ctl() that specifies EPOLLEXCLUSIVE in events and specifies the target file descriptor fd as an epoll instance will likewise fail. The error in all of these cases is EINVAL.
 ~~~
 
 :::
 
-### 返回值
+---
 
-`poll` 返回一个整数：
+## 3. epoll的原理
 
-::: info 返回值
-
-成功时，返回 `pollfds` 数组中的元素中的 `revents` 字段被设置为非零值的数量，即等待成功的fd的数量。
-
-返回值为0表示在任何fd就绪之前，系统调用超时。
-
-发生错误时，返回-1，`errno` 被设置为错误代码。
-
-:::
-
-## 3. poll服务器
+## 4. epoll服务器
 
 ### 业务需求
 
@@ -169,21 +196,16 @@ revents: POLLIN
 
 :::
 
-### 实现思路
-
-与 [select服务器](/posts/linux/io-select/#实现思路) 基本一致。
-
 ### 完整代码
 
-::: details 完整代码
+使用C++封装实现一个简单的 `epoll` 网络服务器。
 
-使用C++封装实现一个简单的poll网络服务器。
+::: details 完整代码
 
 ~~~cpp
 // Linux
 #include <unistd.h>
-#include <fcntl.h>
-#include <poll.h>
+#include <sys/epoll.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
@@ -197,116 +219,107 @@ revents: POLLIN
 
 // 监听端口
 const in_port_t ServerPort = 8080;
-const size_t NFDS = 100;
 
-class PollServer {
+class EpollServer {
+    int epfd_;
+    int server_fd_;
 
-    // server fd
-    int server_;
-
-    // fd集合
-    std::unique_ptr<pollfd[], void(*)(pollfd*)> fds;
-
-public:
-
-    // 初始化服务器
-    PollServer(in_port_t port)
-        // 开辟pollfd数组
-        : fds(new pollfd[NFDS], [](pollfd* fds) {
-        delete[] fds;
-    }) {
-
+    void init_listen_socket_(in_port_t port) {
         // 创建tcp套接字
-        server_ = socket(AF_INET, SOCK_STREAM, 0);
-        assert(server_ >= 0);
+        server_fd_ = socket(AF_INET, SOCK_STREAM, 0);
+        assert(server_fd_ >= 0);
 
         // 绑定地址端口
         struct sockaddr_in addr;
         addr.sin_family = AF_INET;
         addr.sin_port = htons(port);
         addr.sin_addr.s_addr = htonl(INADDR_ANY);
-        assert(bind(server_, (struct sockaddr *)&addr, sizeof(struct sockaddr_in)) >= 0);
+        assert(bind(server_fd_, (struct sockaddr *)&addr, sizeof(struct sockaddr_in)) == 0);
 
         // 设置端口复用
         const int Optlen = 1;
-        setsockopt(server_, SOL_SOCKET, SO_REUSEADDR, &Optlen, sizeof(Optlen));
+        setsockopt(server_fd_, SOL_SOCKET, SO_REUSEADDR, &Optlen, sizeof(Optlen));
 
         // 监听
-        assert(listen(server_, 10) >= 0);
+        assert(listen(server_fd_, 10) >= 0);
         std::cout << "Server listening on 0.0.0.0:" << port << std::endl;
-
-        // 将套接字加入到fds中
-        fds[0].fd = server_;
-        fds[0].events = POLLIN;
-        fds[0].revents = 0;
     }
 
-    ~PollServer() {
+public:
+    EpollServer(int port) {
+        // 创建epoll
+        epfd_ = epoll_create(1);
+        assert(epfd_ >= 0);
+
+        // 创建服务器fd
+        init_listen_socket_(port);
+
+        // 添加服务器fd到epoll的关注列表
+        struct epoll_event event;
+        event.events = EPOLLIN;
+        event.data.fd = server_fd_;
+        epoll_ctl(epfd_, EPOLLIN, server_fd_, &event);
+    }
+
+    ~EpollServer() {
+        // 关闭epoll
+        close(epfd_);
         // 关闭服务器fd
-        close(server_);
+        close(server_fd_);
     }
 
-    // poll服务器运行
     void run() {
+        // 定义events数组，用于接收就绪的fd以及其上事件
+        const int EVENT_SIZE = 16;
+        struct epoll_event events[EVENT_SIZE]{};
 
         // 业务循环
         while (true) {
 
-            // poll系统调用
-            int ret = poll(fds.get(), NFDS, -1);
-            if (ret == -1) exit(-1);
-            if (ret == 0) continue;
+            // 等待事件就绪
+            int ret = epoll_wait(epfd_, events, EVENT_SIZE, -1);
+            assert(ret >= 0);
 
-            // 获取结果
-            for (size_t i = 1; i < NFDS; ++i) {
-                if (fds[i].revents & POLLIN) {
+            for (size_t i = 0; i < ret; ++i) {
+                int fd = events[i].data.fd;
+                if (fd == server_fd_) {
+                    // 服务器fd收到连接事件
+                    sockaddr_in addr;
+                    socklen_t addrlen = sizeof(addr);
+                    int newfd = accept(server_fd_, (struct sockaddr*)&addr, &addrlen);
+                    assert(newfd >= 0);
+                    
+                    char strAddr[INET_ADDRSTRLEN];
+                    std::cout << "accept from "
+                        << inet_ntop(AF_INET, &(addr.sin_addr.s_addr), strAddr, sizeof(strAddr))
+                        << ":" << ntohs(addr.sin_port) << std::endl;
 
+                    // 将新的fd加入epoll的关注列表
+                    struct epoll_event event;
+                    event.events = EPOLLIN;
+                    event.data.fd = newfd;
+                    epoll_ctl(epfd_, EPOLL_CTL_ADD, newfd, &event);
+
+                } else {
                     // 收到了链接fd的io事件
-                    int fd = fds[i].fd;
-                    std::cout << "poll from fd: " << fd << std::endl;
+                    std::cout << "link fd: " << fd << std::endl;
 
                     // TODO: 处理具体业务...
-                    // 这里简单的接收一下客户端发来的消息，并原封不动发回，然后关闭fd
+                    // 接收客户端发来的消息，并原封不动发回，保持连接，直到客户端发送"quit"，断开连接。
                     char buf[4096];
 
                     // 接收
                     assert(read(fd, (void*)buf, sizeof(buf) -1) >= 0);
                     std::cout << "read fd " << fd << ": " << buf << std::endl;
 
-                    // 发送
-                    std::cout << "write fd " << fd << ", length = "
-                        << write(fd, buf, strlen(buf)) << std::endl;
-
-                    // 关闭连接
-                    close(fd);
-
-                    // 清空当前的pollfd
-                    fds[i].fd = 0;
-                    fds[i].events = 0;
-                    fds[i].revents = 0;
-                }
-            }
-
-            // 判断是否有新的连接请求
-            if (fds[0].revents & POLLIN) {
-
-                // 建立连接
-                sockaddr_in addr;
-                socklen_t addrlen = sizeof(addr);
-                int ret = accept(server_, (struct sockaddr*)&addr, &addrlen);
-                assert(ret >= 0);
-                char strAddr[INET_ADDRSTRLEN];
-                std::cout << "accept from "
-                    << inet_ntop(AF_INET, &(addr.sin_addr.s_addr), strAddr, sizeof(strAddr))
-                    << ":" << ntohs(addr.sin_port) << std::endl;
-                
-                // 将新的连接fd加入到fds中，进入下一轮poll循环
-                for (size_t i = 1; i < NFDS; ++i) {
-                    if (fds[i].events == 0) {
-                        fds[i].fd = ret;
-                        fds[i].events = POLLIN;
-                        fds[i].revents = 0;
-                        break;
+                    if (buf[0] == 'q' && buf[1] == 'u' && buf[2] == 'i' && buf[3] == 't') {
+                        // 客户端发送的是quit，断开连接
+                        std::cout << "link fd closed: " << fd << std::endl;
+                        close(fd);
+                    } else {
+                        // 发送
+                        std::cout << "write fd " << fd << ", length = "
+                            << write(fd, buf, strlen(buf)) << std::endl;
                     }
                 }
             }
@@ -315,26 +328,10 @@ public:
 };
 
 int main() {
-    PollServer ps(ServerPort);
-    ps.run();
+    EpollServer es(ServerPort);
+    es.run();
     return 0;
 }
 ~~~
-
-:::
-
-## 4. 优缺点
-
-::: tip 优点
-
-- 使用 `pollfd` 结构体封装了fd、关注的 `events` 和发生的 `revents` ，使用起来比 `select` 方便。
-- 相比于 `select` ，`poll` 的fd集合是由用户自定义长度的数组，没有fd数量的限制。
-
-:::
-
-::: warning 缺点
-
-- 和 `select` 一样，fd集合是一个数组，每次都需要线性遍历数组获取各fd的状态。
-- 对于大量的fd，可能只有很少的fd处于就绪状态。随着fd数量的增加，其性能也会线性下降。
 
 :::

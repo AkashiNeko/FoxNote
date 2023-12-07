@@ -7,7 +7,6 @@ category:
   - Linux
 tag:
   - IO
-article: false
 ---
 
 `poll` 的功能和 [`select`](/posts/linux/io-select/) 非常相似，同样是用集合将一批文件描述符交给内核进行等待，内核再把等待的结果交付给用户。
@@ -172,9 +171,9 @@ revents: POLLIN
 
 ### 完整代码
 
-::: details 完整代码
+使用C++封装实现一个简单的 `poll` 网络服务器。
 
-使用C++封装实现一个简单的poll网络服务器。
+::: details 完整代码
 
 ~~~cpp
 // Linux
