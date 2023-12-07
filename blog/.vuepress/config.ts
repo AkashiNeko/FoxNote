@@ -7,7 +7,7 @@ export default defineUserConfig({
     lang: "zh-CN",
     title: "FoxNote",
     description: "芝士狐狸",
-    port: 1080,
+    port: 8080,
 
     theme,
 

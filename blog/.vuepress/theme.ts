@@ -7,7 +7,7 @@ export default hopeTheme({
 
     author: {
         name: "AkashiNeko",
-        url: "http://akashi.top:1080",
+        url: "https://akashi.top",
         email: "akashineko@qq.com",
     },
 
@@ -15,7 +15,7 @@ export default hopeTheme({
 
     logo: "/logo/akashi.jpg",
 
-    repo: "AkashiNeko/foxnote",
+    repo: "AkashiNeko/akashineko.github.io",
 
     docsDir: "blog",
 
