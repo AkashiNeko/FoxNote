@@ -7,6 +7,8 @@ category:
   - Linux
 tag:
   - IO
+  - poll
+  - fd
 ---
 
 `poll` 的功能和 [`select`](/posts/linux/io-select/) 非常相似，同样是用集合将一批文件描述符交给内核进行等待，内核再把等待的结果交付给用户。

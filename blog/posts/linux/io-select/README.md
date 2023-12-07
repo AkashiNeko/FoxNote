@@ -7,6 +7,8 @@ category:
   - Linux
 tag:
   - IO
+  - select
+  - fd
 ---
 
 ## 1. select接口

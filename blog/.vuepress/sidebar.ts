@@ -19,6 +19,7 @@ export default sidebar({
                 "io-models",
                 "io-select",
                 "io-poll",
+                "io-epoll",
             ],
         },
         {

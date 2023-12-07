@@ -7,7 +7,8 @@ category:
   - Linux
 tag:
   - IO
-article: false
+  - epoll
+  - fd
 ---
 
 ## 1. epoll接口
@@ -184,7 +185,164 @@ EPOLLEXCLUSIVE may be used only in an EPOLL_CTL_ADD operation; attempts to emplo
 
 ---
 
-## 3. epoll的原理
+## 3. epoll工作原理
+
+### 队列和红黑树
+
+调用 `epoll_create` 方法时，内核会维护一个 `eventpoll` 结构体。
+
+::: details eventpoll结构体
+
+~~~c
+struct eventpoll {
+    /*
+     * This mutex is used to ensure that files are not removed
+     * while epoll is using them. This is held during the event
+     * collection loop, the file cleanup path, the epoll file exit
+     * code and the ctl operations.
+     */
+    struct mutex mtx;
+
+    /* Wait queue used by sys_epoll_wait() */
+    wait_queue_head_t wq;
+
+    /* Wait queue used by file->poll() */
+    wait_queue_head_t poll_wait;
+
+    /* List of ready file descriptors */
+    struct list_head rdllist;
+
+    /* Lock which protects rdllist and ovflist */
+    rwlock_t lock;
+
+    /* RB tree root used to store monitored fd structs */
+    struct rb_root_cached rbr;
+
+    /*
+     * This is a single linked list that chains all the "struct epitem" that
+     * happened while transferring ready events to userspace w/out
+     * holding ->lock.
+     */
+    struct epitem *ovflist;
+
+    /* wakeup_source used when ep_scan_ready_list is running */
+    struct wakeup_source *ws;
+
+    /* The user that created the eventpoll descriptor */
+    struct user_struct *user;
+
+    struct file *file;
+
+    /* used to optimize loop detection check */
+    u64 gen;
+    struct hlist_head refs;
+
+    /*
+     * usage count, used together with epitem->dying to
+     * orchestrate the disposal of this struct
+     */
+    refcount_t refcount;
+
+#ifdef CONFIG_NET_RX_BUSY_POLL
+    /* used to track busy poll napi_id */
+    unsigned int napi_id;
+#endif
+
+#ifdef CONFIG_DEBUG_LOCK_ALLOC
+    /* tracks wakeup nests for lockdep validation */
+    u8 nests;
+#endif
+};
+~~~
+
+:::
+
+需要关注的是其中的两个成员，`rdllist` 和 `rbr`。
+
+~~~c
+struct eventpoll {
+    ...
+
+    /* List of ready file descriptors */
+    struct list_head rdllist;
+
+    /* RB tree root used to store monitored fd structs */
+    struct rb_root_cached rbr;
+
+    ...
+}
+~~~
+
+#### rdllist 队列
+
+在内核空间中 `epoll` 使用就绪队列管理就绪的fd，就绪队列使用双链表实现，`rdllist` 指向了这个链表。
+
+~~~c
+struct list_head {
+    struct list_head *next, *prev;
+};
+~~~
+
+当有fd就绪时，`epoll` 会将就绪的fd和事件加入该队列中，用户使用 `epoll_wait` 成功返回，是从这个队列中取数据。
+
+#### rbr 红黑树
+
+`epoll` 在内核空间管理了一棵红黑树，
+
+::: details epitem结构体
+
+~~~c
+/*
+ * Each file descriptor added to the eventpoll interface will
+ * have an entry of this type linked to the "rbr" RB tree.
+ * Avoid increasing the size of this struct, there can be many thousands
+ * of these on a server and we do not want this to take another cache line.
+ */
+struct epitem {
+    union {
+        /* RB tree node links this structure to the eventpoll RB tree */
+        struct rb_node rbn;
+        /* Used to free the struct epitem */
+        struct rcu_head rcu;
+    };
+
+    /* List header used to link this structure to the eventpoll ready list */
+    struct list_head rdllink;
+
+    /*
+     * Works together "struct eventpoll"->ovflist in keeping the
+     * single linked chain of items.
+     */
+    struct epitem *next;
+
+    /* The file descriptor information this item refers to */
+    struct epoll_filefd ffd;
+
+    /*
+     * Protected by file->f_lock, true for to-be-released epitem already
+     * removed from the "struct file" items list; together with
+     * eventpoll->refcount orchestrates "struct eventpoll" disposal
+     */
+    bool dying;
+
+    /* List containing poll wait queues */
+    struct eppoll_entry *pwqlist;
+
+    /* The "container" of this item */
+    struct eventpoll *ep;
+
+    /* List header used to link this item to the "struct file" items list */
+    struct hlist_node fllink;
+
+    /* wakeup_source used when EPOLLWAKEUP is set */
+    struct wakeup_source __rcu *ws;
+
+    /* The structure that describe the interested events and the source fd */
+    struct epoll_event event;
+};
+~~~
+
+:::
 
 ## 4. epoll服务器
 
