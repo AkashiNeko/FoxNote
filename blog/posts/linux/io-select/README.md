@@ -9,6 +9,7 @@ tag:
   - IO
   - select
   - fd
+excerpt: IO多路转接的系统调用接口select。
 ---
 
 ## 1. select接口

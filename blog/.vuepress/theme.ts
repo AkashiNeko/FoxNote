@@ -55,7 +55,9 @@ export default hopeTheme({
         },
         // prismjs: false,
 
-        blog: true,
+        blog: {
+            excerptLength: 0,
+        },
 
         // install @waline/client before enabling it
         // WARNING: This is a test server for demo only.

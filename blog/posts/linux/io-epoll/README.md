@@ -9,6 +9,7 @@ tag:
   - IO
   - epoll
   - fd
+excerpt: 性能优异，使用广泛的IO多路转接模型epoll
 ---
 
 ## 1. epoll接口
