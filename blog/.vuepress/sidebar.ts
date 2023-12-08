@@ -58,7 +58,7 @@ export default sidebar({
                     link: "csi-chars/",
                 },
                 {
-                    text: "gcc生成动静态库",
+                    text: "库的制作和使用",
                     icon: "/icon/library.svg",
                     link: "build-library/",
                 },
