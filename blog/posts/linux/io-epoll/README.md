@@ -187,9 +187,9 @@ EPOLLEXCLUSIVE may be used only in an EPOLL_CTL_ADD operation; attempts to emplo
 
 ## 3. epoll工作原理
 
-### 队列和红黑树
+### eventpoll 结构体
 
-调用 `epoll_create` 方法时，内核会维护一个 `eventpoll` 结构体。
+调用 `epoll_create` 方法时，内核会为我们创建并维护一个 `eventpoll` 结构体。
 
 ::: details eventpoll结构体
 
@@ -257,7 +257,7 @@ struct eventpoll {
 
 :::
 
-需要关注的是其中的两个成员，`rdllist` 和 `rbr`。
+需要关注的是 `eventpoll` 结构体中的两个成员：`rdllist` 和 `rbr`，二者分别维护一个队列和一棵红黑树。
 
 ~~~c
 struct eventpoll {
@@ -273,21 +273,23 @@ struct eventpoll {
 }
 ~~~
 
-#### rdllist 队列
+![队列和红黑树](./队列和红黑树.svg)
 
-在内核空间中 `epoll` 使用就绪队列管理就绪的fd，就绪队列使用双链表实现，`rdllist` 指向了这个链表。
+### rdllist 就绪队列
 
-~~~c
-struct list_head {
-    struct list_head *next, *prev;
-};
-~~~
+在内核空间中 `epoll` 使用就绪队列管理就绪的fd，就绪队列使用双链表实现，`rdllist` 用于维护这个链表。
 
-当有fd就绪时，`epoll` 会将就绪的fd和事件加入该队列中，用户使用 `epoll_wait` 成功返回，是从这个队列中取数据。
+当有fd就绪时，`epoll` 会将就绪的fd和事件加入该队列中，用户使用 `epoll_wait` 成功返回，是从这个队列中取数据的过程。
 
-#### rbr 红黑树
+![就绪队列](./就绪队列.svg)
 
-`epoll` 在内核空间管理了一棵红黑树，
+### rbr 红黑树
+
+`epoll` 在内核空间管理了一棵红黑树，红黑树的节点使用的结构体为 `epitem`，而 `rbr` 用于维护这棵红黑树。
+
+![fd关注列表红黑树](./fd关注列表红黑树.svg)
+
+用户使用 `epoll_ctl` 对fd关注列表进行增加、删除和修改时，实际上就是对这颗红黑树进行对应操作。由于红黑树的这些操作的复杂度为 $O(logN)$ ，因此 `epoll_ctl` 的执行效率是非常高的。
 
 ::: details epitem结构体
 
