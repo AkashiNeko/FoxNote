@@ -1,5 +1,6 @@
 ---
 title: 文章
+icon: book
 article: false
 ---
 

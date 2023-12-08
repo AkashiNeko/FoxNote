@@ -2,7 +2,7 @@
 title: 五种常用IO模型
 date: 2023-12-02
 isOriginal: true
-icon: pen-to-square
+icon: "/icon/io.svg"
 category:
   - Linux
 tag:

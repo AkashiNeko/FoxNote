@@ -3,8 +3,9 @@ home: true
 layout: BlogHome
 icon: home
 title: 主页
-heroImage: /logo/logo.png
-heroAlt: qwq
+heroImage: /logo/logo.jpg
+heroImageStyle: 'border-radius: 20%;'
+heroAlt: 阿哦...找不到头像了QAQ
 heroText: FoxNote
 heroFullScreen: true
 tagline: 芝士狐狸
@@ -26,4 +27,5 @@ projects:
 
 bgImage: /bg/bg_light.jpg
 bgImageDark: /bg/bg_dark.jpg
+bgImageStyle: 'filter: brightness(0.8);'
 ---

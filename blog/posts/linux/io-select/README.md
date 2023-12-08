@@ -2,7 +2,7 @@
 title: IO多路转接之select
 date: 2023-12-03
 isOriginal: true
-icon: pen-to-square
+icon: "/icon/io.svg"
 category:
   - Linux
 tag:

@@ -3,13 +3,15 @@ import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
 
 export default hopeTheme({
-    hostname: "https://mister-hope.github.io",
+    hostname: "https://akashi.top/",
 
     author: {
         name: "AkashiNeko",
         url: "https://akashi.top",
         email: "akashineko@qq.com",
     },
+
+    favicon: "/favicon.ico",
 
     iconAssets: "fontawesome-with-brands",
 
@@ -29,9 +31,14 @@ export default hopeTheme({
 
     displayFooter: true,
 
+    backToTop: false,
+
     blog: {
+        name: "AkashiNeko",
+
         description: "qwq",
         // intro: "/.html",
+        timeline: "qwq",
         roundAvatar: true,
         medias: {
             GitHub: "https://github.com/AkashiNeko",
@@ -40,6 +47,7 @@ export default hopeTheme({
             Gmail: "mailto:akashinekof@gmail.com",
             Qzone: "https://user.qzone.qq.com/1006554341/main",
         },
+        // articleInfo: ["Author", "Original", "Date", "PageView", "Category", "Tag", "ReadingTime"]
     },
 
     // page meta

@@ -2,18 +2,18 @@
 title: CSI控制字符
 date: 2023-02-16
 isOriginal: true
-icon: pen-to-square
+icon: "/icon/ctrl.svg"
 category:
  - Shell
 tag:
  - ASCII
  - Color
+ - CSI
 ---
 
 ## 1. 使用方法
 
 在支持彩色文字和背景的终端下，可以使用以下控制字符改变文字的颜色以及背景颜色。
-
 
 ::: tip 使用方法
 `\033[n1;n2;...m`
@@ -142,4 +142,3 @@ echo -e '\033[31mHello world'
 :::
 
 Github:  [AkashiNeko/CSI](https://github.com/AkashiNeko/CSI)
-

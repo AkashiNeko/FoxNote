@@ -2,7 +2,7 @@
 title: 类和对象入门
 date: 2022-08-09
 isOriginal: true
-icon: pen-to-square
+icon: "/icon/class.svg"
 category:
   - C++
 tag:

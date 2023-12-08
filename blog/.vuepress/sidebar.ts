@@ -4,30 +4,64 @@ export default sidebar({
     "/": [
         {
             text: "C++学习笔记",
-            icon: "book",
+            icon: "/icon/cpp.svg",
             prefix: "posts/cpp/",
             children: [
-                "classes-and-objects",
-                "class-default-functions",
+                {
+                    text: "类和对象入门",
+                    icon: "/icon/class.svg",
+                    link: "classes-and-objects/",
+                },
+                {
+                    text: "默认成员函数",
+                    icon: "/icon/class.svg",
+                    link: "class-default-functions/",
+                }
             ],
         },
         {
             text: "Linux操作系统",
-            icon: "book",
+            icon: "/icon/linux.svg",
             prefix: "posts/linux/",
+            // children: "structure",
             children: [
-                "io-models",
-                "io-select",
-                "io-poll",
-                "io-epoll",
+                {
+                    text: "五种IO模型",
+                    icon: "/icon/io.svg",
+                    link: "io-models/",
+                },
+                {
+                    text: "IO多路转接之select",
+                    icon: "/icon/io.svg",
+                    link: "io-select/",
+                },
+                {
+                    text: "IO多路转接之poll",
+                    icon: "/icon/io.svg",
+                    link: "io-poll/",
+                },
+                {
+                    text: "IO多路转接之epoll",
+                    icon: "/icon/io.svg",
+                    link: "io-epoll/",
+                },
             ],
         },
         {
             text: "Shell相关",
-            icon: "book",
+            icon: "/icon/shell.svg",
             prefix: "posts/shell/",
             children: [
-                "csi-chars",
+                {
+                    text: "CSI控制字符",
+                    icon: "/icon/ctrl.svg",
+                    link: "csi-chars/",
+                },
+                {
+                    text: "gcc生成动静态库",
+                    icon: "/icon/library.svg",
+                    link: "build-library/",
+                },
             ],
         },
     ],

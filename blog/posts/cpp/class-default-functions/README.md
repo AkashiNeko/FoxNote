@@ -2,7 +2,7 @@
 title: 默认成员函数
 date: 2022-08-14
 isOriginal: true
-icon: pen-to-square
+icon: "/icon/class.svg"
 category:
   - C++
 tag:
