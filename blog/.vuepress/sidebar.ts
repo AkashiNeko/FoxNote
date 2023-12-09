@@ -48,7 +48,7 @@ export default sidebar({
             ],
         },
         {
-            text: "Shell相关",
+            text: "Shell命令相关",
             icon: "/icon/shell.svg",
             prefix: "posts/shell/",
             children: [
@@ -58,7 +58,7 @@ export default sidebar({
                     link: "csi-chars/",
                 },
                 {
-                    text: "库的制作和使用",
+                    text: "动静态库的制作和使用",
                     icon: "/icon/library.svg",
                     link: "build-library/",
                 },

@@ -1,5 +1,5 @@
 ---
-title: IO多路转接之epoll
+title: I/O多路转接之epoll
 date: 2023-12-07
 isOriginal: true
 icon: "/icon/io.svg"
@@ -9,7 +9,7 @@ tag:
   - IO
   - epoll
   - fd
-excerpt: 性能优异，使用广泛的IO多路转接模型epoll
+excerpt: epoll是Linux操作系统提供的高效I/O多路复用机制，用于处理大规模并发连接的网络编程。
 ---
 
 ## 1. epoll接口
@@ -280,7 +280,7 @@ struct eventpoll {
 
 在内核空间中 `epoll` 使用就绪队列管理就绪的fd，就绪队列使用双链表实现，`rdllist` 用于维护这个链表。
 
-当有fd就绪时，`epoll` 会将就绪的fd和事件加入该队列中，用户使用 `epoll_wait` 成功返回，是从这个队列中取数据的过程。
+当有fd就绪时，`epoll` 会将就绪的fd和事件加入该队列中，用户调用 `epoll_wait` 时，会检查这个队列是否有资源就绪，如果有就将其取走。
 
 ![就绪队列](./就绪队列.svg)
 
@@ -291,6 +291,8 @@ struct eventpoll {
 ![fd关注列表红黑树](./fd关注列表红黑树.svg)
 
 用户使用 `epoll_ctl` 对fd关注列表进行增加、删除和修改时，实际上就是对这颗红黑树进行对应操作。由于红黑树的这些操作的复杂度为 $O(logN)$ ，因此 `epoll_ctl` 的执行效率是非常高的。
+
+向关注列表中增加fd时，内核同时会为我们在某些设备上（如网卡驱动）注册回调函数，当fd就绪时被触发。
 
 ::: details epitem结构体
 

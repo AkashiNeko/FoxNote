@@ -1,5 +1,5 @@
 ---
-title: IO多路转接之poll
+title: I/O多路转接之poll
 date: 2023-12-04
 isOriginal: true
 icon: "/icon/io.svg"
@@ -9,7 +9,7 @@ tag:
   - IO
   - poll
   - fd
-excerpt: IO多路转接的系统调用接口select。
+excerpt: poll函数是在SVR2中引入的，发布于1984年。它是对select的改进，提供了一种更直观和可扩展的方式来处理多个文件描述符。
 ---
 
 `poll` 的功能和 [`select`](/posts/linux/io-select/) 非常相似，同样是用集合将一批文件描述符交给内核进行等待，内核再把等待的结果交付给用户。

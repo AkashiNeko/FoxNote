@@ -1,5 +1,5 @@
 ---
-title: 库的制作和使用
+title: 动静态库的制作和使用
 date: 2023-02-12
 isOriginal: true
 icon: "/icon/library.svg"

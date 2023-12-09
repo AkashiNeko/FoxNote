@@ -1,5 +1,5 @@
 ---
-title: IO多路转接之select
+title: I/O多路转接之select
 date: 2023-12-03
 isOriginal: true
 icon: "/icon/io.svg"
@@ -9,7 +9,7 @@ tag:
   - IO
   - select
   - fd
-excerpt: IO多路转接的系统调用接口select。
+excerpt: select函数最早出现在4.2BSD系统中，发布于1983年，是最早的一种I/O多路复用机制，用于监视多个文件描述符的状态变化。
 ---
 
 ## 1. select接口
@@ -133,7 +133,7 @@ select发现服务器fd有读事件发生，停止等待并返回。对服务器
 
 ![获取新连接](./获取新连接.svg)
 
-select可以同时关注多个fd上的IO事件，比如同时接收客户端的连接请求和接收客户端的消息。
+select可以同时关注多个fd上的I/O事件，比如同时接收客户端的连接请求和接收客户端的消息。
 
 ![并发响应](./并发响应.svg)
 
