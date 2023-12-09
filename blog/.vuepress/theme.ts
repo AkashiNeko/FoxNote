@@ -91,7 +91,7 @@ export default hopeTheme({
             demo: true,
 
             // install echarts before enabling it
-            // echarts: true,
+            echarts: true,
 
             figure: true,
 

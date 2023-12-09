@@ -45,6 +45,11 @@ export default sidebar({
                     icon: "/icon/io.svg",
                     link: "io-epoll/",
                 },
+                {
+                    text: "epoll的LT模式和ET模式",
+                    icon: "/icon/io.svg",
+                    link: "epoll-lt-et/",
+                },
             ],
         },
         {
