@@ -36,16 +36,17 @@ export default hopeTheme({
     blog: {
         name: "AkashiNeko",
 
-        description: "qwq",
+        description: "akashineko@qq.com",
         // intro: "/.html",
-        timeline: "qwq",
+        timeline: "这里是无情的写博客机器qwq...",
         roundAvatar: true,
         medias: {
-            GitHub: "https://github.com/AkashiNeko",
-            BiliBili: "https://space.bilibili.com/107816649",
-            Email: "mailto:akashineko@qq.com",
-            Gmail: "mailto:akashinekof@gmail.com",
-            Qzone: "https://user.qzone.qq.com/1006554341/main",
+            GitHub: ["https://github.com/AkashiNeko", "./blog/.vuepress/intro_icon/github.svg"],
+            LeetCode: ["https://leetcode.cn/u/akashineko/", "./blog/.vuepress/intro_icon/leetcode.svg"],
+            QQ: ["/intro/qq", "./blog/.vuepress/intro_icon/qq.svg"],
+            BiliBili: ["https://space.bilibili.com/107816649", "./blog/.vuepress/intro_icon/bilibili.svg"],
+            Qzone: ["https://user.qzone.qq.com/1006554341", "./blog/.vuepress/intro_icon/qzone.svg"],
+            CSDN: ["https://blog.csdn.net/qq_45412824", "./blog/.vuepress/intro_icon/csdn.svg"],
         },
         // articleInfo: ["Author", "Original", "Date", "PageView", "Category", "Tag", "ReadingTime"]
     },
