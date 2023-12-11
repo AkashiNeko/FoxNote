@@ -26,6 +26,11 @@ export default sidebar({
             // children: "structure",
             children: [
                 {
+                    text: "Linux进程概念",
+                    icon: "/icon/process.svg",
+                    link: "process-concept/",
+                },
+                {
                     text: "五种IO模型",
                     icon: "/icon/io.svg",
                     link: "io-models/",

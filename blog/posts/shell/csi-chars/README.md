@@ -6,9 +6,7 @@ icon: "/icon/ctrl.svg"
 category:
  - Shell
 tag:
- - ASCII
- - Color
- - CSI
+ - 终端
 excerpt: shell终端的特殊控制字符，用于修改光标位置，屏幕显示以及打印颜色等。它通常以ESC字符为前缀，后接参数和命令。
 ---
 

@@ -6,8 +6,8 @@ icon: "/icon/class.svg"
 category:
   - C++
 tag:
-  - Class
-  - OOP
+  - 编程语法
+  - 面向对象
 excerpt: C++类中的6个默认成员函数：构造函数、析构函数、拷贝构造、移动构造、拷贝赋值、移动赋值。
 ---
 

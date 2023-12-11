@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="terminal" baseProfile="full" viewBox="0 0 304 172" width="304" version="1.1">
+    <defs>
+        <termtosvg:template_settings xmlns:termtosvg="https://github.com/nbedos/termtosvg">
+            <termtosvg:screen_geometry columns="38" rows="10"/>
+            <termtosvg:animation type="css"/>
+        </termtosvg:template_settings>
+        <style type="text/css" id="generated-style"><![CDATA[#screen {
+                font-family: 'DejaVu Sans Mono', monospace;
+                font-style: normal;
+                font-size: 14px;
+            }
+
+        text {
+            dominant-baseline: text-before-edge;
+            white-space: pre;
+        }
+    
+            :root {
+                --animation-duration: 6286ms;
+            }
+
+            @keyframes roll {
+                0.000%{transform:translateY(0px)}
+3.691%{transform:translateY(-204px)}
+5.807%{transform:translateY(-408px)}
+8.145%{transform:translateY(-612px)}
+8.225%{transform:translateY(-816px)}
+14.143%{transform:translateY(-1020px)}
+15.367%{transform:translateY(-1224px)}
+18.836%{transform:translateY(-1428px)}
+20.299%{transform:translateY(-1632px)}
+22.415%{transform:translateY(-1836px)}
+22.447%{transform:translateY(-2040px)}
+30.624%{transform:translateY(-2244px)}
+33.280%{transform:translateY(-2448px)}
+35.062%{transform:translateY(-2652px)}
+37.416%{transform:translateY(-2856px)}
+38.466%{transform:translateY(-3060px)}
+41.298%{transform:translateY(-3264px)}
+44.130%{transform:translateY(-3468px)}
+45.609%{transform:translateY(-3672px)}
+49.889%{transform:translateY(-3876px)}
+51.654%{transform:translateY(-4080px)}
+53.818%{transform:translateY(-4284px)}
+56.761%{transform:translateY(-4488px)}
+56.793%{transform:translateY(-4692px)}
+81.021%{transform:translateY(-4896px)}
+81.069%{transform:translateY(-5100px)}
+84.028%{transform:translateY(-5304px)}
+84.092%{transform:translateY(-5508px)}
+100.000%{transform:translateY(-5508px)}
+            }
+
+            #screen_view {
+                animation-duration: 6286ms;
+                animation-iteration-count:infinite;
+                animation-name:roll;
+                animation-timing-function: steps(1,end);
+                animation-fill-mode: forwards;
+            }
+        ]]></style>
+        <style type="text/css" id="user-style">
+            /* The colors defined below are the default 16 colors used for rendering text of the terminal. Adjust
+               them as needed.
+               PowerShell colors based on https://en.wikipedia.org/wiki/ANSI_escape_code#Colors */
+            .foreground {fill: #cccccc;}
+            .background {fill: #0c0c0c;}
+            .color0 {fill: #0c0c0c;}
+            .color1 {fill: #c50f1f;}
+            .color2 {fill: #13a10e;}
+            .color3 {fill: #c19c00;}
+            .color4 {fill: #0037da;}
+            .color5 {fill: #881798;}
+            .color6 {fill: #3a96dd;}
+            .color7 {fill: #cccccc;}
+            .color8 {fill: #767676;}
+            .color9 {fill: #e74856;}
+            .color10 {fill: #16c60c;}
+            .color11 {fill: #f9f1a5;}
+            .color12 {fill: #3b78ff;}
+            .color13 {fill: #b4009e;}
+            .color14 {fill: #61d6d6;}
+            .color15 {fill: #f2f2f2;}
+        </style>
+    </defs>
+    <svg id="screen" width="304" height="170" viewBox="0 0 304 170" preserveAspectRatio="xMidYMin slice">
+    <rect class="background" height="100%" width="100%" x="0" y="0"/><defs><g id="g1"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/cpp</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="8" class="foreground"> </text><text x="200" textLength="8" class="background"> </text></g><g id="g2"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/cpp</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="16" class="foreground"> l</text><text x="208" textLength="8" class="background"> </text></g><g id="g3"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/cpp</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="24" class="foreground"> ls</text><text x="216" textLength="8" class="background"> </text></g><g id="g4"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/cpp</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="24" class="foreground"> ls</text></g><g id="g5"><text x="0" textLength="8" class="background"> </text></g><g id="g6"><text x="0" textLength="32" font-weight="bold" class="color10">main</text><text x="32" textLength="80" class="foreground">  main.c  </text><text x="112" textLength="64" font-weight="bold" text-decoration="underline" class="color11">Makefile</text></g><g id="g7"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/cpp</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="16" class="foreground"> .</text><text x="208" textLength="8" class="background"> </text></g><g id="g8"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/cpp</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="24" class="foreground"> ./</text><text x="216" textLength="8" class="background"> </text></g><g id="g9"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/cpp</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="32" class="foreground"> ./m</text><text x="224" textLength="8" class="background"> </text></g><g id="g10"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/cpp</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="64" class="foreground"> ./main </text><text x="256" textLength="8" class="background"> </text></g><g id="g11"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/cpp</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="64" class="foreground"> ./main </text></g><g id="g12"><text x="0" textLength="8" class="foreground">h</text><text x="8" textLength="8" class="background"> </text></g><g id="g13"><text x="0" textLength="16" class="foreground">he</text><text x="16" textLength="8" class="background"> </text></g><g id="g14"><text x="0" textLength="24" class="foreground">hel</text><text x="24" textLength="8" class="background"> </text></g><g id="g15"><text x="0" textLength="32" class="foreground">hell</text><text x="32" textLength="8" class="background"> </text></g><g id="g16"><text x="0" textLength="40" class="foreground">hello</text><text x="40" textLength="8" class="background"> </text></g><g id="g17"><text x="0" textLength="48" class="foreground">hello,</text><text x="48" textLength="8" class="background"> </text></g><g id="g18"><text x="0" textLength="56" class="foreground">hello,w</text><text x="56" textLength="8" class="background"> </text></g><g id="g19"><text x="0" textLength="64" class="foreground">hello,wo</text><text x="64" textLength="8" class="background"> </text></g><g id="g20"><text x="0" textLength="72" class="foreground">hello,wor</text><text x="72" textLength="8" class="background"> </text></g><g id="g21"><text x="0" textLength="80" class="foreground">hello,worl</text><text x="80" textLength="8" class="background"> </text></g><g id="g22"><text x="0" textLength="88" class="foreground">hello,world</text><text x="88" textLength="8" class="background"> </text></g><g id="g23"><text x="0" textLength="88" class="foreground">hello,world</text></g><g id="g24"><text x="0" textLength="112" class="foreground">&#35835;&#21462;&#25968;&#25454;&#65306;hell</text></g><g id="g25"><text x="0" textLength="112" class="foreground">&#35835;&#21462;&#25968;&#25454;&#65306;o,wo</text></g><g id="g26"><text x="0" textLength="104" class="foreground">&#35835;&#21462;&#25968;&#25454;&#65306;rld</text></g><g id="g27"><text x="0" textLength="16" class="foreground">^C</text><text x="16" textLength="8" class="background"> </text></g><g id="g28"><text x="0" textLength="16" class="foreground">^C</text></g><g id="g29"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/cpp</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="8" class="foreground"> </text></g><g id="g30"><text x="0" textLength="32" class="foreground">exit</text></g></defs><g id="screen_view"><g><rect x="200" y="0" width="8" height="17" class="foreground"/><use xlink:href="#g1" y="0"/></g><g><rect x="208" y="204" width="8" height="17" class="foreground"/><use xlink:href="#g2" y="204"/></g><g><rect x="216" y="408" width="8" height="17" class="foreground"/><use xlink:href="#g3" y="408"/></g><g><use xlink:href="#g4" y="612"/><rect x="0" y="629" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="629"/></g><g><use xlink:href="#g4" y="816"/><use xlink:href="#g6" y="833"/><rect x="200" y="850" width="8" height="17" class="foreground"/><use xlink:href="#g1" y="850"/></g><g><use xlink:href="#g4" y="1020"/><use xlink:href="#g6" y="1037"/><rect x="208" y="1054" width="8" height="17" class="foreground"/><use xlink:href="#g7" y="1054"/></g><g><use xlink:href="#g4" y="1224"/><use xlink:href="#g6" y="1241"/><rect x="216" y="1258" width="8" height="17" class="foreground"/><use xlink:href="#g8" y="1258"/></g><g><use xlink:href="#g4" y="1428"/><use xlink:href="#g6" y="1445"/><rect x="224" y="1462" width="8" height="17" class="foreground"/><use xlink:href="#g9" y="1462"/></g><g><use xlink:href="#g4" y="1632"/><use xlink:href="#g6" y="1649"/><rect x="256" y="1666" width="8" height="17" class="foreground"/><use xlink:href="#g10" y="1666"/></g><g><use xlink:href="#g4" y="1836"/><use xlink:href="#g6" y="1853"/><use xlink:href="#g11" y="1870"/><rect x="0" y="1887" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="1887"/></g><g><use xlink:href="#g4" y="2040"/><use xlink:href="#g6" y="2057"/><use xlink:href="#g11" y="2074"/><rect x="0" y="2091" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="2091"/></g><g><use xlink:href="#g4" y="2244"/><use xlink:href="#g6" y="2261"/><use xlink:href="#g11" y="2278"/><rect x="8" y="2295" width="8" height="17" class="foreground"/><use xlink:href="#g12" y="2295"/></g><g><use xlink:href="#g4" y="2448"/><use xlink:href="#g6" y="2465"/><use xlink:href="#g11" y="2482"/><rect x="16" y="2499" width="8" height="17" class="foreground"/><use xlink:href="#g13" y="2499"/></g><g><use xlink:href="#g4" y="2652"/><use xlink:href="#g6" y="2669"/><use xlink:href="#g11" y="2686"/><rect x="24" y="2703" width="8" height="17" class="foreground"/><use xlink:href="#g14" y="2703"/></g><g><use xlink:href="#g4" y="2856"/><use xlink:href="#g6" y="2873"/><use xlink:href="#g11" y="2890"/><rect x="32" y="2907" width="8" height="17" class="foreground"/><use xlink:href="#g15" y="2907"/></g><g><use xlink:href="#g4" y="3060"/><use xlink:href="#g6" y="3077"/><use xlink:href="#g11" y="3094"/><rect x="40" y="3111" width="8" height="17" class="foreground"/><use xlink:href="#g16" y="3111"/></g><g><use xlink:href="#g4" y="3264"/><use xlink:href="#g6" y="3281"/><use xlink:href="#g11" y="3298"/><rect x="48" y="3315" width="8" height="17" class="foreground"/><use xlink:href="#g17" y="3315"/></g><g><use xlink:href="#g4" y="3468"/><use xlink:href="#g6" y="3485"/><use xlink:href="#g11" y="3502"/><rect x="56" y="3519" width="8" height="17" class="foreground"/><use xlink:href="#g18" y="3519"/></g><g><use xlink:href="#g4" y="3672"/><use xlink:href="#g6" y="3689"/><use xlink:href="#g11" y="3706"/><rect x="64" y="3723" width="8" height="17" class="foreground"/><use xlink:href="#g19" y="3723"/></g><g><use xlink:href="#g4" y="3876"/><use xlink:href="#g6" y="3893"/><use xlink:href="#g11" y="3910"/><rect x="72" y="3927" width="8" height="17" class="foreground"/><use xlink:href="#g20" y="3927"/></g><g><use xlink:href="#g4" y="4080"/><use xlink:href="#g6" y="4097"/><use xlink:href="#g11" y="4114"/><rect x="80" y="4131" width="8" height="17" class="foreground"/><use xlink:href="#g21" y="4131"/></g><g><use xlink:href="#g4" y="4284"/><use xlink:href="#g6" y="4301"/><use xlink:href="#g11" y="4318"/><rect x="88" y="4335" width="8" height="17" class="foreground"/><use xlink:href="#g22" y="4335"/></g><g><use xlink:href="#g4" y="4488"/><use xlink:href="#g6" y="4505"/><use xlink:href="#g11" y="4522"/><use xlink:href="#g23" y="4539"/><rect x="0" y="4556" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="4556"/></g><g><use xlink:href="#g4" y="4692"/><use xlink:href="#g6" y="4709"/><use xlink:href="#g11" y="4726"/><use xlink:href="#g23" y="4743"/><use xlink:href="#g24" y="4760"/><use xlink:href="#g25" y="4777"/><use xlink:href="#g26" y="4794"/><rect x="0" y="4828" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="4828"/></g><g><use xlink:href="#g4" y="4896"/><use xlink:href="#g6" y="4913"/><use xlink:href="#g11" y="4930"/><use xlink:href="#g23" y="4947"/><use xlink:href="#g24" y="4964"/><use xlink:href="#g25" y="4981"/><use xlink:href="#g26" y="4998"/><rect x="16" y="5032" width="8" height="17" class="foreground"/><use xlink:href="#g27" y="5032"/></g><g><use xlink:href="#g4" y="5100"/><use xlink:href="#g6" y="5117"/><use xlink:href="#g11" y="5134"/><use xlink:href="#g23" y="5151"/><use xlink:href="#g24" y="5168"/><use xlink:href="#g25" y="5185"/><use xlink:href="#g26" y="5202"/><use xlink:href="#g28" y="5236"/><rect x="200" y="5253" width="8" height="17" class="foreground"/><use xlink:href="#g1" y="5253"/></g><g><use xlink:href="#g6" y="5304"/><use xlink:href="#g11" y="5321"/><use xlink:href="#g23" y="5338"/><use xlink:href="#g24" y="5355"/><use xlink:href="#g25" y="5372"/><use xlink:href="#g26" y="5389"/><use xlink:href="#g28" y="5423"/><use xlink:href="#g29" y="5440"/><rect x="0" y="5457" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="5457"/></g><g><use xlink:href="#g11" y="5508"/><use xlink:href="#g23" y="5525"/><use xlink:href="#g24" y="5542"/><use xlink:href="#g25" y="5559"/><use xlink:href="#g26" y="5576"/><use xlink:href="#g28" y="5610"/><use xlink:href="#g29" y="5627"/><use xlink:href="#g30" y="5644"/><rect x="0" y="5661" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="5661"/></g></g></svg>
+</svg>

@@ -7,10 +7,6 @@ category:
   - Linux
 tag:
   - IO
-  - epoll
-  - fd
-  - LT
-  - ET
 excerpt: epoll的两种工作模式：水平触发（Level Trigger，LT）和边缘触发（Edge Trigger，ET）。
 ---
 
@@ -100,12 +96,12 @@ int main() {
     epoll_ctl(epfd, EPOLL_CTL_ADD, STDIN_FD, &ev);
 
     // 读取
-    while (true) {
+    while (1) {
         // 等待标准输入就绪，即用户输入
         assert(epoll_wait(epfd, &ev, 1, -1) == 1);
 
         // 每次只读4个字节
-        char buf[5]{};
+        char buf[5] = {};
         int ret = read(STDIN_FD, buf, 4);
         printf("读取数据：%s\n", buf);
     }
@@ -114,15 +110,9 @@ int main() {
 }
 ~~~
 
-上面的代码中，用 `epoll_wait` 等待标准输入（fd = 0）上的读事件。当其上有读事件就绪时，使用 `read()` 读取，但是每次只读4个字节。我们输入 `hello world` 作为测试。
+上面的代码中，用 `epoll_wait` 等待标准输入（fd = 0）上的读事件。当其上有读事件就绪时，使用 `read()` 读取，但是每次只读4个字节。我们输入 `hello,world` 作为测试。
 
-~~~text
-$ ./main 
-hello,world
-读取数据：hell
-读取数据：o,wo
-读取数据：rld
-~~~
+![LT模式下运行结果](./LT模式下的运行结果.svg)
 
 可以发现，在输入 `hello world` 后，程序连续调用了多次 `read()` 进行fd的读取后，程序才被阻塞住。
 
@@ -164,17 +154,17 @@ int main() {
 
     // 将标准输入（fd = 0）加入关注列表
     struct epoll_event ev;
-    ev.events = EPOLLIN | EPOLLET;
+    ev.events = EPOLLIN | EPOLLET; // 加入EPOLLET标志位
     ev.data.fd = STDIN_FD;
     epoll_ctl(epfd, EPOLL_CTL_ADD, STDIN_FD, &ev);
 
     // 读取
-    while (true) {
+    while (1) {
         // 等待标准输入就绪，即用户输入
         assert(epoll_wait(epfd, &ev, 1, -1) == 1);
 
         // 每次只读4个字节
-        char buf[5]{};
+        char buf[5] = {};
         int ret = read(STDIN_FD, buf, 4);
         printf("读取数据：%s\n", buf);
     }
@@ -187,23 +177,9 @@ int main() {
 
 运行代码可以发现，我们输入了 `hello world`，程序读取了我们输入的前4个字节后立刻阻塞住了。
 
-~~~text
-$ ./main 
-hello,world
-读取数据：hell
+继续按下回车，即进行下一次输入后，`hello world` 剩余的部分才被陆续被读取了。
 
-~~~
-
-继续按下回车，表示不输入任何数据，可以发现 `hello world` 剩余的部分也陆续被读取了。
-
-~~~text
-$ ./main 
-hello,world
-读取数据：hell
-
-读取数据：o wo
-
-~~~
+![ET模式下的运行结果](./ET模式下的运行结果.svg)
 
 这就是ET模式下工作的 `epoll`，当我们输入 `hello world` 后，发生了边缘触发，即fd上的读事件有更新。当用户进行一次读取之后，虽然仍然有数据没读完，但是fd上并没有收到新的数据，所以ET模式下的 `epoll` 并不关注这个没读完的fd，直接进入阻塞状态。
 

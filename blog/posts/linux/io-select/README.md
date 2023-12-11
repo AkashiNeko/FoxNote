@@ -8,7 +8,6 @@ category:
 tag:
   - IO
   - select
-  - fd
 excerpt: select函数最早出现在4.2BSD系统中，发布于1983年，是最早的一种I/O多路复用机制，用于监视多个文件描述符的状态变化。
 ---
 

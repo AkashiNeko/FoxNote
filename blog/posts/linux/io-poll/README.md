@@ -8,7 +8,6 @@ category:
 tag:
   - IO
   - poll
-  - fd
 excerpt: poll函数是在SVR2中引入的，发布于1984年。它是对select的改进，提供了一种更直观和可扩展的方式来处理多个文件描述符。
 ---
 

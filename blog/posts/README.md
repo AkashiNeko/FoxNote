@@ -12,6 +12,9 @@ article: false
 
 ## Linux操作系统
 
+- 进程
+  - [进程概念](/posts/process-concept)
+
 - I/O
   - [五种I/O模型](/posts/linux/io-models)
   - [select](/posts/linux/io-select)

@@ -6,9 +6,9 @@ icon: "/icon/library.svg"
 category:
   - Shell
 tag:
+  - 编译
+  - 库
   - gcc
-  - Compile
-  - Library
 excerpt: 使用gcc编译器，将源文件分别编译为动态库和静态库，并在其他程序中使用。
 ---
 

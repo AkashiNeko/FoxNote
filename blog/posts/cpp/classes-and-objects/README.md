@@ -6,8 +6,8 @@ icon: "/icon/class.svg"
 category:
   - C++
 tag:
-  - Class
-  - OOP
+  - 编程语法
+  - 面向对象
 excerpt: C++面向对象编程基础，类和对象入门。
 ---
 
