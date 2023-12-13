@@ -1426,7 +1426,9 @@ int main() {
 
 ::: info 申请内存前
 
-按下回车键申请内存...
+程序输出
+
+> 按下回车键申请内存...
 
 ~~~text
 $ ps aux | head -1 && ps aux | grep main
@@ -1434,12 +1436,18 @@ USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 akashi     19161  0.0  0.0   2792  1152 pts/6    S+   22:47   0:00 ./main
 ~~~
 
+- `VSZ`：2792
+- `RSS`：1152
+
 :::
 
 ::: info 申请内存后
 
-按下回车键申请内存...
-申请完成: ptr = 0xb7bff010, 按下回车键使用内存
+程序输出
+
+> 按下回车键申请内存...
+>
+> 申请完成: ptr = 0xb7bff010, 按下回车键使用内存
 
 ~~~text
 $ ps aux | head -1 && ps aux | grep main
@@ -1447,19 +1455,32 @@ USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 akashi     19161  0.0  0.0 1051372 1280 pts/6    S+   22:47   0:00 ./main
 ~~~
 
+- `VSZ`：1051372
+- `RSS`：1280
+
 :::
 
 ::: info 使用内存后
 
-按下回车键申请内存...
-申请完成: ptr = 0xb7bff010, 按下回车键使用内存
-写入完成
+程序输出
+
+> 按下回车键申请内存...
+>
+> 申请完成: ptr = 0xb7bff010, 按下回车键使用内存
+>
+> 写入完成
 
 ~~~text
+$ ps aux | head -1 && ps aux | grep main
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 akashi     19161  2.0  6.5 1051372 1049856 pts/6 S+   22:47   0:00 ./main
 ~~~
 
+- `VSZ`：1051372
+- `RSS`：1049856
+
 :::
 
 分别观察上面三个 `VSZ` 和 `RSS` 可以发现，程序使用 `malloc` 申请内存后还没使用时，进程使用的虚拟内存增加了约1GB，但是该进程物理内存的使用几乎没有增加。当这块内存空间实际被写入数据后，这块内存空间才被映射到真实的物理内存上。
+
+另外，虽然 `malloc` 申请的内存并没有释放，但是操作系统完全不用担心这个问题，因为申请的内存空间是记录在进程的地址空间中的。当进程退出时，为了保证操作系统的正常运行，作为进程的管理者，操作系统需要对进程的资源进行回收，这其中就包括了进程的地址空间。
