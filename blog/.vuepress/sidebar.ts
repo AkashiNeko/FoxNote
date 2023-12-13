@@ -31,9 +31,9 @@ export default sidebar({
                     link: "process-concept/",
                 },
                 {
-                    text: "进程的调度",
+                    text: "进程状态和优先级",
                     icon: "/icon/process_scheduling.svg",
-                    link: "process-scheduling/",
+                    link: "process-status-and-priority/",
                 },
                 {
                     text: "五种IO模型",

@@ -14,6 +14,7 @@ article: false
 
 - 进程
   - [进程概念](/posts/linux/process-concept)
+  - [状态和优先级](/posts/linux/process-status-and-priority)
 
 - I/O
   - [五种I/O模型](/posts/linux/io-models)
