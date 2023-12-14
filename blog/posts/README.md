@@ -13,8 +13,8 @@ article: false
 ## Linux操作系统
 
 - 进程
-  - [进程概念](/posts/linux/process-concept)
-  - [状态和优先级](/posts/linux/process-status-and-priority)
+  - [Linux进程概念](/posts/linux/process-concept)
+  - [进程的状态转换](/posts/linux/process-status)
 
 - I/O
   - [五种I/O模型](/posts/linux/io-models)
