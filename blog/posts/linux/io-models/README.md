@@ -6,6 +6,7 @@ icon: "/icon/io.svg"
 category:
   - Linux
 tag:
+  - 操作系统
   - IO
 excerpt: 五种I/O模型的工作模式：阻塞式I/O、非阻塞式I/O、信号驱动I/O、异步I/O、I/O多路转接。
 ---

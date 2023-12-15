@@ -6,9 +6,10 @@ icon: "/icon/trace.svg"
 category:
   - Linux
 tag:
+  - 操作系统
   - 进程
   - 优先级
-excerpt: 操作系统可以同时执行多个程序，合理地分配系统资源，同时还需要最大化CPU利用率，提高系统的响应性。
+excerpt: 操作系统上同时运行着多个进程，合理地分配系统资源，为此，被调度的进程需要有不同的状态。
 ---
 
 ## 1. 进程的调度
@@ -73,10 +74,22 @@ int main() {
 }
 ~~~
 
+::: tip 代码编译运行说明
+
+为了方便表示，下文中的代码都命名 `main.c`，用 `gcc` 进行编译，编译的可执行文件为 `main`。
+
+~~~bash
+gcc -o main main.c
+~~~
+
+由于程序在前台运行，为了观察，需要在机器上另外新建一个终端。
+
+:::
+
 将程序运行起来后，在其他终端下检查进程，可以发现它的运行状态是 `R`。（状态后面的 `+` 表示这是一个前台进程，如果让程序以后台运行的方式执行，那么运行状态会显示为 `R`，我们之后不再关注这个 `+`）。
 
-~~~text
-$ ps a | head -1 && ps a | grep main
+~~~bash
+akashi@box:~$ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 14617 pts/6    R+     0:10 ./main
 ~~~
@@ -100,8 +113,8 @@ int main() {
 
 程序运行后，我们先不输入数据。在一个新的终端下观察进程。
 
-~~~text
-$ ps a | head -1 && ps a | grep main
+~~~bash
+akashi@box:~$ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 16242 pts/7    S+     0:00 ./main
 ~~~
@@ -149,28 +162,28 @@ int main() {
 
 程序被执行后，每隔一秒向屏幕打印一次。分别查看发送信号前后的进程的状态。
 
-~~~text
-$ ps a | head -1 && ps a | grep main
+~~~bash
+akashi@box:~$ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 16242 pts/7    S+     0:00 ./main
 
-$ kill -SIGSTOP 16242
+akashi@box:~$ kill -SIGSTOP 16242
 
-$ ps a | head -1 && ps a | grep main
+akashi@box:~$ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 16242 pts/7    T+     0:00 ./main
 ~~~
 
 可以发现，发送了 `SIGSTOP` 信号后，进程进入了 `T` 状态，同时进程停止了屏幕打印。如果想让其恢复运行，可以继续向进程发送 `SIGCONT` 信号。
 
-~~~text
-$ ps a | head -1 && ps a | grep main
+~~~bash
+akashi@box:~$ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 16242 pts/7    T+     0:00 ./main
 
-$ kill -SIGCONY 16242
+akashi@box:~$ kill -SIGCONY 16242
 
-$ ps a | head -1 && ps a | grep main
+akashi@box:~$ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 16242 pts/7    S+     0:00 ./main
 ~~~
@@ -212,8 +225,8 @@ int main() {
 
 运行程序，使用命令 `ps ajx` 查看两个进程的状态。
 
-~~~text
-$ ps ajx | head -1 && ps ajx | grep main
+~~~bash
+akashi@box:~$ ps ajx | head -1 && ps ajx | grep main
  PPID     PID    PGID     SID TTY        TPGID STAT   UID   TIME COMMAND
 15610   20030   20030   15610 pts/7      20030 S+    1000   0:00 ./main
 20030   20031   20030   15610 pts/7      20030 Z+    1000   0:00 [main] <defunct>
@@ -225,7 +238,7 @@ $ ps ajx | head -1 && ps ajx | grep main
 
 ### 三态模型
 
-进程的三态模型是指进程在操作系统中的三种基本状态：运行态（Running）、就绪态（Ready）和阻塞态（Blocked）。
+进程的三态模型是指进程在操作系统中的三种基本状态：**运行态**（Running）、**就绪态**（Ready）和**阻塞态**（Blocked）。
 
 ::: info 三态模型
 
@@ -248,7 +261,7 @@ $ ps ajx | head -1 && ps ajx | grep main
 
 ### 五态模型
 
-五态模型在三态模型的基础上增加了新建态（New）和终止态（Terminated）。
+五态模型在三态模型的基础上增加了**新建态**（New）和**终止态**（Terminated）。
 
 ::: info 五态模型
 
@@ -267,7 +280,7 @@ $ ps ajx | head -1 && ps ajx | grep main
 
 ### 七态模型
 
-七态模型在五态模型的基础上还引入了两个额外的状态挂起就绪（Suspended Ready）和挂起阻塞（Suspended Blocked）。
+七态模型在五态模型的基础上还引入了两个额外的状态**挂起就绪态**（Suspended Ready）和**挂起阻塞态**（Suspended Blocked）。
 
 在之前Linux进程状态的例子中，使用 `kill -SIGSTOP` 命令向进程发送信号使其转换为 `T` 状态使其暂停，就属于挂起就绪态的一种。
 
@@ -290,3 +303,79 @@ $ ps ajx | head -1 && ps ajx | grep main
 当一个进程被挂起时，可能会将其相关的数据写入到 `Swap` 中，以释放内存。这样进程的状态可以转换为挂起就绪态（Suspended Ready）或挂起阻塞态（Suspended Blocked）。在这种状态下，进程不占用实际的内存资源，而是保存在Swap中，以便在需要时进行恢复。
 
 当操作系统决定重新调度挂起的进程时，它从Swap中读取进程的数据，将其恢复到内存中，并将其状态转换为就绪态（Ready）或阻塞态（Blocked），具体取决于进程在挂起之前的状态。
+
+## 4. 进程的优先级
+
+进程的优先级指的是，操作系统调度进程时，给予每个进程的优先顺序。优先级较高的进程在竞争有限系统资源时，更有可能被调度执行。
+
+在Linux系统中，进程的优先级是通过Nice值来表示的。Nice值是一个整数，范围通常是从-20到+19，其中-20表示最高优先级，+19表示最低优先级。
+
+Nice值越低，进程的优先级越高。通常，普通用户的进程的Nice值范围是0到+19，而具有超级用户权限（root）的进程可以使用负值，即-20到-1。
+
+编译运行下面的代码，使用 `ps -al` 命令查看进程的优先级。
+
+~~~c
+#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+    while (1) {
+        printf("hello\n");
+        sleep(1);
+    }
+    return 0;
+}
+~~~
+
+~~~bash
+akashi@box:~$ ps -al
+F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  1000    6823    6218  0  80   0 -   664 hrtime pts/4    00:00:00 main
+~~~
+
+命令输出了程序的 `PRI` 和 `NI` 值，`PRI`（priority）表示的是程序的优先级，`NI`（nice）是优先级的修改数值（偏移量），`PRI` 的默认值为80。`PRI` 的值越小，表示优先级越高。
+
+可以使用 `renice` 命令修改进程的优先级。
+
+~~~bash
+akashi@box:~$ renice 10 -p 6823
+6823 (process ID) 旧优先级为 0，新优先级为 10
+
+akashi@box:~$ ps -al
+F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  1000    6823    6218  0  90  10 -   664 hrtime pts/4    00:00:00 main
+~~~
+
+将 `NI` 值从0改成10，那么 `PRI` 会变为 80 + 10 = 90。
+
+如果要将 `NI` 改为负值，则需要 `root` 权限。
+
+~~~bash
+akashi@box:~$ renice -10 -p 6823 # 直接设置
+renice: 设置 6823 的优先级失败(process ID): 权限不够
+
+akashi@box:~$ sudo renice -10 -p 6823 # 使用root权限
+6823 (process ID) 旧优先级为 10，新优先级为 -10
+
+akashi@box:~$ ps -al
+F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  1000    6823    6218  0  70 -10 -   664 hrtime pts/4    00:00:00 main
+~~~
+
+将 `NI` 值从0改成-10，那么 `PRI` 会变为 80 + (-10) = 70。
+
+`NI` 的取值范围是-20到19，不能超出这个范围。
+
+~~~bash
+akashi@box:~$ sudo renice -20 -p 6823
+6823 (process ID) 旧优先级为 -10，新优先级为 -20
+
+akashi@box:~$ sudo renice -21 -p 6823 # 无法设为小于-20的值
+6823 (process ID) 旧优先级为 -20，新优先级为 -20
+
+akashi@box:~$ renice 19 -p 6823
+6823 (process ID) 旧优先级为 -20，新优先级为 19
+
+akashi@box:~$ renice 20 -p 6823 # 无法设为大于19的值
+6823 (process ID) 旧优先级为 19，新优先级为 19
+~~~

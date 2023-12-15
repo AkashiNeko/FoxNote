@@ -6,6 +6,7 @@ icon: "/icon/task.svg"
 category:
   - Linux
 tag:
+  - 操作系统
   - 进程
   - PCB
 excerpt: 进程是Linux操作系统中正在运行的程序，它们执行特定的任务并占用系统资源。
@@ -931,17 +932,17 @@ int main() {
 
 运行程序，成功输出当前程序的PID。
 
-~~~text
-$ ./main
+~~~bash
+akashi@box:~/code/test$ ./main
 program start.. pid = 13819
 ~~~
 
 使用 `pidof` 或 `ps a` 命令查询PID。
 
-~~~text
-$ pidof main
+~~~bash
+akashi@box:~$ pidof main
 13819
-$ ps a | grep main
+akashi@box:~$ ps a | grep main
 13819 pts/4    S+     0:00 ./main
 ~~~
 
@@ -957,16 +958,16 @@ $ ps a | grep main
 
 使用 `ps aj` 命令可以查看进程的PID和PPID，比如刚才的程序 `main`。
 
-~~~text
-$ ps aj | head -1 && ps aj | grep main
+~~~bash
+akashi@box:~$ ps aj | head -1 && ps aj | grep main
  PPID     PID    PGID     SID TTY        TPGID STAT   UID   TIME COMMAND
 11902   13819   13819   11902 pts/4      13819 S+    1000   0:00 ./main
 ~~~
 
 可以发现，`main` 进程的PPID为11902，即 `main` 进程是由PID为11902的进程启动的。
 
-~~~text
-$ ps a | head -1 && ps a | grep 11902
+~~~bash
+akashi@box:~$ ps a | head -1 && ps a | grep 11902
   PID TTY      STAT   TIME COMMAND
 11902 pts/4    Ss     0:00 -bash
 ~~~
@@ -1016,8 +1017,8 @@ int main() {
 
 执行程序，观察输出结果。
 
-~~~text
-$ ./main
+~~~bash
+akashi@box:~/code/test$ ./main
 I'm parent, pid = 16159, my child is 16160
 I'm child, pid = 16160, my parent is 16159
 ~~~
@@ -1361,11 +1362,11 @@ int main(int argc, char *argv[], char *envp[]) {
 
 使用 `gcc` 命令编译程序时，使用 `-m32` 参数指定以32位模式进行编译和链接。
 
-~~~text
-$ gcc -o main main.c -m32
-$ ls
+~~~bash
+akashi@box:~/code/test$ gcc -o main main.c -m32
+akashi@box:~/code/test$ ls
 main main.c
-$ ./main
+akashi@box:~/code/test$ ./main
 0xffa74281 - 环境变量
 0xffa7427a - 命令行参数
 0xffa733e8 - 函数栈1 ↓
@@ -1436,8 +1437,8 @@ int main() {
 
 > 按下回车键申请内存...
 
-~~~text
-$ ps aux | head -1 && ps aux | grep main
+~~~bash
+akashi@box:~$ ps aux | head -1 && ps aux | grep main
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 akashi     19161  0.0  0.0   2792  1152 pts/6    S+   19:00   0:00 ./main
 ~~~
@@ -1455,8 +1456,8 @@ akashi     19161  0.0  0.0   2792  1152 pts/6    S+   19:00   0:00 ./main
 >
 > 申请完成: ptr = 0xb7bff010, 按下回车键使用内存
 
-~~~text
-$ ps aux | head -1 && ps aux | grep main
+~~~bash
+akashi@box:~$ ps aux | head -1 && ps aux | grep main
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 akashi     19161  0.0  0.0 1051372 1280 pts/6    S+   19:00   0:00 ./main
 ~~~
@@ -1476,8 +1477,8 @@ akashi     19161  0.0  0.0 1051372 1280 pts/6    S+   19:00   0:00 ./main
 >
 > 写入完成
 
-~~~text
-$ ps aux | head -1 && ps aux | grep main
+~~~bash
+akashi@box:~$ ps aux | head -1 && ps aux | grep main
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 akashi     19161  2.0  6.5 1051372 1049856 pts/6 S+   19:00   0:00 ./main
 ~~~
