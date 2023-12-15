@@ -273,7 +273,7 @@ struct eventpoll {
 }
 ~~~
 
-![队列和红黑树](./队列和红黑树.svg)
+![Epoll的队列和红黑树](/inset/Epoll的队列和红黑树.svg)
 
 ### rdllist 就绪队列
 
@@ -281,13 +281,13 @@ struct eventpoll {
 
 当有fd就绪时，`epoll` 会将就绪的fd和事件加入该队列中，用户调用 `epoll_wait` 时，会检查这个队列是否有资源就绪，如果有就将其取走。
 
-![就绪队列](./就绪队列.svg)
+![Epoll的就绪队列](/inset/Epoll的就绪队列.svg)
 
 ### rbr 红黑树
 
 `epoll` 在内核空间管理了一棵红黑树，红黑树的节点使用的结构体为 `epitem`，而 `rbr` 用于维护这棵红黑树。
 
-![红黑树](./红黑树.svg)
+![Epoll的红黑树](/inset/Epoll的红黑树.svg)
 
 用户使用 `epoll_ctl` 对fd关注列表进行增加、删除和修改时，实际上就是对这颗红黑树进行对应操作。由于红黑树的这些操作的复杂度为 $O(logN)$ ，因此 `epoll_ctl` 的执行效率是非常高的。
 

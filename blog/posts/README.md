@@ -8,7 +8,7 @@ article: false
 
 - 基础语法
   - [C++类和对象入门](/posts/cpp/classes-and-objects)
-  - [类中的默认成员函数](/posts/cpp/class-default-functions)
+  - [类中的默认成员函数](/posts/cpp/class-functions)
 
 ## Linux操作系统
 

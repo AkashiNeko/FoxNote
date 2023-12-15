@@ -9,13 +9,13 @@ export default sidebar({
             children: [
                 {
                     text: "类和对象入门",
-                    icon: "/icon/class.svg",
+                    icon: "/icon/brackets.svg",
                     link: "classes-and-objects/",
                 },
                 {
                     text: "默认成员函数",
-                    icon: "/icon/class.svg",
-                    link: "class-default-functions/",
+                    icon: "/icon/brackets.svg",
+                    link: "class-functions/",
                 }
             ],
         },
@@ -32,8 +32,13 @@ export default sidebar({
                 },
                 {
                     text: "进程的状态转换",
-                    icon: "/icon/trace.svg",
+                    icon: "/icon/transform.svg",
                     link: "process-status/",
+                },
+                {
+                    text: "进程控制",
+                    icon: "/icon/tree.svg",
+                    link: "process-control/",
                 },
                 {
                     text: "五种IO模型",

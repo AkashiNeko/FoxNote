@@ -2,7 +2,7 @@
 title: 类和对象入门
 date: 2022-08-09
 isOriginal: true
-icon: "/icon/class.svg"
+icon: "/icon/brackets.svg"
 category:
   - C++
 tag:

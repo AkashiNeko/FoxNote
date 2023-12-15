@@ -122,19 +122,19 @@ struct timeval {
 
 ::: info select服务器
 
-![select等待](./select等待.svg)
+![select等待连接](/inset/select等待连接.svg)
 
 此时如果有客户端发起连接：
 
-![客户端连接](./客户端连接.svg)
+![客户端连接服务器fd](/inset/客户端连接服务器fd.svg)
 
 select发现服务器fd有读事件发生，停止等待并返回。对服务器fd调用accept，接受客户端的连接，并将链接fd放入fd集合中，交给select继续等待。
 
-![获取新连接](./获取新连接.svg)
+![获取到新连接加入fd集合](/inset/获取到新连接加入fd集合.svg)
 
 select可以同时关注多个fd上的I/O事件，比如同时接收客户端的连接请求和接收客户端的消息。
 
-![并发响应](./并发响应.svg)
+![select并发响应](/inset/select并发响应.svg)
 
 这样就可以实现在单执行流中并发的响应。
 

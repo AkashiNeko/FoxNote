@@ -2,7 +2,7 @@
 title: 默认成员函数
 date: 2022-08-14
 isOriginal: true
-icon: "/icon/class.svg"
+icon: "/icon/brackets.svg"
 category:
   - C++
 tag:
