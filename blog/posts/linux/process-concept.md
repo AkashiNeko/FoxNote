@@ -933,16 +933,16 @@ int main() {
 运行程序，成功输出当前程序的PID。
 
 ~~~bash
-akashi@box:~/code/test$ ./main
+$ ./main
 program start.. pid = 13819
 ~~~
 
 使用 `pidof` 或 `ps a` 命令查询PID。
 
 ~~~bash
-akashi@box:~$ pidof main
+$ pidof main
 13819
-akashi@box:~$ ps a | grep main
+$ ps a | grep main
 13819 pts/4    S+     0:00 ./main
 ~~~
 
@@ -959,7 +959,7 @@ akashi@box:~$ ps a | grep main
 使用 `ps aj` 命令可以查看进程的PID和PPID，比如刚才的程序 `main`。
 
 ~~~bash
-akashi@box:~$ ps aj | head -1 && ps aj | grep main
+$ ps aj | head -1 && ps aj | grep main
  PPID     PID    PGID     SID TTY        TPGID STAT   UID   TIME COMMAND
 11902   13819   13819   11902 pts/4      13819 S+    1000   0:00 ./main
 ~~~
@@ -967,7 +967,7 @@ akashi@box:~$ ps aj | head -1 && ps aj | grep main
 可以发现，`main` 进程的PPID为11902，即 `main` 进程是由PID为11902的进程启动的。
 
 ~~~bash
-akashi@box:~$ ps a | head -1 && ps a | grep 11902
+$ ps a | head -1 && ps a | grep 11902
   PID TTY      STAT   TIME COMMAND
 11902 pts/4    Ss     0:00 -bash
 ~~~
@@ -979,51 +979,6 @@ akashi@box:~$ ps a | head -1 && ps a | grep 11902
 如果我们对任意一个进程溯源，最终都能找到它们共同的父进程 `systemd`（或早期的 `init`），它是在操作系统启动时启动的进程，是所有进程的父进程，它的PID固定为1。
 
 :::
-
-### 创建子进程
-
-Linux提供了创建子进程的接口 `fork()`。成功时在父进程中返回子进程的PID，在子进程中返回0，失败时返回-1。
-
-~~~c
-#include <unistd.h>
-pid_t fork();
-~~~
-
-用下面的代码观察子进程的创建。
-
-~~~c
-#include <stdio.h>
-#include <unistd.h>
-#include <errno.h>
-
-int main() {
-    pid_t pid = fork();
-
-    if (pid == -1) {
-        // fork失败
-        perror("fork");
-        return errno;
-    }
-    // fork成功
-    if (pid == 0) {
-        // 子进程
-        printf("I'm child, pid = %d, my parent is %d\n", getpid(), getppid());
-    } else {
-        // 父进程
-        printf("I'm parent, pid = %d, my child is %d\n", getpid(), pid);
-    }
-}
-~~~
-
-执行程序，观察输出结果。
-
-~~~bash
-akashi@box:~/code/test$ ./main
-I'm parent, pid = 16159, my child is 16160
-I'm child, pid = 16160, my parent is 16159
-~~~
-
-运行结果说明 `fork()` 成功创建了子进程，子进程的PPID为父进程的PID，同时 `fork()` 给父进程返回了新建的子进程的PID。
 
 ## 4. 进程地址空间
 
@@ -1363,10 +1318,10 @@ int main(int argc, char *argv[], char *envp[]) {
 使用 `gcc` 命令编译程序时，使用 `-m32` 参数指定以32位模式进行编译和链接。
 
 ~~~bash
-akashi@box:~/code/test$ gcc -o main main.c -m32
-akashi@box:~/code/test$ ls
+$ gcc -o main main.c -m32
+$ ls
 main main.c
-akashi@box:~/code/test$ ./main
+$ ./main
 0xffa74281 - 环境变量
 0xffa7427a - 命令行参数
 0xffa733e8 - 函数栈1 ↓
@@ -1442,7 +1397,7 @@ int main() {
 > 按下回车键申请内存...
 
 ~~~bash
-akashi@box:~$ ps aux | head -1 && ps aux | grep main
+$ ps aux | head -1 && ps aux | grep main
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 akashi     19161  0.0  0.0   2792  1152 pts/6    S+   19:00   0:00 ./main
 ~~~
@@ -1461,7 +1416,7 @@ akashi     19161  0.0  0.0   2792  1152 pts/6    S+   19:00   0:00 ./main
 > 申请完成: ptr = 0xb7bff010, 按下回车键使用内存
 
 ~~~bash
-akashi@box:~$ ps aux | head -1 && ps aux | grep main
+$ ps aux | head -1 && ps aux | grep main
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 akashi     19161  0.0  0.0 1051372 1280 pts/6    S+   19:00   0:00 ./main
 ~~~
@@ -1482,7 +1437,7 @@ akashi     19161  0.0  0.0 1051372 1280 pts/6    S+   19:00   0:00 ./main
 > 写入完成
 
 ~~~bash
-akashi@box:~$ ps aux | head -1 && ps aux | grep main
+$ ps aux | head -1 && ps aux | grep main
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 akashi     19161  2.0  6.5 1051372 1049856 pts/6 S+   19:00   0:00 ./main
 ~~~

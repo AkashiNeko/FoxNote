@@ -93,7 +93,7 @@ gcc -o main main.c
 将程序运行起来后，在其他终端下检查进程，可以发现它的运行状态是 `R`。（状态后面的 `+` 表示这是一个前台进程，如果让程序以后台运行的方式执行，那么运行状态会显示为 `R`，我们之后不再关注这个 `+`）。
 
 ~~~bash
-akashi@box:~$ ps a | head -1 && ps a | grep main
+$ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 14617 pts/6    R+     0:10 ./main
 ~~~
@@ -118,7 +118,7 @@ int main() {
 程序运行后，我们先不输入数据。在一个新的终端下观察进程。
 
 ~~~bash
-akashi@box:~$ ps a | head -1 && ps a | grep main
+$ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 16242 pts/7    S+     0:00 ./main
 ~~~
@@ -171,13 +171,13 @@ int main() {
 程序被执行后，每隔一秒向屏幕打印一次。分别查看发送信号前后的进程的状态。
 
 ~~~bash
-akashi@box:~$ ps a | head -1 && ps a | grep main
+$ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 16242 pts/7    S+     0:00 ./main
 
-akashi@box:~$ kill -SIGSTOP 16242
+$ kill -SIGSTOP 16242
 
-akashi@box:~$ ps a | head -1 && ps a | grep main
+$ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 16242 pts/7    T+     0:00 ./main
 ~~~
@@ -185,13 +185,13 @@ akashi@box:~$ ps a | head -1 && ps a | grep main
 可以发现，发送了 `SIGSTOP` 信号后，进程进入了 `T` 状态，同时进程停止了屏幕打印。如果想让其恢复运行，可以继续向进程发送 `SIGCONT` 信号。
 
 ~~~bash
-akashi@box:~$ ps a | head -1 && ps a | grep main
+$ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 16242 pts/7    T+     0:00 ./main
 
-akashi@box:~$ kill -SIGCONY 16242
+$ kill -SIGCONY 16242
 
-akashi@box:~$ ps a | head -1 && ps a | grep main
+$ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 16242 pts/7    S+     0:00 ./main
 ~~~
@@ -216,14 +216,14 @@ kill -SIGKILL <进程的PID>
 
 当一个进程终止时，内核会保留一些信息，包括进程的退出状态和一些元数据，以供父进程查询。这样的终止进程称为僵尸进程（Zombie Process），即处于 `Z` 状态。由于僵尸进程已经终止，所以它不会消耗任何CPU资源，处于一个等待回收的状态，但是它会占用一定的内存空间，所以父进程必须进行回收（调用 `wait()`、`waitpid()` 接口），大量的僵尸进程会影响系统的稳定运行。
 
-当子进程退出时，如果父进程没有回收子进程的资源，那么子进程会处于僵尸状态。我们可以用下面的代码进行验证，用 `fork()` 创建一个子进程，随后子进程立即退出，父进程不对子进程的资源进行释放。
+当子进程退出时，如果父进程没有回收子进程的资源，那么子进程会处于僵尸状态。我们可以用下面的代码进行验证，创建一个子进程，随后子进程立即退出，父进程不对子进程的资源进行释放。关于子进程的创建，将在后文[进程的创建和等待](/posts/linux/process-create.html)中详细介绍。
 
 ~~~c
 #include <stdio.h>
 #include <unistd.h>
 
 int main() {
-    if (fork())
+    if (fork()) // 创建子进程
         getchar(); // 父进程
     else
         return 1;  // 子进程
@@ -234,7 +234,7 @@ int main() {
 运行程序，使用命令 `ps ajx` 查看两个进程的状态。
 
 ~~~bash
-akashi@box:~$ ps ajx | head -1 && ps ajx | grep main
+$ ps ajx | head -1 && ps ajx | grep main
  PPID     PID    PGID     SID TTY        TPGID STAT   UID   TIME COMMAND
 15610   20030   20030   15610 pts/7      20030 S+    1000   0:00 ./main
 20030   20031   20030   15610 pts/7      20030 Z+    1000   0:00 [main] <defunct>
@@ -336,7 +336,7 @@ int main() {
 ~~~
 
 ~~~bash
-akashi@box:~$ ps -al
+$ ps -al
 F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 0 S  1000    6823    6218  0  80   0 -   664 hrtime pts/4    00:00:00 main
 ~~~
@@ -346,10 +346,10 @@ F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 可以使用 `renice` 命令修改进程的优先级。
 
 ~~~bash
-akashi@box:~$ renice 10 -p 6823
+$ renice 10 -p 6823
 6823 (process ID) 旧优先级为 0，新优先级为 10
 
-akashi@box:~$ ps -al
+$ ps -al
 F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 0 S  1000    6823    6218  0  90  10 -   664 hrtime pts/4    00:00:00 main
 ~~~
@@ -359,13 +359,13 @@ F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 如果要将 `NI` 改为负值，则需要 `root` 权限。
 
 ~~~bash
-akashi@box:~$ renice -10 -p 6823 # 直接设置
+$ renice -10 -p 6823 # 直接设置
 renice: 设置 6823 的优先级失败(process ID): 权限不够
 
-akashi@box:~$ sudo renice -10 -p 6823 # 使用root权限
+$ sudo renice -10 -p 6823 # 使用root权限
 6823 (process ID) 旧优先级为 10，新优先级为 -10
 
-akashi@box:~$ ps -al
+$ ps -al
 F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 0 S  1000    6823    6218  0  70 -10 -   664 hrtime pts/4    00:00:00 main
 ~~~
@@ -375,15 +375,15 @@ F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 `NI` 的取值范围是-20到19，不能超出这个范围。
 
 ~~~bash
-akashi@box:~$ sudo renice -20 -p 6823
+$ sudo renice -20 -p 6823
 6823 (process ID) 旧优先级为 -10，新优先级为 -20
 
-akashi@box:~$ sudo renice -21 -p 6823 # 无法设为小于-20的值
+$ sudo renice -21 -p 6823 # 无法设为小于-20的值
 6823 (process ID) 旧优先级为 -20，新优先级为 -20
 
-akashi@box:~$ renice 19 -p 6823
+$ renice 19 -p 6823
 6823 (process ID) 旧优先级为 -20，新优先级为 19
 
-akashi@box:~$ renice 20 -p 6823 # 无法设为大于19的值
+$ renice 20 -p 6823 # 无法设为大于19的值
 6823 (process ID) 旧优先级为 19，新优先级为 19
 ~~~

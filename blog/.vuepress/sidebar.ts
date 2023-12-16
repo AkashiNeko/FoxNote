@@ -36,9 +36,9 @@ export default sidebar({
                     link: "process-status.html",
                 },
                 {
-                    text: "进程控制",
+                    text: "进程的创建和等待",
                     icon: "/icon/tree.svg",
-                    link: "process-control.html",
+                    link: "process-create.html",
                 },
                 {
                     text: "五种IO模型",

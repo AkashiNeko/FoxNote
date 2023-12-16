@@ -15,6 +15,7 @@ article: false
 - 进程
   - [Linux进程概念](/posts/linux/process-concept.html)
   - [进程的状态转换](/posts/linux/process-status.html)
+  - [进程的创建和等待](/posts/linux/process-create.html)
 
 - I/O
   - [五种I/O模型](/posts/linux/io-models.html)
