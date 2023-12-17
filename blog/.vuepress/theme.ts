@@ -27,7 +27,9 @@ export default hopeTheme({
     // sidebar
     sidebar,
 
-    footer: "FoxNote  |  芝士狐狸",
+    footer: "FoxNote - 小狐狸的博客",
+
+    copyright: "<a href=\"https://github.com/AkashiNeko/foxnote/blob/main/LICENSE\">MIT LICENSE</a> | Copyright © 2023 <a href=\"https://github.com/AkashiNeko\">AkashiNeko</a>",
 
     displayFooter: true,
 
