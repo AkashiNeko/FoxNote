@@ -53,7 +53,7 @@ int main() {
 
 输出
 
-~~~text
+~~~text:no-line-numbers
 I'm parent, pid = 6137, my child is 6138
 I'm child, pid = 6138, my parent is 6137
 ~~~
@@ -92,7 +92,7 @@ int main() {
 
 输出
 
-~~~text
+~~~text:no-line-numbers
 I'm parent, read num = 10
 I'm child, read num = 10
 ~~~
@@ -122,7 +122,7 @@ int main() {
 
 输出
 
-~~~text
+~~~text:no-line-numbers
 I'm child, modify num = 20
 I'm parent, read num = 10
 ~~~
@@ -157,7 +157,7 @@ Linux操作系统在 `fork()` 调用期间采取了一种优化策略**写时拷
 
 退出码用于将自己的任务执行情况告诉父进程。通常退出码为0表示执行正常，非0表示执行异常。在Linux终端下，`$?` 记录了上一个程序的退出码，可以使用 `echo` 命令查看。
 
-~~~bash
+~~~text:no-line-numbers
 $ ls / # 执行正常的命令
 bin  boot  dev  etc  home  lib  lib32  lib64  libx32  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 
@@ -173,7 +173,7 @@ $ echo $?
 
 我们也可以自己写程序验证进程的退出码。
 
-~~~bash
+~~~text:no-line-numbers
 $ echo 'int main() { return 123; }' > main.c
 
 $ gcc main.c -o main
@@ -215,7 +215,7 @@ int main() {
 
 ::: details 输出结果
 
-~~~text
+~~~text:no-line-numbers
 0: Success
 1: Operation not permitted
 2: No such file or directory
@@ -390,7 +390,7 @@ WTERMSIG(wstatus) 获取使子进程退出的信号编号。
 
 ::: details man wait 原文
 
-~~~text
+~~~text:no-line-numbers
 If wstatus is not NULL, wait() and waitpid() store status information in the int towhich it points.  This integer can be inspected with the following macros (which take the integer itself as anargument, not a pointer to it, as is done in wait() and waitpid()!):
 WIFEXITED(wstatus)
     returns true if the child terminated normally, that is, by calling exit(3) or _exit(2), or by returning from main().
@@ -444,7 +444,7 @@ int main() {
 
 输出
 
-~~~text
+~~~text:no-line-numbers
 Child: Hello, my pid is 10818
 Process 10818 exited with code 123
 ~~~

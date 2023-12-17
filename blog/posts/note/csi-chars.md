@@ -69,7 +69,7 @@ console.log('\033[31mHello world')
 
 @tab bash
 
-~~~bash
+~~~bash:no-line-numbers
 echo -e '\033[31mHello world'
 ~~~
 

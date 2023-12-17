@@ -23,7 +23,6 @@ export default sidebar({
             text: "Linux操作系统",
             icon: "/icon/linux.svg",
             prefix: "posts/linux/",
-            // children: "structure",
             children: [
                 {
                     text: "Linux进程概念",
@@ -41,22 +40,27 @@ export default sidebar({
                     link: "process-create.html",
                 },
                 {
-                    text: "五种IO模型",
+                    text: "基础I/O和文件描述符",
                     icon: "/icon/io.svg",
+                    link: "io-fd.html",
+                },
+                {
+                    text: "五种I/O模型",
+                    icon: "/icon/model.svg",
                     link: "io-models.html",
                 },
                 {
-                    text: "IO多路转接之select",
+                    text: "I/O多路转接之select",
                     icon: "/icon/io.svg",
                     link: "io-select.html",
                 },
                 {
-                    text: "IO多路转接之poll",
+                    text: "I/O多路转接之poll",
                     icon: "/icon/io.svg",
                     link: "io-poll.html",
                 },
                 {
-                    text: "IO多路转接之epoll",
+                    text: "I/O多路转接之epoll",
                     icon: "/icon/io.svg",
                     link: "io-epoll.html",
                 },
@@ -68,13 +72,13 @@ export default sidebar({
             ],
         },
         {
-            text: "Shell命令相关",
-            icon: "/icon/shell.svg",
-            prefix: "posts/shell/",
+            text: "小狐狸的随笔",
+            icon: "/icon/pen.svg",
+            prefix: "posts/note/",
             children: [
                 {
                     text: "CSI控制字符",
-                    icon: "/icon/ctrl.svg",
+                    icon: "/icon/cursor.svg",
                     link: "csi-chars.html",
                 },
                 {

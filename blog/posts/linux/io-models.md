@@ -2,7 +2,7 @@
 title: 五种常用I/O模型
 date: 2023-12-02
 isOriginal: true
-icon: "/icon/io.svg"
+icon: "/icon/model.svg"
 category:
   - Linux
 tag:

@@ -82,7 +82,7 @@ int main() {
 
 为了方便表示，下文中的代码都命名 `main.c`，用 `gcc` 进行编译，编译的可执行文件为 `main`。
 
-~~~bash
+~~~bash:no-line-numbers
 gcc -o main main.c
 ~~~
 
@@ -92,7 +92,7 @@ gcc -o main main.c
 
 将程序运行起来后，在其他终端下检查进程，可以发现它的运行状态是 `R`。（状态后面的 `+` 表示这是一个前台进程，如果让程序以后台运行的方式执行，那么运行状态会显示为 `R`，我们之后不再关注这个 `+`）。
 
-~~~bash
+~~~text:no-line-numbers
 $ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 14617 pts/6    R+     0:10 ./main
@@ -117,7 +117,7 @@ int main() {
 
 程序运行后，我们先不输入数据。在一个新的终端下观察进程。
 
-~~~bash
+~~~text:no-line-numbers
 $ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 16242 pts/7    S+     0:00 ./main
@@ -170,7 +170,7 @@ int main() {
 
 程序被执行后，每隔一秒向屏幕打印一次。分别查看发送信号前后的进程的状态。
 
-~~~bash
+~~~text:no-line-numbers
 $ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 16242 pts/7    S+     0:00 ./main
@@ -184,7 +184,7 @@ $ ps a | head -1 && ps a | grep main
 
 可以发现，发送了 `SIGSTOP` 信号后，进程进入了 `T` 状态，同时进程停止了屏幕打印。如果想让其恢复运行，可以继续向进程发送 `SIGCONT` 信号。
 
-~~~bash
+~~~text:no-line-numbers
 $ ps a | head -1 && ps a | grep main
   PID TTY      STAT   TIME COMMAND
 16242 pts/7    T+     0:00 ./main
@@ -202,7 +202,7 @@ $ ps a | head -1 && ps a | grep main
 
 如果前台无法停止该进程，可以发送 `SIGKILL` 信号杀死该进程。关于信号的问题，不在本文讨论范围之内。
 
-~~~bash
+~~~bash :no-line-numbers
 kill -SIGKILL <进程的PID>
 ~~~
 
@@ -233,7 +233,7 @@ int main() {
 
 运行程序，使用命令 `ps ajx` 查看两个进程的状态。
 
-~~~bash
+~~~text:no-line-numbers
 $ ps ajx | head -1 && ps ajx | grep main
  PPID     PID    PGID     SID TTY        TPGID STAT   UID   TIME COMMAND
 15610   20030   20030   15610 pts/7      20030 S+    1000   0:00 ./main
@@ -335,7 +335,7 @@ int main() {
 }
 ~~~
 
-~~~bash
+~~~text:no-line-numbers
 $ ps -al
 F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 0 S  1000    6823    6218  0  80   0 -   664 hrtime pts/4    00:00:00 main
@@ -345,7 +345,7 @@ F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 
 可以使用 `renice` 命令修改进程的优先级。
 
-~~~bash
+~~~text:no-line-numbers
 $ renice 10 -p 6823
 6823 (process ID) 旧优先级为 0，新优先级为 10
 
@@ -358,7 +358,7 @@ F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 
 如果要将 `NI` 改为负值，则需要 `root` 权限。
 
-~~~bash
+~~~text:no-line-numbers
 $ renice -10 -p 6823 # 直接设置
 renice: 设置 6823 的优先级失败(process ID): 权限不够
 
@@ -374,7 +374,7 @@ F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 
 `NI` 的取值范围是-20到19，不能超出这个范围。
 
-~~~bash
+~~~text:no-line-numbers
 $ sudo renice -20 -p 6823
 6823 (process ID) 旧优先级为 -10，新优先级为 -20
 

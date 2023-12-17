@@ -141,7 +141,7 @@ typedef union epoll_data {
 
 ::: details 更多（手册原文）
 
-~~~text
+~~~text:no-line-numbers
 EPOLLIN
 The associated file is available for read(2) operations.
 

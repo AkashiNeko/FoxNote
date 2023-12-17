@@ -9,7 +9,7 @@ article: false
 
 ![扫描二维码](./qrcode.png =300x)
 
-~~~text
+~~~text:no-line-numbers
 1006554341
 ~~~
 

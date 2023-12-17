@@ -74,7 +74,7 @@ Linux还了解 `POLLMSG` ，但不使用它。
 
 ::: details 原文
 
-~~~text
+~~~text:no-line-numbers
 POLLIN: There is data to read.
 
 POLLPRI: There is some exceptional condition on the file descriptor. Possibilities include:
