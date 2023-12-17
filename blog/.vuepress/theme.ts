@@ -17,7 +17,7 @@ export default hopeTheme({
 
     logo: "/logo/akashi.jpg",
 
-    repo: "AkashiNeko/akashineko.github.io",
+    repo: "AkashiNeko/foxnote",
 
     docsDir: "blog",
 
