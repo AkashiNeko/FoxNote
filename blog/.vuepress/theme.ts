@@ -15,7 +15,7 @@ export default hopeTheme({
 
     iconAssets: "fontawesome-with-brands",
 
-    logo: "https://www.freeimg.cn/i/2023/12/18/657ff18ed1b45.jpg",
+    logo: "https://ooo.0x0.ooo/2023/12/18/OKUX96.jpg",
 
     repo: "AkashiNeko/foxnote",
 
@@ -29,7 +29,7 @@ export default hopeTheme({
 
     footer: "FoxNote - 小狐狸的博客",
 
-    copyright: "Copyright © 2023 <a href=\"https://github.com/AkashiNeko\">AkashiNeko</a> | <a href=\"https://github.com/AkashiNeko/foxnote/blob/main/LICENSE\">MIT LICENSE</a>",
+    copyright: "Copyright © 2023 <a href=\"https://github.com/AkashiNeko\">AkashiNeko</a> | Licensed under <a href=\"https://creativecommons.org/licenses/by-nc-sa/4.0/\">CC BY-NC-SA 4.0</a>",
 
     displayFooter: true,
 

@@ -3,14 +3,16 @@ home: true
 layout: BlogHome
 icon: home
 title: 主页
-heroImage: https://www.freeimg.cn/i/2023/12/18/657ff18734711.jpg
+heroImage: https://ooo.0x0.ooo/2023/12/18/OKUjuI.jpg
 heroImageStyle: 'border-radius: 10%;'
 heroAlt: 阿哦...找不到头像了QAQ
 heroText: 芝士狐狸
 heroFullScreen: true
 tagline: 小狐狸的博客
 
-bgImage: https://www.freeimg.cn/i/2023/12/18/657ff18d54bb0.jpg
-bgImageDark: https://www.freeimg.cn/i/2023/12/18/657ff18b89a43.jpg
+bgImage: https://ooo.0x0.ooo/2023/12/18/OKU8RF.jpg
+bgImageDark: https://ooo.0x0.ooo/2023/12/18/OKU6FD.jpg
 bgImageStyle: 'filter: brightness(0.8);'
+
+copyright: <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/AkashiNeko/foxnote">FoxNote</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/AkashiNeko">AkashiNeko</a> is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:16px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>
 ---
