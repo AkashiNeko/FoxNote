@@ -40,6 +40,11 @@ export default sidebar({
                     link: "linux-fork-wait.html",
                 },
                 {
+                    text: "进程替换",
+                    icon: "/icon/in.svg",
+                    link: "linux-process-replace.html",
+                },
+                {
                     text: "基础I/O和文件描述符",
                     icon: "/icon/io.svg",
                     link: "linux-io-fd.html",
@@ -51,22 +56,22 @@ export default sidebar({
                 },
                 {
                     text: "I/O多路转接之select",
-                    icon: "/icon/io.svg",
+                    icon: "/icon/list.svg",
                     link: "linux-io-select.html",
                 },
                 {
                     text: "I/O多路转接之poll",
-                    icon: "/icon/io.svg",
+                    icon: "/icon/list2.svg",
                     link: "linux-io-poll.html",
                 },
                 {
                     text: "I/O多路转接之epoll",
-                    icon: "/icon/io.svg",
+                    icon: "/icon/struct.svg",
                     link: "linux-io-epoll.html",
                 },
                 {
                     text: "epoll的LT模式和ET模式",
-                    icon: "/icon/io.svg",
+                    icon: "/icon/waveform.svg",
                     link: "linux-epoll-lt-et.html",
                 },
             ],

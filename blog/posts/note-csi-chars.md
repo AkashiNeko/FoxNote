@@ -2,7 +2,7 @@
 title: CSI控制字符
 date: 2023-02-16
 isOriginal: true
-icon: "/icon/ctrl.svg"
+icon: "/icon/cursor.svg"
 category:
  - Shell
 tag:
