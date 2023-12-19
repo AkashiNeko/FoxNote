@@ -8,7 +8,8 @@ category:
 tag:
   - IO
   - poll
-excerpt: poll函数是在SVR2中引入的，发布于1984年。它是对select的改进，提供了一种更直观和可扩展的方式来处理多个文件描述符。
+excerpt: poll是对select的改进，提供了一种更直观和可扩展的方式来处理多个文件描述符。
+order: 5
 ---
 
 `poll` 的功能和 [`select`](/posts/linux/io-select/) 非常相似，同样是用集合将一批文件描述符交给内核进行等待，内核再把等待的结果交付给用户。

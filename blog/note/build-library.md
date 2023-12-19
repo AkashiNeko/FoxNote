@@ -4,7 +4,7 @@ date: 2023-02-12
 isOriginal: true
 icon: "/icon/library.svg"
 category:
-  - Shell
+  - Note
 tag:
   - 编译
   - 库

@@ -8,6 +8,7 @@ category:
 tag:
   - IO
 excerpt: epoll的两种工作模式：水平触发（Level Trigger，LT）和边缘触发（Edge Trigger，ET）。
+order: 7
 ---
 
 ## 1. 电学中的LT和ET

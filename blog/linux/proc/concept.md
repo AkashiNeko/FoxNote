@@ -2,7 +2,7 @@
 title: Linux进程概念
 date: 2022-08-20
 isOriginal: true
-icon: "/icon/task.svg"
+icon: "/icon/copy.svg"
 category:
   - Linux
 tag:
@@ -10,6 +10,7 @@ tag:
   - 进程
   - PCB
 excerpt: 进程是Linux操作系统中正在运行的程序，它们执行特定的任务并占用系统资源。
+order: 1
 ---
 
 ## 1. 什么是进程

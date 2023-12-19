@@ -10,6 +10,7 @@ tag:
   - fork
   - wait
 excerpt: fork创建子进程和写时拷贝机制，wait和waitpid回收资源查看退出码。
+order: 3
 ---
 
 ## 1. 进程创建
