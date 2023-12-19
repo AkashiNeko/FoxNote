@@ -1,6 +1,6 @@
 ---
 title: 基础I/O和文件描述符
-date: 2023-08-25
+date: 2022-08-25
 isOriginal: true
 icon: "/icon/io.svg"
 category:

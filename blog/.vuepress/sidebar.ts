@@ -11,9 +11,16 @@ export default sidebar({
         },
         {
             text: "Linux操作系统",
-            icon: "/icon/linux.svg",
+            icon: "/icon/shell.svg",
             link: "/linux/",
             prefix: "linux/",
+            children: "structure",
+        },
+        {
+            text: "数据持久化",
+            icon: "/icon/db.svg",
+            link: "/db/",
+            prefix: "db/",
             children: "structure",
         },
         {
@@ -24,25 +31,4 @@ export default sidebar({
             children: "structure",
         },
     ],
-    // "/cpp/": [
-    //     {
-    //         text: "C++学习笔记",
-    //         icon: "/icon/cpp.svg",
-    //         children: "structure",
-    //     },
-    // ],
-    // "/linux/": [
-    //     {
-    //         text: "Linux操作系统",
-    //         icon: "/icon/linux.svg",
-    //         children: "structure",
-    //     },
-    // ],
-    // "/note/": [
-    //     {
-    //         text: "小狐狸的随笔",
-    //         icon: "/icon/pen.svg",
-    //         children: "structure",
-    //     },
-    // ],
 });

@@ -1,8 +1,8 @@
 ---
-title: 数据库
+title: MySQL
 article: false
 index: false
-icon: "/icon/db.svg"
+icon: "/icon/mysql.svg"
 ---
 
-## TODO
+<AutoCatalog />
