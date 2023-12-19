@@ -232,7 +232,6 @@ const A* const this
 
 但是this参数是被隐藏的，用户无法在this之前加上const，因此，C++给出的解决方案是在函数声明后加上const关键字：
 
-
 ~~~cpp
 class A {
     int num;

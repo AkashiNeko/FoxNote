@@ -13,8 +13,13 @@ export default navbar([
     },
     {
         text: "Linux",
-        icon: "/icon/linux.svg",
+        icon: "/icon/shell.svg",
         link: "/linux/",
+    },
+    {
+        text: "数据库",
+        icon: "/icon/db.svg",
+        link: "/db/",
     },
     {
         text: "随笔",
