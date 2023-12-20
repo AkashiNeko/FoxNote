@@ -2,7 +2,7 @@
 title: 进程替换
 date: 2022-08-26
 isOriginal: true
-icon: "/icon/in.svg"
+icon: "/icon/linux_proc_post.svg"
 category:
   - Linux
 tag:

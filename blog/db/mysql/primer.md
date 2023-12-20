@@ -2,7 +2,7 @@
 title: 数据库入门
 date: 2023-12-19
 isOriginal: true
-icon: "/icon/mysql.svg"
+icon: "/icon/db_mysql_post.svg"
 category:
   - MySQL
 tag:

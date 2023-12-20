@@ -2,7 +2,7 @@
 title: I/O多路转接之poll
 date: 2023-12-04
 isOriginal: true
-icon: "/icon/list2.svg"
+icon: "/icon/linux_io_post.svg"
 category:
   - Linux
 tag:

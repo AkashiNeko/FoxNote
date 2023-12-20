@@ -2,14 +2,14 @@
 title: 默认成员函数
 date: 2022-08-14
 isOriginal: true
-icon: "/icon/brackets.svg"
+icon: "/icon/cpp_oop_post.svg"
 category:
   - C++
 tag:
   - 编程语法
   - 面向对象
 excerpt: C++类中的6个默认成员函数：构造函数、析构函数、拷贝构造、移动构造、拷贝赋值、移动赋值。
-order: 2
+order: 4
 ---
 
 类中隐藏了一些特殊的成员函数，如果用户不显示地声明，编译器会自动生成。

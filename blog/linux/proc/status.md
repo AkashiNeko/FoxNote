@@ -2,7 +2,7 @@
 title: 进程的状态转换
 date: 2022-08-21
 isOriginal: true
-icon: "/icon/transform.svg"
+icon: "/icon/linux_proc_post.svg"
 category:
   - Linux
 tag:

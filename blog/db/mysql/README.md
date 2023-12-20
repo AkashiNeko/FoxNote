@@ -2,7 +2,7 @@
 title: MySQL
 article: false
 index: false
-icon: "/icon/mysql.svg"
+icon: "/icon/db_mysql.svg"
 ---
 
 <AutoCatalog />

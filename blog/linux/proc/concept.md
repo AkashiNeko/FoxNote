@@ -2,7 +2,7 @@
 title: Linux进程概念
 date: 2022-08-20
 isOriginal: true
-icon: "/icon/copy.svg"
+icon: "/icon/linux_proc_post.svg"
 category:
   - Linux
 tag:

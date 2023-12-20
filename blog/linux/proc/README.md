@@ -1,8 +1,8 @@
 ---
-title: 进程
+title: 进程管理
 article: false
 index: false
-icon: "/icon/task.svg"
+icon: "/icon/linux_proc.svg"
 ---
 
 <AutoCatalog />

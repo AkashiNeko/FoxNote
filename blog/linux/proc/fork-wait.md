@@ -2,7 +2,7 @@
 title: 进程的创建和等待
 date: 2022-08-24
 isOriginal: true
-icon: "/icon/tree.svg"
+icon: "/icon/linux_proc_post.svg"
 category:
   - Linux
 tag:
