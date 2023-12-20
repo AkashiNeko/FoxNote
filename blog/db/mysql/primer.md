@@ -1,5 +1,5 @@
 ---
-title: 数据库入门
+title: 数据库概述
 date: 2023-12-19
 isOriginal: true
 icon: "/icon/db_mysql_post.svg"
@@ -7,6 +7,7 @@ category:
   - 数据库
 tag:
   - MySQL
+  - SQL
 excerpt: 数据库是用于存储、管理和组织数据的软件，提供了数据的持久化存储、高效的数据访问和处理功能，广泛应用于各种领域。
 order: 1
 ---
@@ -122,11 +123,27 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql>
 ~~~
 
-### SQL语句示例
+### SQL语句
 
-成功登录到一个可交互的界面后，就可以开始用 `SQL` 语句和 `MySQL` 进行交互了。
+成功登录到可交互的界面后，就可以开始用 `SQL` 语句和 `MySQL` 进行交互了。
+
+::: info SQL
+
+结构化查询语言（Structured Query Language，SQL）是一种用于管理和操作关系型数据库的标准化语言。`SQL`提供了一种简洁、灵活和可扩展的方式来访问和处理数据库中的数据。`MySQL` 的 `SQL` 语句分为以下三类：
+
+1. **数据操作语言（DML）**：允许用户使用查询语句 `SELECT` 检索数据、插入新数据 `INSERT`、更新数据 `UPDATE` 和删除数据 `DELETE`。这些操作可以根据指定的条件对数据库中的数据进行选择性操作。
+
+2. **数据定义语言（DDL）**：定义数据库结构的语句，如创建表 `CREATE TABLE`、修改表结构 `ALTER TABLE` 和删除表 `DROP TABLE`。用于创建、修改和删除数据库对象，如表、索引、视图等。
+
+3. **数据控制语言（DCL）**：数据访问和安全性控制。这包括授权用户对数据库对象的访问权限、定义用户角色和权限、以及在数据库中实施数据完整性和安全性约束。
+
+:::
+
+### SQL示例
 
 下面用 `SQL` 语句简单地创建一个数据库 `mydb`，在其中的表 `user` 中插入一条记录。
+
+`MySQL` 的关键字不区分大小写，比如关键字 `CREATE` 和 `create` 的作用是完全相同的。为了方便阅读，下面的例子使用全小写。
 
 ~~~sql
 create database mydb;
@@ -135,7 +152,7 @@ create table user (name char(20), age int, birthday date);
 insert into user (name, age, birthday) values ('akashi', '20', '2004-01-01');
 ~~~
 
-需要注意的是，标准的 `SQL` 语句需要以 `;` 结尾，`mysql` 命令的交互界面支持换行输入。
+需要注意的是，这里输入的 `SQL` 语句需要以 `;`、`\g` 或 `\G` 结尾，`mysql` 命令的交互界面支持换行输入。
 
 ~~~text:no-line-numbers
 mysql> create database mydb;
@@ -170,7 +187,7 @@ mysql> select * from user;
 1 row in set (0.00 sec)
 ~~~
 
-### MySQL的库和表
+### 库和表的关系
 
 **数据库**和**数据表**是 `MySQL` 中的重要概念。它们的关系是：一个 `MySQL` 服务器可以包含多个数据库，一个数据库可以包含多个数据表。
 
