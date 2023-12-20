@@ -13,7 +13,7 @@ export default navbar([
     },
     {
         text: "Linux",
-        icon: "/icon/shell.svg",
+        icon: "/icon/linux.svg",
         link: "/linux/",
     },
     {
@@ -23,7 +23,7 @@ export default navbar([
     },
     {
         text: "随笔",
-        icon: "/icon/pen.svg",
+        icon: "/icon/note.svg",
         link: "/note/",
     },
 ]);

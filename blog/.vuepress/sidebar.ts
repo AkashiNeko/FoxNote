@@ -11,7 +11,7 @@ export default sidebar({
         },
         {
             text: "Linux操作系统",
-            icon: "/icon/shell.svg",
+            icon: "/icon/linux.svg",
             link: "/linux/",
             prefix: "linux/",
             children: "structure",
@@ -25,7 +25,7 @@ export default sidebar({
         },
         {
             text: "小狐狸的随笔",
-            icon: "/icon/pen.svg",
+            icon: "/icon/note.svg",
             link: "/note/",
             prefix: "note/",
             children: "structure",
