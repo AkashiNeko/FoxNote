@@ -38,8 +38,8 @@ class MyClass {
 struct MyStruct st;
 
 // C++的写法
-MyStruct st;
-MyClass A;
+MyStruct var;
+MyClass obj;
 ~~~
 
 在C++中，使用类类型创建的变量，称为**对象**，创建对象的过程称为**实例化**。

@@ -1,5 +1,5 @@
 ---
-title: this指针
+title: 成员函数的this指针
 date: 2022-08-11
 isOriginal: true
 icon: "/icon/cpp_oop_post.svg"
@@ -10,7 +10,7 @@ tag:
   - 面向对象
   - this
   - static
-excerpt: C++面向对象编程基础，类和对象入门。
+excerpt: 非静态成员函数中有一个隐藏参数this指针，指向对象的内存空间，用于访问或修改对象的成员。
 order: 2
 ---
 
