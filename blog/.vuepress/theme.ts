@@ -33,14 +33,13 @@ export default hopeTheme({
 
     displayFooter: true,
 
-    backToTop: false,
+    backToTop: true,
 
     blog: {
         name: "AkashiNeko",
 
         description: "akashineko@qq.com",
-        // intro: "/.html",
-        timeline: "这里是无情的写博客机器qwq...",
+        timeline: "无情的写博客机器QwQ..",
         roundAvatar: true,
         medias: {
             GitHub: ["https://github.com/AkashiNeko", "./blog/.vuepress/intro_icon/github.svg"],
@@ -50,13 +49,20 @@ export default hopeTheme({
             Qzone: ["https://user.qzone.qq.com/1006554341", "./blog/.vuepress/intro_icon/qzone.svg"],
             CSDN: ["https://blog.csdn.net/qq_45412824", "./blog/.vuepress/intro_icon/csdn.svg"],
         },
-        // articleInfo: ["Author", "Original", "Date", "PageView", "Category", "Tag", "ReadingTime"]
     },
 
+    navTitle: "FoxNote",
+
     // page meta
+    lastUpdated: false,
+
+    pageInfo: ["Author", "Original", "Date", "Category", "Tag"],
+
     metaLocales: {
         editLink: "编辑此页",
     },
+
+    home: "/",
 
     plugins: {
 

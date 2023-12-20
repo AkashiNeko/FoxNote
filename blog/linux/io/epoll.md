@@ -10,6 +10,7 @@ tag:
   - epoll
 excerpt: epoll是Linux操作系统提供的高效I/O多路复用机制，用于处理大规模并发连接的网络编程。
 order: 6
+star: true
 ---
 
 ## 1. epoll接口

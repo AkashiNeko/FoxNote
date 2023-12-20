@@ -1,5 +1,5 @@
 ---
-title: 数据持久化
+title: 数据库技术
 article: false
 index: false
 icon: "/icon/db.svg"
