@@ -8,7 +8,7 @@ category:
 tag:
   - MySQL
   - SQL
-excerpt: 数据库是MySQL中最顶层的数据组织单元，它提供了一个逻辑和物理上的隔离空间，可以用来存储和管理数据。
+excerpt: 数据库是MySQL最顶层的数据组织单元，它提供了逻辑和物理的隔离空间，用来存储和管理数据。
 order: 2
 ---
 
@@ -239,4 +239,37 @@ drop database mydb;
 
 ~~~sql
 drop database if exists mydb; 
+~~~
+
+## 5. 使用数据库
+
+关键字 `USE` 用于选择要使用的数据库。
+
+~~~sql
+USE db_name;
+~~~
+
+在实际的应用场景中，通常是对一个数据库中的某些表进行频繁操作。使用 `USE` 指定要操作的数据库，可以将多次重复输入数据库名称的步骤简化为一次。一旦选中了数据库，后续的SQL语句中就不需要再显式地指定数据库名称了。
+
+使用 `SELECT DATABASE()` 语句可以查看当前 `USE` 的数据库。
+
+~~~text:no-line-numbers
+mysql> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> use mydb;
+Database changed
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| mydb       |
++------------+
+1 row in set (0.00 sec)
 ~~~
