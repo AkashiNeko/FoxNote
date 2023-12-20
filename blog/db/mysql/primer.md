@@ -145,7 +145,7 @@ mysql>
 
 `MySQL` 的关键字不区分大小写，比如关键字 `CREATE` 和 `create` 的作用是完全相同的。为了方便阅读，下面的例子使用全小写。
 
-~~~sql
+~~~sql:no-line-numbers
 create database mydb;
 use mydb;
 create table user (name char(20), age int, birthday date);

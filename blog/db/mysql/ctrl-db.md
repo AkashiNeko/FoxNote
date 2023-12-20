@@ -16,26 +16,26 @@ order: 2
 
 创建数据库需要用到 `CREATE` 和 `DATABASE` 两个关键字，同时可以加上一些附加选项。
 
-~~~sql
+~~~sql:no-line-numbers
 CREATE DATABASE [IF NOT EXISTS] db_name
 [CHARACTER SET charset_name] [COLLATE collation_name];
 ~~~
 
 创建一个名为 `mydb` 的数据库。
 
-~~~sql
+~~~sql:no-line-numbers
 create database mydb;
 ~~~
 
 创建一个名为 `mydb` 的数据库，如果它不存在。
 
-~~~sql
+~~~sql:no-line-numbers
 create database if not exists mydb;
 ~~~
 
 使用 `SHOW` 关键字查看创建结果。
 
-~~~sql
+~~~sql:no-line-numbers
 show create database mydb;
 ~~~
 
@@ -69,7 +69,7 @@ Create Database: CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 C
 
 查看默认的字符集。
 
-~~~sql
+~~~sql:no-line-numbers
 show variables like 'character_set_database';
 ~~~
 
@@ -83,7 +83,7 @@ show variables like 'character_set_database';
 
 查看默认的校验规则。
 
-~~~sql
+~~~sql:no-line-numbers
 show variables like 'collation_database';
 ~~~
 
@@ -97,13 +97,13 @@ show variables like 'collation_database';
 
 查看当前支持的所有字符集。
 
-~~~sql
+~~~sql:no-line-numbers
 show charset;
 ~~~
 
 查看当前支持的所有校验规则。
 
-~~~sql
+~~~sql:no-line-numbers
 show collation;
 ~~~
 
@@ -161,7 +161,7 @@ show collation;
 
 创建一个名为 `mydb` 的数据库，字符集为 `gbk`，校验规则为 `gbk_chinese_ci`。
 
-~~~sql
+~~~sql:no-line-numbers
 create database mydb default character set gbk collate gbk_chinese_ci;
 create database mydb charset gbk collate gbk_chinese_ci;
 ~~~
@@ -170,7 +170,7 @@ create database mydb charset gbk collate gbk_chinese_ci;
 
 查看创建结果。
 
-~~~sql
+~~~sql:no-line-numbers
 show create database mydb\G
 ~~~
 
@@ -184,7 +184,7 @@ Create Database: CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET gbk */ /*
 
 查看所有数据库。
 
-~~~sql
+~~~sql:no-line-numbers
 show databases;
 ~~~
 
@@ -209,7 +209,7 @@ show databases;
 
 查看名为 `mydb` 的数据库。
 
-~~~sql
+~~~sql:no-line-numbers
 show databases like 'mydb';
 ~~~
 
@@ -225,19 +225,19 @@ show databases like 'mydb';
 
 `DROP DATABASE` 用于删除数据库。
 
-~~~sql
+~~~sql:no-line-numbers
 DROP DATABASE [IF EXISTS] db_name;
 ~~~
 
 删除名为 `mydb` 的数据库。
 
-~~~sql
+~~~sql:no-line-numbers
 drop database mydb;
 ~~~
 
 删除名为 `mydb` 的数据库，如果它存在。
 
-~~~sql
+~~~sql:no-line-numbers
 drop database if exists mydb; 
 ~~~
 
@@ -245,7 +245,7 @@ drop database if exists mydb;
 
 关键字 `USE` 用于选择要使用的数据库。
 
-~~~sql
+~~~sql:no-line-numbers
 USE db_name;
 ~~~
 
@@ -272,4 +272,19 @@ mysql> select database();
 | mydb       |
 +------------+
 1 row in set (0.00 sec)
+~~~
+
+使用 `SHOW processlist` 可以查看当前连接到数据库的所有用户，以及他们当前正在使用的数据库。
+
+~~~sql:no-line-numbers
+show processlist;
+~~~
+
+~~~text:no-line-numbers
++----+-----------------+---------------+------+---------+------+------------------------+------------------+
+| Id | User            | Host          | db   | Command | Time | State                  | Info             |
++----+-----------------+---------------+------+---------+------+------------------------+------------------+
+|  5 | event_scheduler | localhost     | NULL | Daemon  | 5782 | Waiting on empty queue | NULL             |
+|  8 | akashi          | akashipc:9423 | mydb | Query   |    0 | init                   | show processlist |
++----+-----------------+---------------+------+---------+------+------------------------+------------------+
 ~~~
