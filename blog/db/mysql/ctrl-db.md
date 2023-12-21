@@ -14,12 +14,18 @@ order: 2
 
 ## 1. 创建数据库
 
+### 创建库语法
+
 创建数据库需要用到 `CREATE` 和 `DATABASE` 两个关键字，同时可以加上一些附加选项。
 
 ~~~sql:no-line-numbers
 CREATE DATABASE [IF NOT EXISTS] db_name
 [CHARACTER SET charset_name] [COLLATE collation_name];
 ~~~
+
+其中 `[]` 中的内容表示可选内容。比如 `IF NOT EXISTS` 表示在要创建的数据库不存在时才创建，`CHARACTER SET` 和 `COLLATE` 用于指定字符集和校验规则，如果不指定则会使用系统默认值。
+
+### 创建库示例
 
 创建一个名为 `mydb` 的数据库。
 
@@ -32,6 +38,8 @@ create database mydb;
 ~~~sql:no-line-numbers
 create database if not exists mydb;
 ~~~
+
+### 查看创建结果
 
 使用 `SHOW` 关键字查看创建结果。
 
@@ -62,6 +70,8 @@ Create Database: CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 C
 :::
 
 ## 2. 字符集和校验规则
+
+### MySQL字符集
 
 在MySQL中，字符集（Character Set）用于定义存储和处理文本数据的字符编码规则。字符集决定了 `MySQL` 如何解释和处理不同字符的存储和比较操作。它对于确保数据的正确性、一致性和可移植性非常重要。
 
@@ -159,6 +169,8 @@ show collation;
 
 :::
 
+### 指定字符集和校验规则
+
 创建一个名为 `mydb` 的数据库，字符集为 `gbk`，校验规则为 `gbk_chinese_ci`。
 
 ~~~sql:no-line-numbers
@@ -243,6 +255,8 @@ drop database if exists mydb;
 
 ## 5. 使用数据库
 
+### 使用指定关键字
+
 关键字 `USE` 用于选择要使用的数据库。
 
 ~~~sql:no-line-numbers
@@ -250,6 +264,8 @@ USE db_name;
 ~~~
 
 在实际的应用场景中，通常是对一个数据库中的某些表进行频繁操作。使用 `USE` 指定要操作的数据库，可以将多次重复输入数据库名称的步骤简化为一次。一旦选中了数据库，后续的SQL语句中就不需要再显式地指定数据库名称了。
+
+### 查看正在使用的数据库
 
 使用 `SELECT DATABASE()` 语句可以查看当前 `USE` 的数据库。
 
@@ -273,6 +289,8 @@ mysql> select database();
 +------------+
 1 row in set (0.00 sec)
 ~~~
+
+### 查看所有连接
 
 使用 `SHOW processlist` 可以查看当前连接到数据库的所有用户，以及他们当前正在使用的数据库。
 
