@@ -14,6 +14,8 @@ order: 3
 
 ## 1. 创建数据表
 
+### 创建表语法
+
 与创建数据库相似，创建数据表需要用到关键字 `CREATE TABLE`。一个表中可以有多个列，每个列可以有不同的数据类型和约束条件。
 
 ~~~sql:no-line-numbers
@@ -26,6 +28,10 @@ CREATE [TEMPORARY] TABLE [IF NOT EXISTS] table_name (
 ~~~
 
 使用 `TEMPORARY` 关键字用于创建一个临时表，临时表在当前会话结束后会自动被删除。
+
+创建表的语句也可以都写在同一行，为了方便展示，这里写成多行的形式。
+
+### 创建表示例
 
 要创建数据表，首先需要选择使用的数据库。
 
@@ -54,7 +60,9 @@ create table if not exists user2 (
 
 ## 2. 查看数据表
 
-查看当前使用的数据库中的所有数据表。
+### 查看所有表
+
+使用 `SHOW` 关键字查看当前使用的数据库中的所有数据表。
 
 ~~~text:no-line-numbers
 mysql> show tables;
@@ -66,6 +74,8 @@ mysql> show tables;
 +----------------+
 2 rows in set (0.00 sec)
 ~~~
+
+### 查看表结构
 
 使用 `DESC` 关键字查看表结构。
 
@@ -89,6 +99,8 @@ mysql> desc user2;
 +----------+----------+------+-----+---------+-------+
 2 rows in set (0.00 sec)
 ~~~
+
+### 查看创建结果
 
 同数据库一样，可以使用 `SHOW` 查看创建表的结果。
 
@@ -160,7 +172,7 @@ alter table user add (
 
 ### 删除列
 
-与增加列类似，将 `ADD` 改为 `DROP`。
+与增加列语法类似，将 `ADD` 改为 `DROP`，后接要删除的列名。
 
 ~~~sql:no-line-numbers
 ALTER TABLE table_name DROP field;
@@ -174,8 +186,91 @@ alter table user drop birthday;
 
 ### 修改列属性
 
-TODO
+关键字 `MODIFY` 可以修改列的类型和约束条件。后接要修改的列名，且必须是已经存在的列。
+
+~~~sql:no-line-numbers
+ALTER TABLE table_name MODIFY field new_datatype [...];
+~~~
+
+将 `user` 表中 `name` 的类型由 `char(20)` 改为 `char(40)`，且不为空。
+
+~~~sql:no-line-numbers
+alter table user modify name char(40) not null;
+~~~
+
+~~~text:no-line-numbers
+mysql> desc user;
++--------+------------+------+-----+---------+-------+
+| Field  | Type       | Null | Key | Default | Extra |
++--------+------------+------+-----+---------+-------+
+| name   | char(20)   | YES  |     | NULL    |       |
+| age    | int        | YES  |     | NULL    |       |
+| gender | tinyint(1) | YES  |     | NULL    |       |
++--------+------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table user modify name char(40) not null;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc user;
++--------+------------+------+-----+---------+-------+
+| Field  | Type       | Null | Key | Default | Extra |
++--------+------------+------+-----+---------+-------+
+| name   | char(40)   | NO   |     | NULL    |       |
+| age    | int        | YES  |     | NULL    |       |
+| gender | tinyint(1) | YES  |     | NULL    |       |
++--------+------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+~~~
+
+## 5. 修改表名和列名
+
+### 修改表名
+
+修改表名需要用到 `RENAME` 关键字，其后的 `TO` 可以省略不写，对表名的修改不影响表的结构。
+
+~~~sql:no-line-numbers
+ALTER TABLE old_table_name RENAME [TO] new_table_name;
+~~~
+
+将 `user` 表改名为 `users`。
+
+~~~sql:no-line-numbers
+alter table user rename to users;
+~~~
+
+~~~text:no-line-numbers
+mysql> show tables;
++----------------+
+| Tables_in_mydb |
++----------------+
+| user           |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> alter table user rename to users;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_mydb |
++----------------+
+| users          |
++----------------+
+1 row in set (0.00 sec)
+~~~
 
 ### 修改列名
 
-TODO
+修改列名使用关键字 `CHANGE`，语法与 `MODIFY` 修改列属性基本一致，它也可以修改列属性。唯一的区别是 `CHANGE` 指定的列名后需要填写新的列名称。
+
+~~~sql:no-line-numbers
+ALTER TABLE table_name CHANGE old_field new_field datatype [...];
+~~~
+
+修改 `user` 表中 `name` 列的名称为 `username`。
+
+~~~sql:no-line-numbers
+alter table users change name username char(40) not null;
+~~~
