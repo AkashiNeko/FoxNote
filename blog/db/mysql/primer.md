@@ -51,7 +51,7 @@ order: 1
 
 [**Microsoft SQL Server**](https://www.microsoft.com/sql-server/)：微软的关系型数据库管理系统，适用于Windows环境下的企业应用程序。它提供了广泛的功能集，包括高性能数据处理、商业智能和数据分析。
 
-[**Oracle Database**](https://www.oracle.com/database/)：功能强大的关系型数据库管理系统，适用于大型企业应用程序和数据密集型场景，如金融、电信和供应链管理。
+[**Oracle Database**](https://www.oracle.com/DATABASE/)：功能强大的关系型数据库管理系统，适用于大型企业应用程序和数据密集型场景，如金融、电信和供应链管理。
 
 [**PostgreSQL**](https://www.postgresql.org/)：一种强大的开源关系型数据库，适用于各种应用程序和规模。提供了高级的数据完整性和一致性控制，适合于数据安全性要求较高的场景。
 
@@ -143,27 +143,27 @@ mysql>
 
 下面用 `SQL` 语句简单地创建一个数据库 `mydb`，在其中的表 `user` 中插入一条记录。
 
-`MySQL` 的关键字不区分大小写，比如关键字 `CREATE` 和 `create` 的作用是完全相同的。为了方便阅读，下面的例子使用全小写。
+`MySQL` 的关键字不区分大小写，比如关键字 `CREATE` 和 `create` 的作用是完全相同的。
 
 ~~~sql:no-line-numbers
-create database mydb;
-use mydb;
-create table user (name char(20), age int, birthday date);
-insert into user (name, age, birthday) values ('akashi', '20', '2004-01-01');
+CREATE DATABASE mydb;
+USE mydb;
+CREATE TABLE user (name char(20), age int, birthday date);
+INSERT INTO user (name, age, birthday) VALUES ('akashi', '20', '2004-01-01');
 ~~~
 
 需要注意的是，这里输入的 `SQL` 语句需要以 `;`、`\g` 或 `\G` 结尾，`mysql` 命令的交互界面支持换行输入。
 
 ~~~text:no-line-numbers
-mysql> create database mydb;
+mysql> CREATE DATABASE mydb;
 Query OK, 1 row affected (0.00 sec)
 
-mysql> use mydb;
+mysql> USE mydb;
 Database changed
-mysql> create table user (
-    -> name char(20),
-    -> age int,
-    -> birthday date
+mysql> CREATE TABLE user (
+    ->  name char(20),
+    ->  age int,
+    ->  birthday date
     -> );
 Query OK, 0 rows affected (0.02 sec)
 
@@ -175,10 +175,10 @@ mysql> show tables;
 +----------------+
 1 row in set (0.00 sec)
 
-mysql> insert into user (name, age, birthday) values ('akashi', '20', '2004-01-01');
+mysql> INSERT INTO user (name, age, birthday) VALUES ('akashi', '20', '2004-01-01');
 Query OK, 1 row affected (0.01 sec)
 
-mysql> select * from user;
+mysql> SELECT * FROM user;
 +--------+------+------------+
 | name   | age  | birthday   |
 +--------+------+------------+

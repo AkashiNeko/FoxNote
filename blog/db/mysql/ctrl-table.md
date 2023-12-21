@@ -36,26 +36,26 @@ CREATE [TEMPORARY] TABLE [IF NOT EXISTS] table_name (
 要创建数据表，首先需要选择使用的数据库。
 
 ~~~sql:no-line-numbers
-use mydb;
+USE mydb;
 ~~~
 
-创建一个名为 `user` 的表。其中包含三个列：`name`、`age` 和 `gender`。
+创建一个名为 `user1` 的表。其中包含三个列：`name`、`age` 和 `gender`。
 
 ~~~sql:no-line-numbers
-create table user (
+CREATE TABLE user1 (
     name char(20),
     age int,
     gender bool
 );
 ~~~
 
-创建一个名为 `user2` 的表，如果它不存在。其中包含两个列：`uid` 和 `password`，且使用 `MyISAM` 存储引擎。
+创建一个名为 `user2` 的表，如果它不存在。其中包含两个列：`uid` 和 `password`，添加相关说明，并且使用 `MyISAM` 存储引擎。
 
 ~~~sql:no-line-numbers
-create table if not exists user2 (
-    uid char(20) primary key comment '用户的ID',
-    password char(32) not null comment '密码的MD5值'
-) engine MyISAM;
+CREATE TABLE IF NOT EXISTS user2 (
+    uid char(20) PRIMARY KEY COMMENT '用户的ID',
+    password char(32) NOT NULL COMMENT '密码的MD5值'
+) ENGINE MyISAM;
 ~~~
 
 ## 2. 查看数据表
@@ -65,11 +65,11 @@ create table if not exists user2 (
 使用 `SHOW` 关键字查看当前使用的数据库中的所有数据表。
 
 ~~~text:no-line-numbers
-mysql> show tables;
+mysql> SHOW TABLES;
 +----------------+
 | Tables_in_mydb |
 +----------------+
-| user           |
+| user1          |
 | user2          |
 +----------------+
 2 rows in set (0.00 sec)
@@ -80,7 +80,7 @@ mysql> show tables;
 使用 `DESC` 关键字查看表结构。
 
 ~~~text:no-line-numbers
-mysql> desc user;
+mysql> DESC user1;
 +--------+------------+------+-----+---------+-------+
 | Field  | Type       | Null | Key | Default | Extra |
 +--------+------------+------+-----+---------+-------+
@@ -90,7 +90,7 @@ mysql> desc user;
 +--------+------------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
 
-mysql> desc user2;
+mysql> DESC user2;
 +----------+----------+------+-----+---------+-------+
 | Field    | Type     | Null | Key | Default | Extra |
 +----------+----------+------+-----+---------+-------+
@@ -105,17 +105,17 @@ mysql> desc user2;
 同数据库一样，可以使用 `SHOW` 查看创建表的结果。
 
 ~~~text:no-line-numbers
-mysql> show create table user\G
+mysql> SHOW CREATE TABLE user1\G
 *************************** 1. row ***************************
-       Table: user
-Create Table: CREATE TABLE `user` (
+       Table: user1
+Create Table: CREATE TABLE `user1` (
   `name` char(20) DEFAULT NULL,
   `age` int DEFAULT NULL,
   `gender` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 1 row in set (0.00 sec)
 
-mysql> show create table user2\G
+mysql> SHOW CREATE TABLE user2\G
 *************************** 1. row ***************************
        Table: user2
 Create Table: CREATE TABLE `user2` (
@@ -137,13 +137,13 @@ DROP [TEMPORARY] TABLE [IF EXISTS] table_name [, table_name2 ...]
 删除 `user2` 数据表。
 
 ~~~sql:no-line-numbers
-drop table user2;
+DROP TABLE user2;
 ~~~
 
 删除 `user2` 数据表，如果它存在。
 
 ~~~sql:no-line-numbers
-drop table if exists user2;
+DROP TABLE IF EXISTS user2;
 ~~~
 
 ## 4. 修改表结构
@@ -162,10 +162,10 @@ ALTER TABLE table_name ADD (
 );
 ~~~
 
-在 `user` 表中新增一列 `birthday`。
+在 `user1` 表中新增一列 `birthday`。
 
 ~~~sql:no-line-numbers
-alter table user add (
+ALTER TABLE user1 ADD (
     birthday date
 );
 ~~~
@@ -178,10 +178,10 @@ alter table user add (
 ALTER TABLE table_name DROP field;
 ~~~
 
-删除 `user` 表中的 `birthday` 列。
+删除 `user1` 表中的 `birthday` 列。
 
 ~~~sql:no-line-numbers
-alter table user drop birthday;
+ALTER TABLE user1 DROP birthday;
 ~~~
 
 ### 修改列属性
@@ -192,14 +192,14 @@ alter table user drop birthday;
 ALTER TABLE table_name MODIFY field new_datatype [...];
 ~~~
 
-将 `user` 表中 `name` 的类型由 `char(20)` 改为 `char(40)`，且不为空。
+将 `user1` 表中 `name` 的类型由 `char(20)` 改为 `char(40)`，且不为空。
 
 ~~~sql:no-line-numbers
-alter table user modify name char(40) not null;
+ALTER TABLE user1 MODIFY name char(40) NOT NULL;
 ~~~
 
 ~~~text:no-line-numbers
-mysql> desc user;
+mysql> DESC user1;
 +--------+------------+------+-----+---------+-------+
 | Field  | Type       | Null | Key | Default | Extra |
 +--------+------------+------+-----+---------+-------+
@@ -209,11 +209,11 @@ mysql> desc user;
 +--------+------------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
 
-mysql> alter table user modify name char(40) not null;
+mysql> ALTER TABLE user1 MODIFY name char(40) NOT NULL;
 Query OK, 0 rows affected (0.03 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> desc user;
+mysql> DESC user1;
 +--------+------------+------+-----+---------+-------+
 | Field  | Type       | Null | Key | Default | Extra |
 +--------+------------+------+-----+---------+-------+
@@ -234,25 +234,25 @@ mysql> desc user;
 ALTER TABLE old_table_name RENAME [TO] new_table_name;
 ~~~
 
-将 `user` 表改名为 `users`。
+将 `user1` 表改名为 `users`。
 
 ~~~sql:no-line-numbers
-alter table user rename to users;
+ALTER TABLE user1 RENAME TO users;
 ~~~
 
 ~~~text:no-line-numbers
-mysql> show tables;
+mysql> SHOW TABLES;
 +----------------+
 | Tables_in_mydb |
 +----------------+
-| user           |
+| user1          |
 +----------------+
 1 row in set (0.00 sec)
 
-mysql> alter table user rename to users;
+mysql> ALTER TABLE user1 RENAME TO users;
 Query OK, 0 rows affected (0.01 sec)
 
-mysql> show tables;
+mysql> SHOW TABLES;
 +----------------+
 | Tables_in_mydb |
 +----------------+
@@ -269,8 +269,8 @@ mysql> show tables;
 ALTER TABLE table_name CHANGE old_field new_field datatype [...];
 ~~~
 
-修改 `user` 表中 `name` 列的名称为 `username`。
+修改 `user1` 表中 `name` 列的名称为 `username`。
 
 ~~~sql:no-line-numbers
-alter table users change name username char(40) not null;
+ALTER TABLE users CHANGE name username char(40) NOT NULL;
 ~~~

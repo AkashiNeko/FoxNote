@@ -30,13 +30,13 @@ CREATE DATABASE [IF NOT EXISTS] db_name
 创建一个名为 `mydb` 的数据库。
 
 ~~~sql:no-line-numbers
-create database mydb;
+CREATE DATABASE mydb;
 ~~~
 
 创建一个名为 `mydb` 的数据库，如果它不存在。
 
 ~~~sql:no-line-numbers
-create database if not exists mydb;
+CREATE DATABASE IF NOT EXISTS mydb;
 ~~~
 
 ### 查看创建结果
@@ -44,7 +44,7 @@ create database if not exists mydb;
 使用 `SHOW` 关键字查看创建结果。
 
 ~~~sql:no-line-numbers
-show create database mydb;
+SHOW CREATE DATABASE mydb;
 ~~~
 
 ~~~text:no-line-numbers
@@ -60,7 +60,7 @@ show create database mydb;
 在交互式的客户端下，如果 `SQL` 语句以 `;` 结尾，那么输出结果会以一个表格的形式呈现。如果输出的表格太宽，在终端上可能会不正常地显示，这时候可以使用 `\G` 作为 `SQL` 语句的结尾。
 
 ~~~text:no-line-numbers
-mysql> show create database mydb\G
+mysql> SHOW CREATE DATABASE mydb\G
 *************************** 1. row ***************************
        Database: mydb
 Create Database: CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */
@@ -80,7 +80,7 @@ Create Database: CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 C
 查看默认的字符集。
 
 ~~~sql:no-line-numbers
-show variables like 'character_set_database';
+SHOW variables LIKE 'character_set_database';
 ~~~
 
 ~~~text:no-line-numbers
@@ -94,7 +94,7 @@ show variables like 'character_set_database';
 查看默认的校验规则。
 
 ~~~sql:no-line-numbers
-show variables like 'collation_database';
+SHOW variables LIKE 'collation_database';
 ~~~
 
 ~~~text:no-line-numbers
@@ -108,13 +108,13 @@ show variables like 'collation_database';
 查看当前支持的所有字符集。
 
 ~~~sql:no-line-numbers
-show charset;
+SHOW charset;
 ~~~
 
 查看当前支持的所有校验规则。
 
 ~~~sql:no-line-numbers
-show collation;
+SHOW collation;
 ~~~
 
 ::: details 当前支持的所有字符集
@@ -174,8 +174,8 @@ show collation;
 创建一个名为 `mydb` 的数据库，字符集为 `gbk`，校验规则为 `gbk_chinese_ci`。
 
 ~~~sql:no-line-numbers
-create database mydb default character set gbk collate gbk_chinese_ci;
-create database mydb charset gbk collate gbk_chinese_ci;
+CREATE DATABASE mydb DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;
+CREATE DATABASE mydb CHARSET gbk COLLATE gbk_chinese_ci;
 ~~~
 
 这里的 `DEFAULT CHARACTER SET` 可以简写为 `CHARSET`。
@@ -183,7 +183,7 @@ create database mydb charset gbk collate gbk_chinese_ci;
 查看创建结果。
 
 ~~~sql:no-line-numbers
-show create database mydb\G
+SHOW CREATE DATABASE mydb\G
 ~~~
 
 ~~~text:no-line-numbers
@@ -197,7 +197,7 @@ Create Database: CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET gbk */ /*
 查看所有数据库。
 
 ~~~sql:no-line-numbers
-show databases;
+SHOW DATABASES;
 ~~~
 
 ~~~text:no-line-numbers
@@ -222,7 +222,7 @@ show databases;
 查看名为 `mydb` 的数据库。
 
 ~~~sql:no-line-numbers
-show databases like 'mydb';
+SHOW DATABASES LIKE 'mydb';
 ~~~
 
 ~~~text:no-line-numbers
@@ -244,13 +244,13 @@ DROP DATABASE [IF EXISTS] db_name;
 删除名为 `mydb` 的数据库。
 
 ~~~sql:no-line-numbers
-drop database mydb;
+DROP DATABASE mydb;
 ~~~
 
 删除名为 `mydb` 的数据库，如果它存在。
 
 ~~~sql:no-line-numbers
-drop database if exists mydb; 
+DROP DATABASE IF EXISTS mydb; 
 ~~~
 
 ## 5. 使用数据库
@@ -270,7 +270,7 @@ USE db_name;
 使用 `SELECT DATABASE()` 语句可以查看当前 `USE` 的数据库。
 
 ~~~text:no-line-numbers
-mysql> select database();
+mysql> SELECT database();
 +------------+
 | database() |
 +------------+
@@ -278,10 +278,10 @@ mysql> select database();
 +------------+
 1 row in set (0.00 sec)
 
-mysql> use mydb;
+mysql> USE mydb;
 Database changed
 
-mysql> select database();
+mysql> SELECT database();
 +------------+
 | database() |
 +------------+
@@ -295,7 +295,7 @@ mysql> select database();
 使用 `SHOW processlist` 可以查看当前连接到数据库的所有用户，以及他们当前正在使用的数据库。
 
 ~~~sql:no-line-numbers
-show processlist;
+SHOW processlist;
 ~~~
 
 ~~~text:no-line-numbers
@@ -303,6 +303,6 @@ show processlist;
 | Id | User            | Host          | db   | Command | Time | State                  | Info             |
 +----+-----------------+---------------+------+---------+------+------------------------+------------------+
 |  5 | event_scheduler | localhost     | NULL | Daemon  | 5782 | Waiting on empty queue | NULL             |
-|  8 | akashi          | akashipc:9423 | mydb | Query   |    0 | init                   | show processlist |
+|  8 | akashi          | akashipc:9423 | mydb | Query   |    0 | init                   | SHOW processlist |
 +----+-----------------+---------------+------+---------+------+------------------------+------------------+
 ~~~
