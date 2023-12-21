@@ -1,5 +1,5 @@
 ---
-title: 数据库概述
+title: MySQL概述
 date: 2023-12-19
 isOriginal: true
 icon: "/icon/db_mysql_post.svg"

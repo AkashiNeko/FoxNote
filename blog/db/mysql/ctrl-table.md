@@ -1,6 +1,6 @@
 ---
-title: MySQL表的操作
-date: 2023-12-20
+title: 数据表的操作
+date: 2023-12-21
 isOriginal: true
 icon: "/icon/db_mysql_post.svg"
 category:

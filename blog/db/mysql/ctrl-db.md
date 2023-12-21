@@ -1,5 +1,5 @@
 ---
-title: MySQL库的操作
+title: 数据库的操作
 date: 2023-12-20
 isOriginal: true
 icon: "/icon/db_mysql_post.svg"
