@@ -72,7 +72,6 @@ mysql> SHOW TABLES;
 | user1          |
 | user2          |
 +----------------+
-2 rows in set (0.00 sec)
 ~~~
 
 ### 查看表结构
@@ -88,8 +87,9 @@ mysql> DESC user1;
 | age    | int        | YES  |     | NULL    |       |
 | gender | tinyint(1) | YES  |     | NULL    |       |
 +--------+------------+------+-----+---------+-------+
-3 rows in set (0.00 sec)
+~~~
 
+~~~text:no-line-numbers
 mysql> DESC user2;
 +----------+----------+------+-----+---------+-------+
 | Field    | Type     | Null | Key | Default | Extra |
@@ -97,7 +97,6 @@ mysql> DESC user2;
 | uid      | char(20) | NO   | PRI | NULL    |       |
 | password | char(32) | NO   |     | NULL    |       |
 +----------+----------+------+-----+---------+-------+
-2 rows in set (0.00 sec)
 ~~~
 
 ### 查看创建结果
@@ -194,10 +193,6 @@ ALTER TABLE table_name MODIFY field new_datatype [...];
 
 将 `user1` 表中 `name` 的类型由 `char(20)` 改为 `char(40)`，且不为空。
 
-~~~sql:no-line-numbers
-ALTER TABLE user1 MODIFY name char(40) NOT NULL;
-~~~
-
 ~~~text:no-line-numbers
 mysql> DESC user1;
 +--------+------------+------+-----+---------+-------+
@@ -207,12 +202,13 @@ mysql> DESC user1;
 | age    | int        | YES  |     | NULL    |       |
 | gender | tinyint(1) | YES  |     | NULL    |       |
 +--------+------------+------+-----+---------+-------+
-3 rows in set (0.00 sec)
+~~~
 
-mysql> ALTER TABLE user1 MODIFY name char(40) NOT NULL;
-Query OK, 0 rows affected (0.03 sec)
-Records: 0  Duplicates: 0  Warnings: 0
+~~~sql:no-line-numbers
+ALTER TABLE user1 MODIFY name char(40) NOT NULL;
+~~~
 
+~~~text:no-line-numbers
 mysql> DESC user1;
 +--------+------------+------+-----+---------+-------+
 | Field  | Type       | Null | Key | Default | Extra |
@@ -221,7 +217,6 @@ mysql> DESC user1;
 | age    | int        | YES  |     | NULL    |       |
 | gender | tinyint(1) | YES  |     | NULL    |       |
 +--------+------------+------+-----+---------+-------+
-3 rows in set (0.00 sec)
 ~~~
 
 ## 5. 修改表名和列名
@@ -236,6 +231,15 @@ ALTER TABLE old_table_name RENAME [TO] new_table_name;
 
 将 `user1` 表改名为 `users`。
 
+~~~text:no-line-numbers
+mysql> SHOW TABLES;
++----------------+
+| Tables_in_mydb |
++----------------+
+| user1          |
++----------------+
+~~~
+
 ~~~sql:no-line-numbers
 ALTER TABLE user1 RENAME TO users;
 ~~~
@@ -245,20 +249,8 @@ mysql> SHOW TABLES;
 +----------------+
 | Tables_in_mydb |
 +----------------+
-| user1          |
-+----------------+
-1 row in set (0.00 sec)
-
-mysql> ALTER TABLE user1 RENAME TO users;
-Query OK, 0 rows affected (0.01 sec)
-
-mysql> SHOW TABLES;
-+----------------+
-| Tables_in_mydb |
-+----------------+
 | users          |
 +----------------+
-1 row in set (0.00 sec)
 ~~~
 
 ### 修改列名

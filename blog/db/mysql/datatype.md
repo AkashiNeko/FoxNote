@@ -69,8 +69,8 @@ mysql> SELECT * FROM num;
 
 | 类型 | 字节 | 范围 |
 | :--: | :--: | :--: |
-| `FLOAT` | $4$ | 7位十进制有效数字 |
-| `DOUBLE` | $8$ | 15位十进制有效数字 |
+| `FLOAT` | $4$ | $7$ 位十进制有效数字 |
+| `DOUBLE` | $8$ | $15 位十进制有效数字 |
 
 在使用 `FLOAT` 或 `DOUBLE` 类型时，除了直接使用类型名外，还可以指定存储的位数。
 
@@ -79,7 +79,7 @@ mysql> SELECT * FROM num;
 比如类型 `FLOAT(5,3)`，它表示最多存储 $5$ 个数字，其中小数部分最多为 $3$ 位，所以整数部分最多为 $5-3=2$ 位数。即可存储的小数范围为 $0$ ~ $99.999$，精度最小为 $0.001$。
 
 ~~~text:no-line-numbers
-mysql> CREATE TABLE num (f float(5,3));
+mysql> CREATE TABLE num (val float(5,3));
 Query OK, 0 rows affected, 1 warning (0.02 sec)
 
 mysql> INSERT INTO num VALUES (12.345);
@@ -99,7 +99,7 @@ Query OK, 1 row affected (0.01 sec)
 
 mysql> SELECT * FROM num;
 +--------+
-| f      |
+| val    |
 +--------+
 | 12.345 |
 |  0.001 |
@@ -269,7 +269,7 @@ INSERT INTO set_t VALUES ('3',3),('5',5);
 ~~~
 
 ~~~text:no-line-numbers
-SELECT * FROM set_t;
+mysql> SELECT * FROM set_t;
 +----------+----------+
 | info     | val      |
 +----------+----------+
