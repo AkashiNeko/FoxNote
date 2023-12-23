@@ -23,7 +23,15 @@ CREATE DATABASE [IF NOT EXISTS] db_name
 [CHARACTER SET charset_name] [COLLATE collation_name];
 ~~~
 
-其中 `[]` 中的内容表示可选内容。比如 `IF NOT EXISTS` 表示在要创建的数据库不存在时才创建，`CHARACTER SET` 和 `COLLATE` 用于指定字符集和校验规则，如果不指定则会使用系统默认值。
+::: info 参数说明
+
+- `db_name`：要创建的数据库名称。
+- `charset_name`：字符集名称。
+- `collation_name`：校验规则名称。
+
+:::
+
+其中 `[]` 中的内容表示可选语句，可以不添加。比如 `IF NOT EXISTS` 语句，如果添加该语句表示仅当要创建的数据库不存在时才创建。
 
 ### 创建库示例
 
@@ -57,14 +65,13 @@ SHOW CREATE DATABASE mydb;
 
 ::: info 表格显示异常问题
 
-在交互式的客户端下，如果 `SQL` 语句以 `;` 结尾，那么输出结果会以一个表格的形式呈现。如果输出的表格太宽，在终端上可能会不正常地显示，这时候可以使用 `\G` 作为 `SQL` 语句的结尾。
+在交互式的客户端下，如果 `SQL` 语句以字符 `;`（或 `\g`） 结尾，那么返回的查询结果会以一个表格的形式呈现。如果返回的表格太宽，在终端上可能会不正常地换行显示，这时候可以使用 `\G` 作为 `SQL` 语句的结尾，它会将每一列拆成行进行显示。
 
 ~~~text:no-line-numbers
 mysql> SHOW CREATE DATABASE mydb\G
 *************************** 1. row ***************************
        Database: mydb
 Create Database: CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */
-1 row in set (0.00 sec)
 ~~~
 
 :::
@@ -117,9 +124,10 @@ SHOW charset;
 SHOW collation;
 ~~~
 
-::: details 当前支持的所有字符集
+::: details MySQL8.0支持的所有字符集
 
 ~~~text:no-line-numbers
+mysql> SHOW charset;
 +----------+---------------------------------+---------------------+--------+
 | Charset  | Description                     | Default collation   | Maxlen |
 +----------+---------------------------------+---------------------+--------+
@@ -215,11 +223,11 @@ SHOW DATABASES;
 
 ::: tip 注意
 
-查看数据库使用的关键字是 `DATABASES` 而非 `DATABASE`。
+查看数据库使用的关键字是末尾带 `S` 的 `DATABASES`，而非 `DATABASE`。
 
 :::
 
-查看名为 `mydb` 的数据库。
+查看名为 `mydb` 的数据库是否存在。
 
 ~~~sql:no-line-numbers
 SHOW DATABASES LIKE 'mydb';

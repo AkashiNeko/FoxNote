@@ -27,9 +27,20 @@ CREATE [TEMPORARY] TABLE [IF NOT EXISTS] table_name (
 ) [CHARACTER SET charset_name] [COLLATE collation_name] [ENGINE engine_name];
 ~~~
 
+::: info 参数说明
+
+- `table_name`：要创建的数据表名称。
+- `field`：列属性名称。
+- `datatype`：列的数据类型。
+- `charset_name`：字符集名称。
+- `collation_name`：校验规则名称。
+- `engine_name`：存储引擎名称。
+
+:::
+
 使用 `TEMPORARY` 关键字用于创建一个临时表，临时表在当前会话结束后会自动被删除。
 
-创建表的语句也可以都写在同一行，为了方便展示，这里写成多行的形式。
+创建表的语句也可以都写在同一行，为了方便展示，这里以多行的形式展示。
 
 ### 创建表示例
 
@@ -229,6 +240,13 @@ mysql> DESC user1;
 ALTER TABLE old_table_name RENAME [TO] new_table_name;
 ~~~
 
+::: info 参数说明
+
+- `old_table_name`：被修改的旧表名。
+- `new_table_name`：修改后的新表名。
+
+:::
+
 将 `user1` 表改名为 `users`。
 
 ~~~text:no-line-numbers
@@ -260,6 +278,13 @@ mysql> SHOW TABLES;
 ~~~sql:no-line-numbers
 ALTER TABLE table_name CHANGE old_field new_field datatype [...];
 ~~~
+
+::: info 参数说明
+
+- `old_field`：被修改的旧列名。
+- `new_field`：修改后的新列名。
+
+:::
 
 修改 `user1` 表中 `name` 列的名称为 `username`。
 
