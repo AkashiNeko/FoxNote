@@ -34,14 +34,14 @@ INSERT INTO table_name [(field1, field2, ...)] VALUES (value1, value2, ...) [,(v
 
 ### 插入记录示例
 
-创建以下的 `student` 表，在其中插入记录。
+创建以下的学生表 `student`，在其中插入记录。
 
 ~~~sql:no-line-numbers
 CREATE TABLE student (
-    name varchar(64),
-    age smallint,
-    gender char(4),
-    birthday date
+    name varchar(64) COMMENT '姓名',
+    age smallint COMMENT '年龄',
+    gender char(4) COMMENT '性别',
+    birthday date COMMENT '出生日期'
 );
 ~~~
 
@@ -69,14 +69,14 @@ INSERT INTO student (age, gender, name) VALUES (20, '男', '王五');
 
 ~~~sql:no-line-numbers
 INSERT INTO student (name, age, gender) VALUES
-('赵六', 21, '女'),('孙七', 20, '男'),('周八', 19, '女');
+('赵六', 21, '女'),('孙七', 20, '男'),('周八', 20, '女');
 ~~~
 
 ## 2. 查看记录
 
 ### 查看记录语法
 
-关键字 `SELECT` 用于选择列属性，`FROM` 关键字后接要查看的表。
+关键字 `SELECT` 可以用于选择列名，`FROM` 关键字后接要查看的表。
 
 ~~~sql:no-line-numbers
 SELECT field1, field2, ...
@@ -90,7 +90,93 @@ FROM table_name
 
 - `field..`：列属性名。设为 `*` 表示选择所有列。
 - `table_name`：表名
-- `WHERE condition`：指定筛选条件。
-- `ORDER BY field`：根据 `field` 列进行排序。
+- `condition`：指定筛选条件。
 
 :::
+
+### 查看记录示例
+
+以上面的 `student` 表举例，查看之前插入的记录。
+
+查看所有学生的信息。
+
+~~~sql:no-line-numbers
+SELECT * FROM student;
+~~~
+
+~~~text:no-line-numbers
++------+------+--------+------------+
+| name | age  | gender | birthday   |
++------+------+--------+------------+
+| 张三 |   18 | 男     | 2003-06-01 |
+| 李四 |   19 | 女     | NULL       |
+| 王五 |   20 | 男     | NULL       |
+| 赵六 |   21 | 女     | NULL       |
+| 孙七 |   20 | 男     | NULL       |
+| 周八 |   20 | 女     | NULL       |
++------+------+--------+------------+
+~~~
+
+查看所有男生的信息。
+
+~~~sql:no-line-numbers
+SELECT * FROM student WHERE gender='男';
+~~~
+
+~~~text:no-line-numbers
++------+------+--------+------------+
+| name | age  | gender | birthday   |
++------+------+--------+------------+
+| 张三 |   18 | 男     | 2003-06-01 |
+| 王五 |   20 | 男     | NULL       |
+| 孙七 |   20 | 男     | NULL       |
++------+------+--------+------------+
+~~~
+
+查看年龄大于 `19` 的学生的姓名和年龄。
+
+~~~sql:no-line-numbers
+SELECT name,age FROM student WHERE age>19;
+~~~
+
+~~~text:no-line-numbers
++------+------+
+| name | age  |
++------+------+
+| 王五 |   20 |
+| 赵六 |   21 |
+| 孙七 |   20 |
++------+------+
+~~~
+
+查看所有女生的信息，按年龄排序。
+
+~~~sql:no-line-numbers
+SELECT * FROM student WHERE gender='女' ORDER BY age;
+~~~
+
+~~~text:no-line-numbers
++------+------+--------+----------+
+| name | age  | gender | birthday |
++------+------+--------+----------+
+| 李四 |   19 | 女     | NULL     |
+| 周八 |   20 | 女     | NULL     |
+| 赵六 |   21 | 女     | NULL     |
++------+------+--------+----------+
+~~~
+
+查看年龄最小的前 $3$ 位学生的信息。
+
+~~~sql:no-line-numbers
+SELECT * FROM student ORDER BY age LIMIT 3;
+~~~
+
+~~~text:no-line-numbers
++------+------+--------+------------+
+| name | age  | gender | birthday   |
++------+------+--------+------------+
+| 张三 |   18 | 男     | 2003-06-01 |
+| 李四 |   19 | 女     | NULL       |
+| 周八 |   19 | 女     | NULL       |
++------+------+--------+------------+
+~~~
