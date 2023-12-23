@@ -1,6 +1,6 @@
 ---
 title: 查看和插入数据
-date: 2023-12-23
+date: 2023-12-22
 isOriginal: true
 icon: "/icon/db_mysql_post.svg"
 category:
@@ -16,7 +16,7 @@ order: 5
 
 ### 插入记录语法
 
-在 `MySQL` 数据表中，每一行都是以**元组**的形式存储，称为一条**记录**。增加一条新的记录需要使用 `INSERT INTO` 关键字。
+在 `MySQL` 数据表中，每一行都是以**元组**的形式存储，一行数据也称为一条**记录**。插入新的记录需要使用 `INSERT INTO` 关键字。
 
 ~~~sql:no-line-numbers
 INSERT INTO table_name [(field1, field2, ...)] VALUES (value1, value2, ...) [,(value1, value2, ...) ...];

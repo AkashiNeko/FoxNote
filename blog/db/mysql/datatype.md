@@ -1,6 +1,6 @@
 ---
 title: MySQL数据类型
-date: 2023-12-22
+date: 2023-12-23
 isOriginal: true
 icon: "/icon/db_mysql_post.svg"
 category:

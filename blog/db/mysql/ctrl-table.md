@@ -30,8 +30,8 @@ CREATE [TEMPORARY] TABLE [IF NOT EXISTS] table_name (
 ::: info 参数说明
 
 - `table_name`：要创建的数据表名称。
-- `field`：列属性名称。
-- `datatype`：列的数据类型。
+- `field..`：列属性名称。
+- `datatype..`：列的数据类型。
 - `charset_name`：字符集名称。
 - `collation_name`：校验规则名称。
 - `engine_name`：存储引擎名称。
