@@ -1,5 +1,5 @@
 ---
-title: Redis存储系统
+title: Redis数据库
 article: false
 index: false
 icon: "/icon/db_redis.svg"

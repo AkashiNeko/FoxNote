@@ -17,7 +17,7 @@ export default sidebar({
             children: "structure",
         },
         {
-            text: "数据持久化",
+            text: "数据库技术",
             icon: "/icon/db.svg",
             link: "/db/",
             prefix: "db/",
