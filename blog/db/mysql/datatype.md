@@ -9,7 +9,7 @@ tag:
   - MySQL
   - 数据类型
 excerpt: MySQL数据表中，每一列都有一种数据类型，决定了该列能够存储的数据种类和范围。
-order: 6
+order: 5
 ---
 
 ## 1. 数据类型
@@ -62,6 +62,25 @@ mysql> SELECT * FROM num;
 ~~~
 
 :::
+
+### 布尔类型
+
+`MySQL` 没有提供专门的布尔类型，但是可以使用 `TINYINT(1)` 当作布尔类型。`MySQL` 专门提供了关键字 `BOOL` 和 `BOOLEAN` 作为 `TINYINT(1)` 的别名。
+
+~~~sql:no-line-numbers
+CREATE TABLE bool_test ( val bool );
+DESC bool_test;
+~~~
+
+~~~text:no-line-numbers
++-------+------------+------+-----+---------+-------+
+| Field | Type       | Null | Key | Default | Extra |
++-------+------------+------+-----+---------+-------+
+| val   | tinyint(1) | YES  |     | NULL    |       |
++-------+------------+------+-----+---------+-------+
+~~~
+
+可以看到 `BOOL` 类型的本质还是 `TINYINT(1)`。
 
 ### 浮点数类型
 
