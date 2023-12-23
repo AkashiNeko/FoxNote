@@ -145,11 +145,12 @@ mysql>
 
 `MySQL` 的关键字不区分大小写，比如关键字 `CREATE` 和 `create` 的作用是完全相同的。
 
-~~~sql:no-line-numbers
+~~~sql
 CREATE DATABASE mydb;
 USE mydb;
 CREATE TABLE user (name char(20), age int, birthday date);
-INSERT INTO user (name, age, birthday) VALUES ('akashi', '20', '2004-01-01');
+INSERT INTO user (name, age, birthday) VALUES ('akashi', 20, '2004-01-01');
+SELECT * FROM user;
 ~~~
 
 需要注意的是，这里输入的 `SQL` 语句需要以 `;`、`\g` 或 `\G` 结尾，`mysql` 命令的交互界面支持换行输入。
@@ -157,7 +158,9 @@ INSERT INTO user (name, age, birthday) VALUES ('akashi', '20', '2004-01-01');
 ~~~text:no-line-numbers
 mysql> CREATE DATABASE mydb;
 Query OK, 1 row affected (0.00 sec)
+~~~
 
+~~~text:no-line-numbers
 mysql> USE mydb;
 Database changed
 mysql> CREATE TABLE user (
@@ -166,7 +169,9 @@ mysql> CREATE TABLE user (
     ->  birthday date
     -> );
 Query OK, 0 rows affected (0.02 sec)
+~~~
 
+~~~text:no-line-numbers
 mysql> show tables;
 +----------------+
 | Tables_in_mydb |
@@ -174,10 +179,14 @@ mysql> show tables;
 | user           |
 +----------------+
 1 row in set (0.00 sec)
+~~~
 
-mysql> INSERT INTO user (name, age, birthday) VALUES ('akashi', '20', '2004-01-01');
+~~~text:no-line-numbers
+mysql> INSERT INTO user (name, age, birthday) VALUES ('akashi', 20, '2004-01-01');
 Query OK, 1 row affected (0.01 sec)
+~~~
 
+~~~text:no-line-numbers
 mysql> SELECT * FROM user;
 +--------+------+------------+
 | name   | age  | birthday   |

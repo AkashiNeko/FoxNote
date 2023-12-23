@@ -24,7 +24,7 @@ order: 6
 
 关键字 `DEFAULT` 可以为列设置默认值约束。如果在插入记录时未指定该列的值，则会自动使用该默认值填充。下面的示例中，给 `age` 列赋予默认值 `18`。
 
-~~~sql:no-line-numbers
+~~~sql {3}
 CREATE TABLE student1 (
     name varchar(64),
     age int DEFAULT 18
@@ -74,7 +74,7 @@ mysql> DESC student1;
 
 关键字 `NOT NULL` 可以为列设置非空约束，防止在插入或更新数据时将 `NULL` 值赋给该列。下面的示例中，给 `name` 列加上非空约束，防止它接受一个 `NULL` 值。
 
-~~~sql:no-line-numbers
+~~~sql {2,7-10}
 CREATE TABLE student2 (
     name varchar(64) NOT NULL,
     age int DEFAULT 18
@@ -82,9 +82,9 @@ CREATE TABLE student2 (
 INSERT INTO student2 (name,age) VALUES ('Steve', 15);
 INSERT INTO student2 (name) VALUES ('Alex');
 INSERT INTO student2 (age) VALUES (20);
--- 错误: ERROR 1364 (HY000): Field 'name' doesn't have a default value
+-- ERROR 1364 (HY000): Field 'name' doesn't have a default value
 INSERT INTO student2 (name,age) VALUES (NULL,20);
--- 错误: ERROR 1048 (23000): Column 'name' cannot be null
+-- ERROR 1048 (23000): Column 'name' cannot be null
 ~~~
 
 在插入记录时，如果省略被 `NOT NULL` 约束的列，或试图插入空数据，都是无法正常插入的。
@@ -117,21 +117,14 @@ mysql> DESC student2;
 
 关键字 `UNIQUE` 或 `UNIQUE KEY` 可以为列设置唯一键约束，让该列的值相互独立。下面的示例中，将 `name` 列设为唯一键，尝试插入两个相同的 `name`。
 
-~~~sql:no-line-numbers
+~~~sql: {2,6-7}
 CREATE TABLE student3 (
     name varchar(64) UNIQUE KEY,
     age int DEFAULT 18
 );
 INSERT INTO student3 (name) VALUES ('akashi');
 INSERT INTO student3 (name) VALUES ('akashi');
-~~~
-
-~~~text:no-line-numbers
-mysql> INSERT INTO student3 (name) VALUES ('akashi');
-Query OK, 1 row affected (0.01 sec)
-
-mysql> INSERT INTO student3 (name) VALUES ('akashi');
-ERROR 1062 (23000): Duplicate entry 'akashi' for key 'student3.name'
+-- ERROR 1062 (23000): Duplicate entry 'akashi' for key 'student3.name'
 ~~~
 
 可以发现在唯一键的约束下，`name` 列无法插入一个已经存在的值。
@@ -140,7 +133,7 @@ ERROR 1062 (23000): Duplicate entry 'akashi' for key 'student3.name'
 
 此外，唯一键约束允许空值 `NULL`，空值之间不会互相排斥，允许同时存在多个空值。
 
-~~~sql:no-line-numbers
+~~~sql
 INSERT INTO student3 (age) VALUES (10);
 INSERT INTO student3 (name,age) VALUES (NULL,10);
 ~~~
@@ -184,7 +177,7 @@ mysql> DESC student3;
 
 主键约束结合了唯一键约束和非空约束的特性，用关键字 `PRIMARY KEY` 设置。
 
-~~~sql:no-line-numbers
+~~~sql {2}
 CREATE TABLE student4 (
     name varchar(64) PRIMARY KEY,
     age int DEFAULT 18
@@ -201,7 +194,9 @@ mysql> SELECT * FROM student4 WHERE name='张三';
 +------+------+
 | 张三 |   18 |
 +------+------+
+~~~
 
+~~~text:no-line-numbers
 mysql> SELECT * FROM student4 WHERE name='李四';
 +------+------+
 | name | age  |
@@ -228,18 +223,28 @@ ALTER TABLE student4 ADD PRIMARY KEY (name);
 
 ### 复合主键
 
-`MySQL` 不允许同时定义多个主键，比如：
+`MySQL` **不允许**同时定义多个主键，比如：
 
-~~~sql:no-line-numbers
+::: caution 对于已经存在主键的表，在其他列添加主键。
+
+~~~sql
 ALTER TABLE student4 ADD PRIMARY KEY (age);
 -- ERROR 1068 (42000): Multiple primary key defined
+~~~
 
+:::
+
+::: caution 创建表时设置多个主键。
+
+~~~sql
 CREATE TABLE student (
     name varchar(64) PRIMARY KEY,
     age int DEFAULT 18 PRIMARY KEY
 );
 -- ERROR 1068 (42000): Multiple primary key defined
 ~~~
+
+:::
 
 然而，`MySQL` 提供了复合主键（Composite Primary Key）的概念。下面的表 `sc` 中，单独使用 `sname` 或 `cname` 作为主键都无法唯一标识一条记录，而必须用二者的组合。使用 `PRIMARY KEY (...)` 可以将多个列设为复合主键。
 
@@ -281,7 +286,9 @@ mysql> DESC student4;
 | name  | varchar(64) | NO   | PRI | NULL    |       |
 | age   | int         | YES  |     | 18      |       |
 +-------+-------------+------+-----+---------+-------+
+~~~
 
+~~~text:no-line-numbers
 mysql> DESC sc;
 +-------+-------------+------+-----+---------+-------+
 | Field | Type        | Null | Key | Default | Extra |
@@ -294,6 +301,6 @@ mysql> DESC sc;
 
 在 `Key` 列中，设有唯一键的列会显示为 `PRI`，同时 `Null` 列为 `NO`，表示主键是自带非空约束的。如果有多个列被设为复合主键，则会显示多个 `PRI`。
 
-## 5. 外键
+## 5. 外键约束
 
 TODO

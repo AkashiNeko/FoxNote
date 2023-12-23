@@ -273,9 +273,9 @@ USE db_name;
 
 在实际的应用场景中，通常是对一个数据库中的某些表进行频繁操作。使用 `USE` 指定要操作的数据库，可以将多次重复输入数据库名称的步骤简化为一次。一旦选中了数据库，后续的SQL语句中就不需要再显式地指定数据库名称了。
 
-### 查看正在使用的数据库
+### 查看使用的数据库
 
-使用 `SELECT DATABASE()` 语句可以查看当前 `USE` 的数据库。
+使用 `SELECT DATABASE()` 语句可以查看当前 `USE` 的数据库，未使用任何数据库时为 `NULL`。
 
 ~~~text:no-line-numbers
 mysql> SELECT database();
@@ -284,18 +284,20 @@ mysql> SELECT database();
 +------------+
 | NULL       |
 +------------+
-1 row in set (0.00 sec)
+~~~
 
+~~~text:no-line-numbers
 mysql> USE mydb;
 Database changed
+~~~
 
+~~~text:no-line-numbers
 mysql> SELECT database();
 +------------+
 | database() |
 +------------+
 | mydb       |
 +------------+
-1 row in set (0.00 sec)
 ~~~
 
 ### 查看所有连接

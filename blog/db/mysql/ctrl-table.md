@@ -52,7 +52,7 @@ USE mydb;
 
 创建一个名为 `user1` 的表。其中包含三个列：`name`、`age` 和 `gender`。
 
-~~~sql:no-line-numbers
+~~~sql
 CREATE TABLE user1 (
     name char(20),
     age int,
@@ -62,7 +62,7 @@ CREATE TABLE user1 (
 
 创建一个名为 `user2` 的表，如果它不存在。其中包含两个列：`uid` 和 `password`，添加相关说明，并且使用 `MyISAM` 存储引擎。
 
-~~~sql:no-line-numbers
+~~~sql
 CREATE TABLE IF NOT EXISTS user2 (
     uid char(20) PRIMARY KEY COMMENT '用户的ID',
     password char(32) NOT NULL COMMENT '密码的MD5值'
@@ -123,8 +123,9 @@ Create Table: CREATE TABLE `user1` (
   `age` int DEFAULT NULL,
   `gender` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-1 row in set (0.00 sec)
+~~~
 
+~~~text:no-line-numbers
 mysql> SHOW CREATE TABLE user2\G
 *************************** 1. row ***************************
        Table: user2
@@ -133,7 +134,6 @@ Create Table: CREATE TABLE `user2` (
   `password` char(32) NOT NULL COMMENT '密码的MD5值',
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
-1 row in set (0.00 sec)
 ~~~
 
 ## 3. 删除数据表
@@ -175,9 +175,7 @@ ALTER TABLE table_name ADD (
 在 `user1` 表中新增一列 `birthday`。
 
 ~~~sql:no-line-numbers
-ALTER TABLE user1 ADD (
-    birthday date
-);
+ALTER TABLE user1 ADD ( birthday date );
 ~~~
 
 ### 删除列

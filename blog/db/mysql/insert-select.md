@@ -36,7 +36,7 @@ INSERT INTO table_name [(field1, field2, ...)] VALUES (value1, value2, ...) [,(v
 
 创建以下的学生表 `student`，在其中插入记录。
 
-~~~sql:no-line-numbers
+~~~sql
 CREATE TABLE student (
     name varchar(64) COMMENT '姓名',
     age smallint COMMENT '年龄',
