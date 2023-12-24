@@ -8,8 +8,8 @@ category:
 tag:
   - MySQL
   - 数据类型
-excerpt: MySQL数据表中，每一列都有一种数据类型，决定了该列能够存储的数据种类和范围。
-order: 5
+excerpt: 在MySQL的数据表中，数据类型决定了每一列能够存储的数据种类和范围。
+order: 6
 ---
 
 ## 1. 数据类型

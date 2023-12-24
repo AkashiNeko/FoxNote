@@ -160,9 +160,9 @@ DROP TABLE IF EXISTS user2;
 
 对表结构的修改，需要使用 `ALTER` 关键字。
 
-### 增加列
+### 增加和删除列
 
-增加列时，括号里的字段与创建表时的类似。
+增加列时，使用 `ADD` 关键字。要增加的列的写法与创建表时相似。
 
 ~~~sql:no-line-numbers
 ALTER TABLE table_name ADD (
@@ -178,9 +178,7 @@ ALTER TABLE table_name ADD (
 ALTER TABLE user1 ADD ( birthday date );
 ~~~
 
-### 删除列
-
-与增加列语法类似，将 `ADD` 改为 `DROP`，后接要删除的列名。
+要删除列，只要将 `ADD` 关键字变为 `DROP`，后接要删除的列名。
 
 ~~~sql:no-line-numbers
 ALTER TABLE table_name DROP field;
@@ -228,7 +226,7 @@ mysql> DESC user1;
 +--------+------------+------+-----+---------+-------+
 ~~~
 
-## 5. 修改表名和列名
+## 5. 修改名称
 
 ### 修改表名
 

@@ -1,6 +1,6 @@
 ---
 title: 列属性和约束
-date: 2023-12-23
+date: 2023-12-24
 isOriginal: true
 icon: "/icon/db_mysql_post.svg"
 category:
@@ -8,8 +8,10 @@ category:
 tag:
   - MySQL
   - 主键
+  - 外键
+  - 唯一键
 excerpt: 列属性和约束是用于定义和限制列的特性和行为的元素，确保数据的完整性和一致性。
-order: 6
+order: 7
 ---
 
 ## 1. 默认值约束
@@ -46,8 +48,6 @@ mysql> SELECT * FROM student1;
 
 可以发现 `age` 列设置默认值后，在省略列的情况下，它使用了默认值 `18`。
 
-### 查看默认值
-
 使用 `DESC` 关键字查看表结构。
 
 ~~~text:no-line-numbers
@@ -70,17 +70,20 @@ mysql> DESC student1;
 
 :::
 
-### 设置非空约束
+### 添加非空约束
 
 关键字 `NOT NULL` 可以为列设置非空约束，防止在插入或更新数据时将 `NULL` 值赋给该列。下面的示例中，给 `name` 列加上非空约束，防止它接受一个 `NULL` 值。
 
-~~~sql {2,7-10}
+~~~sql {2}
 CREATE TABLE student2 (
     name varchar(64) NOT NULL,
     age int DEFAULT 18
 );
+
 INSERT INTO student2 (name,age) VALUES ('Steve', 15);
+-- OK
 INSERT INTO student2 (name) VALUES ('Alex');
+-- OK
 INSERT INTO student2 (age) VALUES (20);
 -- ERROR 1364 (HY000): Field 'name' doesn't have a default value
 INSERT INTO student2 (name,age) VALUES (NULL,20);
@@ -88,8 +91,6 @@ INSERT INTO student2 (name,age) VALUES (NULL,20);
 ~~~
 
 在插入记录时，如果省略被 `NOT NULL` 约束的列，或试图插入空数据，都是无法正常插入的。
-
-### 查看非空约束
 
 使用 `DESC` 关键字查看表结构。
 
@@ -117,17 +118,33 @@ mysql> DESC student2;
 
 关键字 `UNIQUE` 或 `UNIQUE KEY` 可以为列设置唯一键约束，让该列的值相互独立。下面的示例中，将 `name` 列设为唯一键，尝试插入两个相同的 `name`。
 
-~~~sql: {2,6-7}
+~~~sql: {2}
 CREATE TABLE student3 (
     name varchar(64) UNIQUE KEY,
     age int DEFAULT 18
 );
+
 INSERT INTO student3 (name) VALUES ('akashi');
+-- OK
 INSERT INTO student3 (name) VALUES ('akashi');
 -- ERROR 1062 (23000): Duplicate entry 'akashi' for key 'student3.name'
 ~~~
 
 可以发现在唯一键的约束下，`name` 列无法插入一个已经存在的值。
+
+使用 `DESC` 关键字查看表结构。
+
+~~~text:no-line-numbers
+mysql> DESC student3;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(64) | YES  | UNI | NULL    |       |
+| age   | int         | YES  |     | 18      |       |
++-------+-------------+------+-----+---------+-------+
+~~~
+
+在 `Key` 列中，设有唯一键的列会显示为 `UNI`。
 
 ### 唯一键的空值
 
@@ -149,31 +166,15 @@ mysql> SELECT * FROM student3;
 +--------+------+
 ~~~
 
-### 查看唯一键
-
-使用 `DESC` 关键字查看表结构。
-
-~~~text:no-line-numbers
-mysql> DESC student3;
-+-------+-------------+------+-----+---------+-------+
-| Field | Type        | Null | Key | Default | Extra |
-+-------+-------------+------+-----+---------+-------+
-| name  | varchar(64) | YES  | UNI | NULL    |       |
-| age   | int         | YES  |     | 18      |       |
-+-------+-------------+------+-----+---------+-------+
-~~~
-
-在 `Key` 列中，设有唯一键的列会显示为 `UNI`。
-
 ## 4. 主键约束
-
-### 单一主键
 
 ::: info 主键
 
 主键约束（Primary Key Constraint）用于唯一标识数据表中的每一条记录（每一行）。主键约束要求在指定的列或列组合上具有唯一的值，并且不允许为空值 `NULL`。
 
 :::
+
+### 单一主键
 
 主键约束结合了唯一键约束和非空约束的特性，用关键字 `PRIMARY KEY` 设置。
 
@@ -182,6 +183,7 @@ CREATE TABLE student4 (
     name varchar(64) PRIMARY KEY,
     age int DEFAULT 18
 );
+
 INSERT INTO student4 VALUES ('张三',18),('李四',19),('王五',20);
 ~~~
 
@@ -205,6 +207,20 @@ mysql> SELECT * FROM student4 WHERE name='李四';
 +------+------+
 ~~~
 
+使用 `DESC` 关键字查看表结构。
+
+~~~text:no-line-numbers
+mysql> DESC student4;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(64) | NO   | PRI | NULL    |       |
+| age   | int         | YES  |     | 18      |       |
++-------+-------------+------+-----+---------+-------+
+~~~
+
+在 `Key` 列中，设有主键的列会显示为 `PRI`。
+
 ### 主键的增删
 
 对于一个已经存在的表，可以用下面的方式删除和添加主键。
@@ -223,7 +239,7 @@ ALTER TABLE student4 ADD PRIMARY KEY (name);
 
 ### 复合主键
 
-`MySQL` **不允许**同时定义多个主键，比如：
+`MySQL` **不允许**同时定义**多个主键**，比如：
 
 ::: caution 对于已经存在主键的表，在其他列添加主键。
 
@@ -255,6 +271,7 @@ CREATE TABLE sc (
     score tinyint COMMENT '成绩得分',
     PRIMARY KEY (sname, cname)
 );
+
 INSERT INTO sc VALUES
 ('张三','语文',85),('张三','数学',97),('张三','英语',89),
 ('李四','语文',93),('李四','数学',86),('李四','英语',95);
@@ -274,32 +291,7 @@ mysql> SELECT * FROM sc;
 +-------+-------+-------+
 ~~~
 
-### 查看主键
-
-使用 `DESC` 关键字查看表结构。
-
-~~~text:no-line-numbers
-mysql> DESC student4;
-+-------+-------------+------+-----+---------+-------+
-| Field | Type        | Null | Key | Default | Extra |
-+-------+-------------+------+-----+---------+-------+
-| name  | varchar(64) | NO   | PRI | NULL    |       |
-| age   | int         | YES  |     | 18      |       |
-+-------+-------------+------+-----+---------+-------+
-~~~
-
-~~~text:no-line-numbers
-mysql> DESC sc;
-+-------+-------------+------+-----+---------+-------+
-| Field | Type        | Null | Key | Default | Extra |
-+-------+-------------+------+-----+---------+-------+
-| sname | varchar(64) | NO   | PRI | NULL    |       |
-| cname | varchar(64) | NO   | PRI | NULL    |       |
-| score | tinyint     | YES  |     | NULL    |       |
-+-------+-------------+------+-----+---------+-------+
-~~~
-
-在 `Key` 列中，设有唯一键的列会显示为 `PRI`，同时 `Null` 列为 `NO`，表示主键是自带非空约束的。如果有多个列被设为复合主键，则会显示多个 `PRI`。
+复合主键使用多个列同时表示唯一记录。这些列本身允许重复值，比如 `sname` 列可以有多个重复的 `张三`，`cname` 列可有多个重复的 `语文`，但是两个列组合在一起的值都是唯一的。
 
 ## 5. 外键约束
 

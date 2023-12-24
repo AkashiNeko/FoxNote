@@ -7,8 +7,9 @@ category:
   - 数据库
 tag:
   - MySQL
-  - 数据类型
-excerpt: 关键字INSERT将新的记录添加到表中，关键字SELECT从数据库中检索已存储的记录。
+  - INSERT
+  - SELECT
+excerpt: INSERT插入新的记录到表中，SELECT从数据库中检索和获取已存储的记录。
 order: 4
 ---
 
