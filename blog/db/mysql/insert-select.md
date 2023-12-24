@@ -1,5 +1,5 @@
 ---
-title: 查看和插入数据
+title: 数据的插入和查询
 date: 2023-12-22
 isOriginal: true
 icon: "/icon/db_mysql_post.svg"
@@ -8,7 +8,7 @@ category:
 tag:
   - MySQL
   - 数据类型
-excerpt: MySQL数据表中，每一列都有一种数据类型，决定了该列能够存储的数据种类和范围。
+excerpt: 关键字INSERT将新的记录添加到表中，关键字SELECT从数据库中检索已存储的记录。
 order: 4
 ---
 
@@ -16,10 +16,10 @@ order: 4
 
 ### 插入记录语法
 
-在 `MySQL` 数据表中，每一行都是以**元组**的形式存储，一行数据也称为一条**记录**。插入新的记录需要使用 `INSERT INTO` 关键字。
+在 `MySQL` 数据表中，每一行都是以**元组**的形式存储，一行数据也称为一条**记录**。插入新的记录需要使用 `INSERT` 关键字。
 
 ~~~sql:no-line-numbers
-INSERT INTO table_name [(field1, field2, ...)] VALUES (value1, value2, ...) [,(value1, value2, ...) ...];
+INSERT [INTO] table_name [(field1, field2, ...)] VALUES (value1, value2, ...) [,(value1, value2, ...) ...];
 ~~~
 
 ::: info 参数说明
@@ -27,6 +27,8 @@ INSERT INTO table_name [(field1, field2, ...)] VALUES (value1, value2, ...) [,(v
 - `table_name`：数据表名称。
 - `field..`：列属性名。
 - `value..`：插入的值。
+
+其中列名 `field` 与数据 `value` 需要一一对应。
 
 :::
 
