@@ -9,7 +9,7 @@ tag:
   - MySQL
   - 数据类型
 excerpt: 在MySQL的数据表中，数据类型决定了每一列能够存储的数据种类和范围。
-order: 6
+order: 5
 ---
 
 ## 1. 数据类型
