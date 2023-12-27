@@ -15,7 +15,7 @@ export default hopeTheme({
 
     iconAssets: "fontawesome-with-brands",
 
-    logo: "https://ooo.0x0.ooo/2023/12/18/OKUX96.jpg",
+    logo: "/logo/akashi.jpg",
 
     repo: "AkashiNeko/foxnote",
 

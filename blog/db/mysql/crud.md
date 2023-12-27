@@ -265,4 +265,3 @@ DELETE FROM person WHERE age<30;
 DELETE FROM person;
 -- Query OK, 5 rows affected
 ~~~
-
