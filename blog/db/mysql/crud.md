@@ -7,7 +7,7 @@ category:
   - 数据库
 tag:
   - MySQL
-  - 增删查改
+  - SQL
 excerpt: 记录的增删查改：插入（INSERT）、删除（DELETE）、查询（SELECT）和修改（UPDATE）。
 order: 4
 ---
