@@ -4,10 +4,9 @@ date: 2023-12-19
 isOriginal: true
 icon: "/icon/db_mysql_post.svg"
 category:
-  - 数据库
-tag:
   - MySQL
-  - SQL
+tag:
+  - 数据库
 excerpt: 数据库是用于存储、管理和组织数据的软件，广泛应用于各种领域。
 order: 1
 ---
