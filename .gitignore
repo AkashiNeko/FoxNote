@@ -1,6 +1,7 @@
 node_modules
 .temp
 .cache
+.vscode
 log/
 build.sh
 push.sh
