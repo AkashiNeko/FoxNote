@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="terminal" baseProfile="full" viewBox="0 0 408 138" width="408" version="1.1">
+    <defs>
+        <termtosvg:template_settings xmlns:termtosvg="https://github.com/nbedos/termtosvg">
+            <termtosvg:screen_geometry columns="51" rows="8"/>
+            <termtosvg:animation type="css"/>
+        </termtosvg:template_settings>
+        <style type="text/css" id="generated-style"><![CDATA[#screen {
+                font-family: 'DejaVu Sans Mono', monospace;
+                font-style: normal;
+                font-size: 14px;
+            }
+
+        text {
+            dominant-baseline: text-before-edge;
+            white-space: pre;
+        }
+    
+            :root {
+                --animation-duration: 13585ms;
+            }
+
+            @keyframes roll {
+                0.000%{transform:translateY(0px)}
+20.383%{transform:translateY(-170px)}
+20.942%{transform:translateY(-340px)}
+21.987%{transform:translateY(-510px)}
+22.709%{transform:translateY(-680px)}
+25.410%{transform:translateY(-850px)}
+66.735%{transform:translateY(-1020px)}
+99.978%{transform:translateY(-1190px)}
+99.993%{transform:translateY(-1360px)}
+100.000%{transform:translateY(-1360px)}
+            }
+
+            #screen_view {
+                animation-duration: 13585ms;
+                animation-iteration-count:infinite;
+                animation-name:roll;
+                animation-timing-function: steps(1,end);
+                animation-fill-mode: forwards;
+            }
+        ]]></style>
+        <style type="text/css" id="user-style">
+            /* The colors defined below are the default 16 colors used for rendering text of the terminal. Adjust
+               them as needed.
+               PowerShell colors based on https://en.wikipedia.org/wiki/ANSI_escape_code#Colors */
+            .foreground {fill: #cccccc;}
+            .background {fill: #0c0c0c;}
+            .color0 {fill: #0c0c0c;}
+            .color1 {fill: #c50f1f;}
+            .color2 {fill: #13a10e;}
+            .color3 {fill: #c19c00;}
+            .color4 {fill: #0037da;}
+            .color5 {fill: #881798;}
+            .color6 {fill: #3a96dd;}
+            .color7 {fill: #cccccc;}
+            .color8 {fill: #767676;}
+            .color9 {fill: #e74856;}
+            .color10 {fill: #16c60c;}
+            .color11 {fill: #f9f1a5;}
+            .color12 {fill: #3b78ff;}
+            .color13 {fill: #b4009e;}
+            .color14 {fill: #61d6d6;}
+            .color15 {fill: #f2f2f2;}
+        </style>
+    </defs>
+    <svg id="screen" width="408" height="136" viewBox="0 0 408 136" preserveAspectRatio="xMidYMin slice">
+    <rect class="background" height="100%" width="100%" x="0" y="0"/><defs><g id="g1"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="8" class="foreground"> </text><text x="200" textLength="8" class="background"> </text></g><g id="g2"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="16" class="foreground"> .</text><text x="208" textLength="8" class="background"> </text></g><g id="g3"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="24" class="foreground"> ./</text><text x="216" textLength="8" class="background"> </text></g><g id="g4"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="32" class="foreground"> ./r</text><text x="224" textLength="8" class="background"> </text></g><g id="g5"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="96" class="foreground"> ./receiver </text><text x="288" textLength="8" class="background"> </text></g><g id="g6"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="96" class="foreground"> ./receiver </text></g><g id="g7"><text x="0" textLength="8" class="background"> </text></g><g id="g8"><text x="0" textLength="128" class="foreground">Hello, receiver!</text></g><g id="g9"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="8" class="foreground"> </text></g><g id="g10"><text x="0" textLength="32" class="foreground">exit</text></g></defs><g id="screen_view"><g><rect x="200" y="0" width="8" height="17" class="foreground"/><use xlink:href="#g1" y="0"/></g><g><rect x="208" y="170" width="8" height="17" class="foreground"/><use xlink:href="#g2" y="170"/></g><g><rect x="216" y="340" width="8" height="17" class="foreground"/><use xlink:href="#g3" y="340"/></g><g><rect x="224" y="510" width="8" height="17" class="foreground"/><use xlink:href="#g4" y="510"/></g><g><rect x="288" y="680" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="680"/></g><g><use xlink:href="#g6" y="850"/><rect x="0" y="867" width="8" height="17" class="foreground"/><use xlink:href="#g7" y="867"/></g><g><use xlink:href="#g6" y="1020"/><use xlink:href="#g8" y="1037"/><rect x="200" y="1054" width="8" height="17" class="foreground"/><use xlink:href="#g1" y="1054"/></g><g><use xlink:href="#g6" y="1190"/><use xlink:href="#g8" y="1207"/><use xlink:href="#g9" y="1224"/><rect x="0" y="1241" width="8" height="17" class="foreground"/><use xlink:href="#g7" y="1241"/></g><g><use xlink:href="#g6" y="1360"/><use xlink:href="#g8" y="1377"/><use xlink:href="#g9" y="1394"/><use xlink:href="#g10" y="1411"/><rect x="0" y="1428" width="8" height="17" class="foreground"/><use xlink:href="#g7" y="1428"/></g></g></svg>
+</svg>

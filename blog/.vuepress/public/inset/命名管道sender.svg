@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="terminal" baseProfile="full" viewBox="0 0 400 138" width="400" version="1.1">
+    <defs>
+        <termtosvg:template_settings xmlns:termtosvg="https://github.com/nbedos/termtosvg">
+            <termtosvg:screen_geometry columns="50" rows="8"/>
+            <termtosvg:animation type="css"/>
+        </termtosvg:template_settings>
+        <style type="text/css" id="generated-style"><![CDATA[#screen {
+                font-family: 'DejaVu Sans Mono', monospace;
+                font-style: normal;
+                font-size: 14px;
+            }
+
+        text {
+            dominant-baseline: text-before-edge;
+            white-space: pre;
+        }
+    
+            :root {
+                --animation-duration: 13627ms;
+            }
+
+            @keyframes roll {
+                0.000%{transform:translateY(0px)}
+4.594%{transform:translateY(-170px)}
+5.966%{transform:translateY(-340px)}
+7.845%{transform:translateY(-510px)}
+7.889%{transform:translateY(-680px)}
+35.701%{transform:translateY(-850px)}
+36.472%{transform:translateY(-1020px)}
+38.842%{transform:translateY(-1190px)}
+38.857%{transform:translateY(-1360px)}
+38.886%{transform:translateY(-1530px)}
+38.893%{transform:translateY(-1700px)}
+58.061%{transform:translateY(-1870px)}
+58.612%{transform:translateY(-2040px)}
+59.712%{transform:translateY(-2210px)}
+60.813%{transform:translateY(-2380px)}
+64.666%{transform:translateY(-2550px)}
+64.680%{transform:translateY(-2720px)}
+85.265%{transform:translateY(-2890px)}
+86.086%{transform:translateY(-3060px)}
+86.798%{transform:translateY(-3230px)}
+86.820%{transform:translateY(-3400px)}
+86.842%{transform:translateY(-3570px)}
+86.864%{transform:translateY(-3740px)}
+99.963%{transform:translateY(-3910px)}
+99.993%{transform:translateY(-4080px)}
+100.000%{transform:translateY(-4080px)}
+            }
+
+            #screen_view {
+                animation-duration: 13627ms;
+                animation-iteration-count:infinite;
+                animation-name:roll;
+                animation-timing-function: steps(1,end);
+                animation-fill-mode: forwards;
+            }
+        ]]></style>
+        <style type="text/css" id="user-style">
+            /* The colors defined below are the default 16 colors used for rendering text of the terminal. Adjust
+               them as needed.
+               PowerShell colors based on https://en.wikipedia.org/wiki/ANSI_escape_code#Colors */
+            .foreground {fill: #cccccc;}
+            .background {fill: #0c0c0c;}
+            .color0 {fill: #0c0c0c;}
+            .color1 {fill: #c50f1f;}
+            .color2 {fill: #13a10e;}
+            .color3 {fill: #c19c00;}
+            .color4 {fill: #0037da;}
+            .color5 {fill: #881798;}
+            .color6 {fill: #3a96dd;}
+            .color7 {fill: #cccccc;}
+            .color8 {fill: #767676;}
+            .color9 {fill: #e74856;}
+            .color10 {fill: #16c60c;}
+            .color11 {fill: #f9f1a5;}
+            .color12 {fill: #3b78ff;}
+            .color13 {fill: #b4009e;}
+            .color14 {fill: #61d6d6;}
+            .color15 {fill: #f2f2f2;}
+        </style>
+    </defs>
+    <svg id="screen" width="400" height="136" viewBox="0 0 400 136" preserveAspectRatio="xMidYMin slice">
+    <rect class="background" height="100%" width="100%" x="0" y="0"/><defs><g id="g1"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="8" class="foreground"> </text><text x="200" textLength="8" class="background"> </text></g><g id="g2"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="16" class="foreground"> l</text><text x="208" textLength="8" class="background"> </text></g><g id="g3"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="24" class="foreground"> ls</text><text x="216" textLength="8" class="background"> </text></g><g id="g4"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="24" class="foreground"> ls</text></g><g id="g5"><text x="0" textLength="8" class="background"> </text></g><g id="g6"><text x="0" textLength="64" font-weight="bold" class="color10">receiver</text><text x="64" textLength="112" class="foreground">  receiver.c  </text><text x="176" textLength="48" font-weight="bold" class="color10">sender</text><text x="224" textLength="80" class="foreground">  sender.c</text></g><g id="g7"><text x="0" textLength="64" class="color3">ipc.fifo</text><text x="64" textLength="16" class="foreground">  </text><text x="80" textLength="64" font-weight="bold" class="color10">receiver</text><text x="144" textLength="112" class="foreground">  receiver.c  </text><text x="256" textLength="48" font-weight="bold" class="color10">sender</text><text x="304" textLength="80" class="foreground">  sender.c</text></g><g id="g8"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="16" class="foreground"> .</text><text x="208" textLength="8" class="background"> </text></g><g id="g9"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="24" class="foreground"> ./</text><text x="216" textLength="8" class="background"> </text></g><g id="g10"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="32" class="foreground"> ./s</text><text x="224" textLength="8" class="background"> </text></g><g id="g11"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="80" class="foreground"> ./sender </text><text x="272" textLength="8" class="background"> </text></g><g id="g12"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="80" class="foreground"> ./sender </text></g><g id="g13"><text x="0" textLength="8" font-weight="bold" class="color11">[</text><text x="8" textLength="80" font-weight="bold" class="color10">akashi@box</text><text x="88" textLength="8" font-weight="bold" class="color11">:</text><text x="96" textLength="80" font-weight="bold" class="color12">~/code/ipc</text><text x="176" textLength="8" font-weight="bold" class="color11">]</text><text x="184" textLength="8" font-weight="bold" class="color14">#</text><text x="192" textLength="8" class="foreground"> </text></g><g id="g14"><text x="0" textLength="32" class="foreground">exit</text></g></defs><g id="screen_view"><g><rect x="200" y="0" width="8" height="17" class="foreground"/><use xlink:href="#g1" y="0"/></g><g><rect x="208" y="170" width="8" height="17" class="foreground"/><use xlink:href="#g2" y="170"/></g><g><rect x="216" y="340" width="8" height="17" class="foreground"/><use xlink:href="#g3" y="340"/></g><g><use xlink:href="#g4" y="510"/><rect x="0" y="527" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="527"/></g><g><use xlink:href="#g4" y="680"/><use xlink:href="#g6" y="697"/><rect x="200" y="714" width="8" height="17" class="foreground"/><use xlink:href="#g1" y="714"/></g><g><use xlink:href="#g4" y="850"/><use xlink:href="#g6" y="867"/><rect x="208" y="884" width="8" height="17" class="foreground"/><use xlink:href="#g2" y="884"/></g><g><use xlink:href="#g4" y="1020"/><use xlink:href="#g6" y="1037"/><rect x="216" y="1054" width="8" height="17" class="foreground"/><use xlink:href="#g3" y="1054"/></g><g><use xlink:href="#g4" y="1190"/><use xlink:href="#g6" y="1207"/><use xlink:href="#g4" y="1224"/><rect x="0" y="1241" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="1241"/></g><g><use xlink:href="#g4" y="1360"/><use xlink:href="#g6" y="1377"/><use xlink:href="#g4" y="1394"/><rect x="0" y="1411" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="1411"/></g><g><use xlink:href="#g4" y="1530"/><use xlink:href="#g6" y="1547"/><use xlink:href="#g4" y="1564"/><rect x="0" y="1581" width="64" height="17" class="color0"/><use xlink:href="#g7" y="1581"/><rect x="0" y="1598" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="1598"/></g><g><use xlink:href="#g4" y="1700"/><use xlink:href="#g6" y="1717"/><use xlink:href="#g4" y="1734"/><rect x="0" y="1751" width="64" height="17" class="color0"/><use xlink:href="#g7" y="1751"/><rect x="200" y="1768" width="8" height="17" class="foreground"/><use xlink:href="#g1" y="1768"/></g><g><use xlink:href="#g4" y="1870"/><use xlink:href="#g6" y="1887"/><use xlink:href="#g4" y="1904"/><rect x="0" y="1921" width="64" height="17" class="color0"/><use xlink:href="#g7" y="1921"/><rect x="208" y="1938" width="8" height="17" class="foreground"/><use xlink:href="#g8" y="1938"/></g><g><use xlink:href="#g4" y="2040"/><use xlink:href="#g6" y="2057"/><use xlink:href="#g4" y="2074"/><rect x="0" y="2091" width="64" height="17" class="color0"/><use xlink:href="#g7" y="2091"/><rect x="216" y="2108" width="8" height="17" class="foreground"/><use xlink:href="#g9" y="2108"/></g><g><use xlink:href="#g4" y="2210"/><use xlink:href="#g6" y="2227"/><use xlink:href="#g4" y="2244"/><rect x="0" y="2261" width="64" height="17" class="color0"/><use xlink:href="#g7" y="2261"/><rect x="224" y="2278" width="8" height="17" class="foreground"/><use xlink:href="#g10" y="2278"/></g><g><use xlink:href="#g4" y="2380"/><use xlink:href="#g6" y="2397"/><use xlink:href="#g4" y="2414"/><rect x="0" y="2431" width="64" height="17" class="color0"/><use xlink:href="#g7" y="2431"/><rect x="272" y="2448" width="8" height="17" class="foreground"/><use xlink:href="#g11" y="2448"/></g><g><use xlink:href="#g4" y="2550"/><use xlink:href="#g6" y="2567"/><use xlink:href="#g4" y="2584"/><rect x="0" y="2601" width="64" height="17" class="color0"/><use xlink:href="#g7" y="2601"/><use xlink:href="#g12" y="2618"/><rect x="0" y="2635" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="2635"/></g><g><use xlink:href="#g4" y="2720"/><use xlink:href="#g6" y="2737"/><use xlink:href="#g4" y="2754"/><rect x="0" y="2771" width="64" height="17" class="color0"/><use xlink:href="#g7" y="2771"/><use xlink:href="#g12" y="2788"/><rect x="200" y="2805" width="8" height="17" class="foreground"/><use xlink:href="#g1" y="2805"/></g><g><use xlink:href="#g4" y="2890"/><use xlink:href="#g6" y="2907"/><use xlink:href="#g4" y="2924"/><rect x="0" y="2941" width="64" height="17" class="color0"/><use xlink:href="#g7" y="2941"/><use xlink:href="#g12" y="2958"/><rect x="208" y="2975" width="8" height="17" class="foreground"/><use xlink:href="#g2" y="2975"/></g><g><use xlink:href="#g4" y="3060"/><use xlink:href="#g6" y="3077"/><use xlink:href="#g4" y="3094"/><rect x="0" y="3111" width="64" height="17" class="color0"/><use xlink:href="#g7" y="3111"/><use xlink:href="#g12" y="3128"/><rect x="216" y="3145" width="8" height="17" class="foreground"/><use xlink:href="#g3" y="3145"/></g><g><use xlink:href="#g4" y="3230"/><use xlink:href="#g6" y="3247"/><use xlink:href="#g4" y="3264"/><rect x="0" y="3281" width="64" height="17" class="color0"/><use xlink:href="#g7" y="3281"/><use xlink:href="#g12" y="3298"/><use xlink:href="#g4" y="3315"/><rect x="0" y="3332" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="3332"/></g><g><use xlink:href="#g4" y="3400"/><use xlink:href="#g6" y="3417"/><use xlink:href="#g4" y="3434"/><rect x="0" y="3451" width="64" height="17" class="color0"/><use xlink:href="#g7" y="3451"/><use xlink:href="#g12" y="3468"/><use xlink:href="#g4" y="3485"/><rect x="0" y="3502" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="3502"/></g><g><use xlink:href="#g4" y="3570"/><use xlink:href="#g6" y="3587"/><use xlink:href="#g4" y="3604"/><rect x="0" y="3621" width="64" height="17" class="color0"/><use xlink:href="#g7" y="3621"/><use xlink:href="#g12" y="3638"/><use xlink:href="#g4" y="3655"/><use xlink:href="#g6" y="3672"/><rect x="0" y="3689" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="3689"/></g><g><use xlink:href="#g4" y="3740"/><use xlink:href="#g6" y="3757"/><use xlink:href="#g4" y="3774"/><rect x="0" y="3791" width="64" height="17" class="color0"/><use xlink:href="#g7" y="3791"/><use xlink:href="#g12" y="3808"/><use xlink:href="#g4" y="3825"/><use xlink:href="#g6" y="3842"/><rect x="200" y="3859" width="8" height="17" class="foreground"/><use xlink:href="#g1" y="3859"/></g><g><use xlink:href="#g6" y="3910"/><use xlink:href="#g4" y="3927"/><rect x="0" y="3944" width="64" height="17" class="color0"/><use xlink:href="#g7" y="3944"/><use xlink:href="#g12" y="3961"/><use xlink:href="#g4" y="3978"/><use xlink:href="#g6" y="3995"/><use xlink:href="#g13" y="4012"/><rect x="0" y="4029" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="4029"/></g><g><use xlink:href="#g4" y="4080"/><rect x="0" y="4097" width="64" height="17" class="color0"/><use xlink:href="#g7" y="4097"/><use xlink:href="#g12" y="4114"/><use xlink:href="#g4" y="4131"/><use xlink:href="#g6" y="4148"/><use xlink:href="#g13" y="4165"/><use xlink:href="#g14" y="4182"/><rect x="0" y="4199" width="8" height="17" class="foreground"/><use xlink:href="#g5" y="4199"/></g></g></svg>
+</svg>
