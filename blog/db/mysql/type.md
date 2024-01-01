@@ -243,9 +243,9 @@ TODO
 枚举类型 `ENUM` 可以看作一个下标从 $1$ 开始的数组，尝试以下示例。
 
 ~~~sql
-CREATE TABLE enum_t ( val enum('AA','BB','CC') );
-INSERT INTO enum_t VALUES ('AA'),('BB'),('CC');
-INSERT INTO enum_t VALUES (1),(2),(3);
+CREATE TABLE enum_t ( info varchar(128), val enum('AA','BB','CC') );
+INSERT INTO enum_t VALUES ('AA','AA'),('BB','BB'),('CC','CC');
+INSERT INTO enum_t VALUES ('1',1),('2',2),('3',3);
 ~~~
 
 可以发现，`1` 等价于第 $1$ 个元素 `AA`，`2` 等价于第 $2$ 个元素 `BB`，依此类推。
@@ -254,16 +254,16 @@ INSERT INTO enum_t VALUES (1),(2),(3);
 SELECT * From enum_t;
 ~~~
 
-    +------+
-    | val  |
-    +------+
-    | AA   |
-    | BB   |
-    | CC   |
-    | AA   |
-    | BB   |
-    | CC   |
-    +------+
+    +------+------+
+    | info | val  |
+    +------+------+
+    | AA   | AA   |
+    | BB   | BB   |
+    | CC   | CC   |
+    | 1    | AA   |
+    | 2    | BB   |
+    | 3    | CC   |
+    +------+------+
 
 ### SET集合
 

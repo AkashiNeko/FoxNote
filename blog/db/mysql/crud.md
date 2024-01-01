@@ -105,16 +105,14 @@ FROM table_name
 SELECT * FROM student;
 ~~~
 
-    +------+------+--------+------------+
-    | name | age  | gender | birthday   |
-    +------+------+--------+------------+
-    | 张三 |   18 | 男     | 2003-06-01 |
-    | 李四 |   19 | 女     | NULL       |
-    | 王五 |   20 | 男     | NULL       |
-    | 赵六 |   21 | 女     | NULL       |
-    | 孙七 |   20 | 男     | NULL       |
-    | 周八 |   20 | 女     | NULL       |
-    +------+------+--------+------------+
+| name | age | gender | birthday |
+| :-: | :-: | :-: | :-: |
+| 张三 | 18 | 男 | 2003-06-01 |
+| 李四 | 19 | 女 | NULL |
+| 王五 | 20 | 男 | NULL |
+| 赵六 | 21 | 女 | NULL |
+| 孙七 | 20 | 男 | NULL |
+| 周八 | 20 | 女 | NULL |
 
 查看所有男生的信息。
 
@@ -122,13 +120,11 @@ SELECT * FROM student;
 SELECT * FROM student WHERE gender='男';
 ~~~
 
-    +------+------+--------+------------+
-    | name | age  | gender | birthday   |
-    +------+------+--------+------------+
-    | 张三 |   18 | 男     | 2003-06-01 |
-    | 王五 |   20 | 男     | NULL       |
-    | 孙七 |   20 | 男     | NULL       |
-    +------+------+--------+------------+
+| name | age  | gender | birthday |
+| :-: | :-: | :-: | :-: |
+| 张三 | 18 | 男 | 2003-06-01 |
+| 王五 | 20 | 男 | NULL |
+| 孙七 | 20 | 男 | NULL |
 
 查看年龄大于 `19` 的学生的姓名和年龄。
 
@@ -136,13 +132,11 @@ SELECT * FROM student WHERE gender='男';
 SELECT name,age FROM student WHERE age>19;
 ~~~
 
-    +------+------+
-    | name | age  |
-    +------+------+
-    | 王五 |   20 |
-    | 赵六 |   21 |
-    | 孙七 |   20 |
-    +------+------+
+| name | age |
+| :-: | :-: |
+| 王五 | 20 |
+| 赵六 | 21 |
+| 孙七 | 20 |
 
 查看所有女生的信息，按年龄排序。
 
@@ -150,13 +144,11 @@ SELECT name,age FROM student WHERE age>19;
 SELECT * FROM student WHERE gender='女' ORDER BY age;
 ~~~
 
-    +------+------+--------+----------+
-    | name | age  | gender | birthday |
-    +------+------+--------+----------+
-    | 李四 |   19 | 女     | NULL     |
-    | 周八 |   20 | 女     | NULL     |
-    | 赵六 |   21 | 女     | NULL     |
-    +------+------+--------+----------+
+| name | age | gender | birthday |
+| :-: | :-: | :-: | :-: |
+| 李四 | 19 | 女 | NULL |
+| 周八 | 20 | 女 | NULL |
+| 赵六 | 21 | 女 | NULL |
 
 查看年龄最小的前 $3$ 位学生的信息。
 
@@ -164,13 +156,11 @@ SELECT * FROM student WHERE gender='女' ORDER BY age;
 SELECT * FROM student ORDER BY age LIMIT 3;
 ~~~
 
-    +------+------+--------+------------+
-    | name | age  | gender | birthday   |
-    +------+------+--------+------------+
-    | 张三 |   18 | 男     | 2003-06-01 |
-    | 李四 |   19 | 女     | NULL       |
-    | 周八 |   19 | 女     | NULL       |
-    +------+------+--------+------------+
+| name | age  | gender | birthday   |
+| :-: | :-: | :-: | :-: |
+| 张三 |   18 | 男     | 2003-06-01 |
+| 李四 |   19 | 女     | NULL       |
+| 周八 |   19 | 女     | NULL       |
 
 ## 3. 修改记录
 
@@ -213,7 +203,7 @@ UPDATE person SET name='Alex' WHERE name='Alexander';
 -- Rows matched: 1  Changed: 1  Warnings: 0
 ~~~
 
-将所有人的年龄增加 $1$ 岁。
+将所有人的年龄增加1岁。
 
 ~~~sql:no-line-numbers
 UPDATE person SET age=age+1;
@@ -243,7 +233,7 @@ DELETE FROM person WHERE name='James';
 -- Query OK, 1 row affected
 ~~~
 
-删除年龄小于 $30$ 的记录。
+删除年龄小于30的记录。
 
 ~~~sql:no-line-numbers
 DELETE FROM person WHERE age<30;
