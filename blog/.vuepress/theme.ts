@@ -67,7 +67,7 @@ export default hopeTheme({
     plugins: {
 
         prismjs: {
-            light: "ateliersulphurpool-light",
+            light: "ghcolors",
             dark: "vsc-dark-plus",
         },
         // prismjs: false,

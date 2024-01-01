@@ -8,7 +8,7 @@ category:
 tag:
   - 约束
 excerpt: 表约束是关系型数据库中对表的列或列组合施加的限制和规则。
-order: 11
+order: 6
 ---
 
 ## 1. 默认值约束
@@ -30,32 +30,31 @@ CREATE TABLE student1 (
 );
 INSERT INTO student1 (name,age) VALUES ('张三',20);
 INSERT INTO student1 (name) VALUES ('李四'),('王五');
+SELECT * FROM student1;
 ~~~
 
-~~~text:no-line-numbers
-mysql> SELECT * FROM student1;
-+------+------+
-| name | age  |
-+------+------+
-| 张三 |   20 |
-| 李四 |   18 |
-| 王五 |   18 |
-+------+------+
-~~~
+    +------+------+
+    | name | age  |
+    +------+------+
+    | 张三 |   20 |
+    | 李四 |   18 |
+    | 王五 |   18 |
+    +------+------+
 
 可以发现 `age` 列设置默认值后，在省略列的情况下，它使用了默认值 `18`。
 
 使用 `DESC` 关键字查看表结构。
 
-~~~text:no-line-numbers
-mysql> DESC student1;
-+-------+-------------+------+-----+---------+-------+
-| Field | Type        | Null | Key | Default | Extra |
-+-------+-------------+------+-----+---------+-------+
-| name  | varchar(64) | YES  |     | NULL    |       |
-| age   | int         | YES  |     | 18      |       |
-+-------+-------------+------+-----+---------+-------+
+~~~sql:no-line-numbers
+DESC student1;
 ~~~
+
+    +-------+-------------+------+-----+---------+-------+
+    | Field | Type        | Null | Key | Default | Extra |
+    +-------+-------------+------+-----+---------+-------+
+    | name  | varchar(64) | YES  |     | NULL    |       |
+    | age   | int         | YES  |     | 18      |       |
+    +-------+-------------+------+-----+---------+-------+
 
 在 `Default` 列中，可以看到每一列的默认值，没有设置默认值的列为 `NULL`。
 
@@ -91,15 +90,16 @@ INSERT INTO student2 (name,age) VALUES (NULL,20);
 
 使用 `DESC` 关键字查看表结构。
 
-~~~text:no-line-numbers
+~~~sql:no-line-numbers
 mysql> DESC student2;
-+-------+-------------+------+-----+---------+-------+
-| Field | Type        | Null | Key | Default | Extra |
-+-------+-------------+------+-----+---------+-------+
-| name  | varchar(64) | NO   |     | NULL    |       |
-| age   | int         | YES  |     | 18      |       |
-+-------+-------------+------+-----+---------+-------+
 ~~~
+
+    +-------+-------------+------+-----+---------+-------+
+    | Field | Type        | Null | Key | Default | Extra |
+    +-------+-------------+------+-----+---------+-------+
+    | name  | varchar(64) | NO   |     | NULL    |       |
+    | age   | int         | YES  |     | 18      |       |
+    +-------+-------------+------+-----+---------+-------+
 
 在 `Null` 列中，可以看到设置了非空约束的列为 `NO`，表示该列不允许为空。
 
@@ -131,15 +131,16 @@ INSERT INTO student3 (name) VALUES ('akashi');
 
 使用 `DESC` 关键字查看表结构。
 
-~~~text:no-line-numbers
-mysql> DESC student3;
-+-------+-------------+------+-----+---------+-------+
-| Field | Type        | Null | Key | Default | Extra |
-+-------+-------------+------+-----+---------+-------+
-| name  | varchar(64) | YES  | UNI | NULL    |       |
-| age   | int         | YES  |     | 18      |       |
-+-------+-------------+------+-----+---------+-------+
+~~~sql:no-line-numbers
+DESC student3;
 ~~~
+
+    +-------+-------------+------+-----+---------+-------+
+    | Field | Type        | Null | Key | Default | Extra |
+    +-------+-------------+------+-----+---------+-------+
+    | name  | varchar(64) | YES  | UNI | NULL    |       |
+    | age   | int         | YES  |     | 18      |       |
+    +-------+-------------+------+-----+---------+-------+
 
 在 `Key` 列中，设有唯一键的列会显示为 `UNI`。
 
@@ -152,16 +153,17 @@ INSERT INTO student3 (age) VALUES (10);
 INSERT INTO student3 (name,age) VALUES (NULL,10);
 ~~~
 
-~~~text:no-line-numbers
-mysql> SELECT * FROM student3;
-+--------+------+
-| name   | age  |
-+--------+------+
-| akashi |   18 |
-| NULL   |   10 |
-| NULL   |   10 |
-+--------+------+
+~~~sql:no-line-numbers
+SELECT * FROM student3;
 ~~~
+
+    +--------+------+
+    | name   | age  |
+    +--------+------+
+    | akashi |   18 |
+    | NULL   |   10 |
+    | NULL   |   10 |
+    +--------+------+
 
 ## 4. 主键约束
 
@@ -186,35 +188,28 @@ INSERT INTO student4 VALUES ('张三',18),('李四',19),('王五',20);
 
 如果一个列被设为主键，那么通过这个列可以唯一指定一条记录，而且可以保证该记录不为空。
 
-~~~text:no-line-numbers
-mysql> SELECT * FROM student4 WHERE name='张三';
-+------+------+
-| name | age  |
-+------+------+
-| 张三 |   18 |
-+------+------+
+~~~sql:no-line-numbers
+SELECT * FROM student4 WHERE name='张三';
 ~~~
 
-~~~text:no-line-numbers
-mysql> SELECT * FROM student4 WHERE name='李四';
-+------+------+
-| name | age  |
-+------+------+
-| 李四 |   19 |
-+------+------+
-~~~
+    +------+------+
+    | name | age  |
+    +------+------+
+    | 张三 |   18 |
+    +------+------+
 
 使用 `DESC` 关键字查看表结构。
 
-~~~text:no-line-numbers
-mysql> DESC student4;
-+-------+-------------+------+-----+---------+-------+
-| Field | Type        | Null | Key | Default | Extra |
-+-------+-------------+------+-----+---------+-------+
-| name  | varchar(64) | NO   | PRI | NULL    |       |
-| age   | int         | YES  |     | 18      |       |
-+-------+-------------+------+-----+---------+-------+
+~~~sql:no-line-numbers
+DESC student4;
 ~~~
+
+    +-------+-------------+------+-----+---------+-------+
+    | Field | Type        | Null | Key | Default | Extra |
+    +-------+-------------+------+-----+---------+-------+
+    | name  | varchar(64) | NO   | PRI | NULL    |       |
+    | age   | int         | YES  |     | 18      |       |
+    +-------+-------------+------+-----+---------+-------+
 
 在 `Key` 列中，设有主键的列会显示为 `PRI`。
 
@@ -240,7 +235,7 @@ ALTER TABLE student4 ADD PRIMARY KEY (name);
 
 ::: caution 对于已经存在主键的表，在其他列添加主键。
 
-~~~sql
+~~~sql:no-line-numbers
 ALTER TABLE student4 ADD PRIMARY KEY (age);
 -- ERROR 1068 (42000): Multiple primary key defined
 ~~~
@@ -249,7 +244,7 @@ ALTER TABLE student4 ADD PRIMARY KEY (age);
 
 ::: caution 创建表时设置多个主键。
 
-~~~sql
+~~~sql:no-line-numbers
 CREATE TABLE student (
     name varchar(64) PRIMARY KEY,
     age int DEFAULT 18 PRIMARY KEY
@@ -274,19 +269,20 @@ INSERT INTO sc VALUES
 ('李四','语文',93),('李四','数学',86),('李四','英语',95);
 ~~~
 
-~~~text:no-line-numbers
-mysql> SELECT * FROM sc;
-+-------+-------+-------+
-| sname | cname | score |
-+-------+-------+-------+
-| 张三  | 数学  |    97 |
-| 张三  | 英语  |    89 |
-| 张三  | 语文  |    85 |
-| 李四  | 数学  |    86 |
-| 李四  | 英语  |    95 |
-| 李四  | 语文  |    93 |
-+-------+-------+-------+
+~~~sql:no-line-numbers
+SELECT * FROM sc;
 ~~~
+
+    +-------+-------+-------+
+    | sname | cname | score |
+    +-------+-------+-------+
+    | 张三  | 数学  |    97 |
+    | 张三  | 英语  |    89 |
+    | 张三  | 语文  |    85 |
+    | 李四  | 数学  |    86 |
+    | 李四  | 英语  |    95 |
+    | 李四  | 语文  |    93 |
+    +-------+-------+-------+
 
 复合主键使用多个列同时表示唯一记录。这些列本身允许重复值，比如 `sname` 列可以有多个重复的 `张三`，`cname` 列可有多个重复的 `语文`，但是两个列组合在一起的值都是唯一的。
 
@@ -333,31 +329,27 @@ CREATE TABLE IF NOT EXISTS course (
 
 插入一些测试数据。
 
-~~~sql
+~~~sql:no-line-numbers
 INSERT student VALUES (10001,'张三',18),(10002,'李四',19),(10003,'王五',20),(10004,'赵六',21);
+~~~
+
+| sid | name | age |
+| :-: | :-: | :-: |
+| 10001 | 张三 | 18 |
+| 10002 | 李四 | 19 |
+| 10003 | 王五 | 20 |
+| 10004 | 赵六 | 21 |
+
+~~~sql:no-line-numbers
 INSERT course VALUES (1,'高等数学',5.0),(2,'数据结构',3.0),(3,'操作系统',4.0),(4,'数据库',3.5);
 ~~~
 
-~~~text:no-line-numbers
-mysql> SELECT * FROM student;
-+-------+------+-----+
-| sid   | name | age |
-+-------+------+-----+
-| 10001 | 张三 |  18 |
-| 10002 | 李四 |  19 |
-| 10003 | 王五 |  20 |
-| 10004 | 赵六 |  21 |
-+-------+------+-----+
-mysql> SELECT * FROM course;
-+-----+----------+--------+
-| cid | name     | credit |
-+-----+----------+--------+
-|   1 | 高等数学 |   5.00 |
-|   2 | 数据结构 |   3.00 |
-|   3 | 操作系统 |   4.00 |
-|   4 | 数据库   |   3.50 |
-+-----+----------+--------+
-~~~
+| cid | name | credit |
+| :-: | :-: | :-: |
+|  1 | 高等数学 | 5.00 |
+|  2 | 数据结构 | 3.00 |
+|  3 | 操作系统 | 4.00 |
+|  4 | 数据库 | 3.50 |
 
 接下来，我们建立学生的选课成绩表 `sc`，它以学号 `sid` 和课程号 `cid` 作为复合主键。
 
@@ -383,19 +375,20 @@ INSERT INTO sc VALUES (10001,1,95),(10001,2,93),(10001,3,96);
 INSERT INTO sc VALUES (10002,2,90),(10003,2,92),(10004,2,97);
 ~~~
 
-~~~text:no-line-numbsers
-mysql> SELECT * FROM sc;
-+-------+-----+-------+
-| sid   | cid | grade |
-+-------+-----+-------+
-| 10001 |   1 |    95 |
-| 10001 |   2 |    93 |
-| 10001 |   3 |    96 |
-| 10002 |   2 |    90 |
-| 10003 |   2 |    92 |
-| 10004 |   2 |    97 |
-+-------+-----+-------+
+~~~sql:no-line-numbsers
+SELECT * FROM sc;
 ~~~
+
+    +-------+-----+-------+
+    | sid   | cid | grade |
+    +-------+-----+-------+
+    | 10001 |   1 |    95 |
+    | 10001 |   2 |    93 |
+    | 10001 |   3 |    96 |
+    | 10002 |   2 |    90 |
+    | 10003 |   2 |    92 |
+    | 10004 |   2 |    97 |
+    +-------+-----+-------+
 
 随后，我们尝试插入一些不存在于学生表中的学生或不存在于选课表中的课程。
 

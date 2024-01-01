@@ -8,7 +8,7 @@ category:
 tag:
   - SQL
 excerpt: 数据库是MySQL最顶层的数据组织单元，它提供了逻辑和物理的隔离空间，用来存储和管理数据。
-order: 3
+order: 2
 ---
 
 ## 1. 创建数据库
@@ -54,24 +54,23 @@ CREATE DATABASE IF NOT EXISTS mydb;
 SHOW CREATE DATABASE mydb;
 ~~~
 
-~~~text:no-line-numbers
-+----------+--------------------------------------------------------------------------------------------------------------------------------+
-| Database | Create Database                                                                                                                |
-+----------+--------------------------------------------------------------------------------------------------------------------------------+
-| mydb     | CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */ |
-+----------+--------------------------------------------------------------------------------------------------------------------------------+
-~~~
+    +----------+--------------------------------------------------------------------------------------------------------------------------------+
+    | Database | Create Database                                                                                                                |
+    +----------+--------------------------------------------------------------------------------------------------------------------------------+
+    | mydb     | CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */ |
+    +----------+--------------------------------------------------------------------------------------------------------------------------------+
 
 ::: info 表格显示异常问题
 
 在交互式的客户端下，如果 `SQL` 语句以字符 `;`（或 `\g`） 结尾，那么返回的查询结果会以一个表格的形式呈现。如果返回的表格太宽，在终端上可能会不正常地换行显示，这时候可以使用 `\G` 作为 `SQL` 语句的结尾，它会将每一列拆成行进行显示。
 
-~~~text:no-line-numbers
-mysql> SHOW CREATE DATABASE mydb\G
-*************************** 1. row ***************************
-       Database: mydb
-Create Database: CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */
+~~~sql:no-line-numbers
+SHOW CREATE DATABASE mydb\G
 ~~~
+
+    *************************** 1. row ***************************
+        Database: mydb
+    Create Database: CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */
 
 :::
 
@@ -89,13 +88,11 @@ Create Database: CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 C
 SHOW variables LIKE 'character_set_database';
 ~~~
 
-~~~text:no-line-numbers
-+------------------------+---------+
-| Variable_name          | Value   |
-+------------------------+---------+
-| character_set_database | utf8mb4 |
-+------------------------+---------+
-~~~
+    +------------------------+---------+
+    | Variable_name          | Value   |
+    +------------------------+---------+
+    | character_set_database | utf8mb4 |
+    +------------------------+---------+
 
 查看默认的校验规则。
 
@@ -103,13 +100,11 @@ SHOW variables LIKE 'character_set_database';
 SHOW variables LIKE 'collation_database';
 ~~~
 
-~~~text:no-line-numbers
-+--------------------+--------------------+
-| Variable_name      | Value              |
-+--------------------+--------------------+
-| collation_database | utf8mb4_0900_ai_ci |
-+--------------------+--------------------+
-~~~
+    +--------------------+--------------------+
+    | Variable_name      | Value              |
+    +--------------------+--------------------+
+    | collation_database | utf8mb4_0900_ai_ci |
+    +--------------------+--------------------+
 
 查看当前支持的所有字符集。
 
@@ -125,54 +120,51 @@ SHOW collation;
 
 ::: details MySQL8.0支持的所有字符集
 
-~~~text:no-line-numbers
-mysql> SHOW charset;
-+----------+---------------------------------+---------------------+--------+
-| Charset  | Description                     | Default collation   | Maxlen |
-+----------+---------------------------------+---------------------+--------+
-| armscii8 | ARMSCII-8 Armenian              | armscii8_general_ci |      1 |
-| ascii    | US ASCII                        | ascii_general_ci    |      1 |
-| big5     | Big5 Traditional Chinese        | big5_chinese_ci     |      2 |
-| binary   | Binary pseudo charset           | binary              |      1 |
-| cp1250   | Windows Central European        | cp1250_general_ci   |      1 |
-| cp1251   | Windows Cyrillic                | cp1251_general_ci   |      1 |
-| cp1256   | Windows Arabic                  | cp1256_general_ci   |      1 |
-| cp1257   | Windows Baltic                  | cp1257_general_ci   |      1 |
-| cp850    | DOS West European               | cp850_general_ci    |      1 |
-| cp852    | DOS Central European            | cp852_general_ci    |      1 |
-| cp866    | DOS Russian                     | cp866_general_ci    |      1 |
-| cp932    | SJIS for Windows Japanese       | cp932_japanese_ci   |      2 |
-| dec8     | DEC West European               | dec8_swedish_ci     |      1 |
-| eucjpms  | UJIS for Windows Japanese       | eucjpms_japanese_ci |      3 |
-| euckr    | EUC-KR Korean                   | euckr_korean_ci     |      2 |
-| gb18030  | China National Standard GB18030 | gb18030_chinese_ci  |      4 |
-| gb2312   | GB2312 Simplified Chinese       | gb2312_chinese_ci   |      2 |
-| gbk      | GBK Simplified Chinese          | gbk_chinese_ci      |      2 |
-| geostd8  | GEOSTD8 Georgian                | geostd8_general_ci  |      1 |
-| greek    | ISO 8859-7 Greek                | greek_general_ci    |      1 |
-| hebrew   | ISO 8859-8 Hebrew               | hebrew_general_ci   |      1 |
-| hp8      | HP West European                | hp8_english_ci      |      1 |
-| keybcs2  | DOS Kamenicky Czech-Slovak      | keybcs2_general_ci  |      1 |
-| koi8r    | KOI8-R Relcom Russian           | koi8r_general_ci    |      1 |
-| koi8u    | KOI8-U Ukrainian                | koi8u_general_ci    |      1 |
-| latin1   | cp1252 West European            | latin1_swedish_ci   |      1 |
-| latin2   | ISO 8859-2 Central European     | latin2_general_ci   |      1 |
-| latin5   | ISO 8859-9 Turkish              | latin5_turkish_ci   |      1 |
-| latin7   | ISO 8859-13 Baltic              | latin7_general_ci   |      1 |
-| macce    | Mac Central European            | macce_general_ci    |      1 |
-| macroman | Mac West European               | macroman_general_ci |      1 |
-| sjis     | Shift-JIS Japanese              | sjis_japanese_ci    |      2 |
-| swe7     | 7bit Swedish                    | swe7_swedish_ci     |      1 |
-| tis620   | TIS620 Thai                     | tis620_thai_ci      |      1 |
-| ucs2     | UCS-2 Unicode                   | ucs2_general_ci     |      2 |
-| ujis     | EUC-JP Japanese                 | ujis_japanese_ci    |      3 |
-| utf16    | UTF-16 Unicode                  | utf16_general_ci    |      4 |
-| utf16le  | UTF-16LE Unicode                | utf16le_general_ci  |      4 |
-| utf32    | UTF-32 Unicode                  | utf32_general_ci    |      4 |
-| utf8mb3  | UTF-8 Unicode                   | utf8mb3_general_ci  |      3 |
-| utf8mb4  | UTF-8 Unicode                   | utf8mb4_0900_ai_ci  |      4 |
-+----------+---------------------------------+---------------------+--------+
-~~~
+    +----------+---------------------------------+---------------------+--------+
+    | Charset  | Description                     | Default collation   | Maxlen |
+    +----------+---------------------------------+---------------------+--------+
+    | armscii8 | ARMSCII-8 Armenian              | armscii8_general_ci |      1 |
+    | ascii    | US ASCII                        | ascii_general_ci    |      1 |
+    | big5     | Big5 Traditional Chinese        | big5_chinese_ci     |      2 |
+    | binary   | Binary pseudo charset           | binary              |      1 |
+    | cp1250   | Windows Central European        | cp1250_general_ci   |      1 |
+    | cp1251   | Windows Cyrillic                | cp1251_general_ci   |      1 |
+    | cp1256   | Windows Arabic                  | cp1256_general_ci   |      1 |
+    | cp1257   | Windows Baltic                  | cp1257_general_ci   |      1 |
+    | cp850    | DOS West European               | cp850_general_ci    |      1 |
+    | cp852    | DOS Central European            | cp852_general_ci    |      1 |
+    | cp866    | DOS Russian                     | cp866_general_ci    |      1 |
+    | cp932    | SJIS for Windows Japanese       | cp932_japanese_ci   |      2 |
+    | dec8     | DEC West European               | dec8_swedish_ci     |      1 |
+    | eucjpms  | UJIS for Windows Japanese       | eucjpms_japanese_ci |      3 |
+    | euckr    | EUC-KR Korean                   | euckr_korean_ci     |      2 |
+    | gb18030  | China National Standard GB18030 | gb18030_chinese_ci  |      4 |
+    | gb2312   | GB2312 Simplified Chinese       | gb2312_chinese_ci   |      2 |
+    | gbk      | GBK Simplified Chinese          | gbk_chinese_ci      |      2 |
+    | geostd8  | GEOSTD8 Georgian                | geostd8_general_ci  |      1 |
+    | greek    | ISO 8859-7 Greek                | greek_general_ci    |      1 |
+    | hebrew   | ISO 8859-8 Hebrew               | hebrew_general_ci   |      1 |
+    | hp8      | HP West European                | hp8_english_ci      |      1 |
+    | keybcs2  | DOS Kamenicky Czech-Slovak      | keybcs2_general_ci  |      1 |
+    | koi8r    | KOI8-R Relcom Russian           | koi8r_general_ci    |      1 |
+    | koi8u    | KOI8-U Ukrainian                | koi8u_general_ci    |      1 |
+    | latin1   | cp1252 West European            | latin1_swedish_ci   |      1 |
+    | latin2   | ISO 8859-2 Central European     | latin2_general_ci   |      1 |
+    | latin5   | ISO 8859-9 Turkish              | latin5_turkish_ci   |      1 |
+    | latin7   | ISO 8859-13 Baltic              | latin7_general_ci   |      1 |
+    | macce    | Mac Central European            | macce_general_ci    |      1 |
+    | macroman | Mac West European               | macroman_general_ci |      1 |
+    | sjis     | Shift-JIS Japanese              | sjis_japanese_ci    |      2 |
+    | swe7     | 7bit Swedish                    | swe7_swedish_ci     |      1 |
+    | tis620   | TIS620 Thai                     | tis620_thai_ci      |      1 |
+    | ucs2     | UCS-2 Unicode                   | ucs2_general_ci     |      2 |
+    | ujis     | EUC-JP Japanese                 | ujis_japanese_ci    |      3 |
+    | utf16    | UTF-16 Unicode                  | utf16_general_ci    |      4 |
+    | utf16le  | UTF-16LE Unicode                | utf16le_general_ci  |      4 |
+    | utf32    | UTF-32 Unicode                  | utf32_general_ci    |      4 |
+    | utf8mb3  | UTF-8 Unicode                   | utf8mb3_general_ci  |      3 |
+    | utf8mb4  | UTF-8 Unicode                   | utf8mb4_0900_ai_ci  |      4 |
+    +----------+---------------------------------+---------------------+--------+
 
 :::
 
@@ -196,11 +188,9 @@ CREATE DATABASE mydb CHARSET gbk COLLATE gbk_chinese_ci;
 SHOW CREATE DATABASE mydb\G
 ~~~
 
-~~~text:no-line-numbers
-*************************** 1. row ***************************
-       Database: mydb
-Create Database: CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET gbk */ /*!80016 DEFAULT ENCRYPTION='N' */
-~~~
+    *************************** 1. row ***************************
+        Database: mydb
+    Create Database: CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET gbk */ /*!80016 DEFAULT ENCRYPTION='N' */
 
 ## 3. 查看数据库
 
@@ -210,18 +200,15 @@ Create Database: CREATE DATABASE `mydb` /*!40100 DEFAULT CHARACTER SET gbk */ /*
 SHOW DATABASES;
 ~~~
 
-~~~text:no-line-numbers
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-| mydb               |
-| ...                |
-+--------------------+
-~~~
+    +--------------------+
+    | Database           |
+    +--------------------+
+    | information_schema |
+    | mysql              |
+    | performance_schema |
+    | sys                |
+    | mydb               |
+    +--------------------+
 
 ::: tip 注意
 
@@ -235,13 +222,11 @@ SHOW DATABASES;
 SHOW DATABASES LIKE 'mydb';
 ~~~
 
-~~~text:no-line-numbers
-+--------------------+
-| Database           |
-+--------------------+
-| mydb               |
-+--------------------+
-~~~
+    +--------------------+
+    | Database           |
+    +--------------------+
+    | mydb               |
+    +--------------------+
 
 ## 4. 使用数据库
 
@@ -259,28 +244,26 @@ USE db_name;
 
 使用 `SELECT DATABASE()` 语句可以查看当前 `USE` 的数据库，未使用任何数据库时为 `NULL`。
 
-~~~text:no-line-numbers
-mysql> SELECT database();
-+------------+
-| database() |
-+------------+
-| NULL       |
-+------------+
+~~~sql:no-line-numbers
+SELECT database();
 ~~~
 
-~~~text:no-line-numbers
-mysql> USE mydb;
-Database changed
+    +------------+
+    | database() |
+    +------------+
+    | NULL       |
+    +------------+
+
+~~~sql:no-line-numbers
+USE mydb;
+SELECT database();
 ~~~
 
-~~~text:no-line-numbers
-mysql> SELECT database();
-+------------+
-| database() |
-+------------+
-| mydb       |
-+------------+
-~~~
+    +------------+
+    | database() |
+    +------------+
+    | mydb       |
+    +------------+
 
 ### 查看所有连接
 
@@ -290,14 +273,12 @@ mysql> SELECT database();
 SHOW processlist;
 ~~~
 
-~~~text:no-line-numbers
-+----+-----------------+---------------+------+---------+------+------------------------+------------------+
-| Id | User            | Host          | db   | Command | Time | State                  | Info             |
-+----+-----------------+---------------+------+---------+------+------------------------+------------------+
-|  5 | event_scheduler | localhost     | NULL | Daemon  | 5782 | Waiting on empty queue | NULL             |
-|  8 | akashi          | akashipc:9423 | mydb | Query   |    0 | init                   | SHOW processlist |
-+----+-----------------+---------------+------+---------+------+------------------------+------------------+
-~~~
+    +----+-----------------+---------------+------+---------+------+------------------------+------------------+
+    | Id | User            | Host          | db   | Command | Time | State                  | Info             |
+    +----+-----------------+---------------+------+---------+------+------------------------+------------------+
+    |  5 | event_scheduler | localhost     | NULL | Daemon  | 5782 | Waiting on empty queue | NULL             |
+    |  8 | akashi          | akashipc:9423 | mydb | Query   |    0 | init                   | SHOW processlist |
+    +----+-----------------+---------------+------+---------+------+------------------------+------------------+
 
 ## 5. 删除数据库
 

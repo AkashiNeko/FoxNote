@@ -8,7 +8,7 @@ category:
 tag:
   - SQL
 excerpt: 数据表是数据库中的一个基本组成单位，数据以表的形式进行组织和存储。
-order: 4
+order: 3
 ---
 
 ## 1. 创建数据表
@@ -74,66 +74,71 @@ CREATE TABLE IF NOT EXISTS user2 (
 
 使用 `SHOW` 关键字查看当前使用的数据库中的所有数据表。
 
-~~~text:no-line-numbers
-mysql> SHOW TABLES;
-+----------------+
-| Tables_in_mydb |
-+----------------+
-| user1          |
-| user2          |
-+----------------+
+~~~sql:no-line-numbers
+SHOW TABLES;
 ~~~
+
+    +----------------+
+    | Tables_in_mydb |
+    +----------------+
+    | user1          |
+    | user2          |
+    +----------------+
 
 ### 查看表结构
 
 使用 `DESC` 关键字查看表结构。
 
-~~~text:no-line-numbers
-mysql> DESC user1;
-+--------+------------+------+-----+---------+-------+
-| Field  | Type       | Null | Key | Default | Extra |
-+--------+------------+------+-----+---------+-------+
-| name   | char(20)   | YES  |     | NULL    |       |
-| age    | int        | YES  |     | NULL    |       |
-| gender | tinyint(1) | YES  |     | NULL    |       |
-+--------+------------+------+-----+---------+-------+
+~~~sql:no-line-numbers
+DESC user1;
 ~~~
 
-~~~text:no-line-numbers
-mysql> DESC user2;
-+----------+----------+------+-----+---------+-------+
-| Field    | Type     | Null | Key | Default | Extra |
-+----------+----------+------+-----+---------+-------+
-| uid      | char(20) | NO   | PRI | NULL    |       |
-| password | char(32) | NO   |     | NULL    |       |
-+----------+----------+------+-----+---------+-------+
+    +--------+------------+------+-----+---------+-------+
+    | Field  | Type       | Null | Key | Default | Extra |
+    +--------+------------+------+-----+---------+-------+
+    | name   | char(20)   | YES  |     | NULL    |       |
+    | age    | int        | YES  |     | NULL    |       |
+    | gender | tinyint(1) | YES  |     | NULL    |       |
+    +--------+------------+------+-----+---------+-------+
+
+~~~sql:no-line-numbers
+DESC user2;
 ~~~
+
+    +----------+----------+------+-----+---------+-------+
+    | Field    | Type     | Null | Key | Default | Extra |
+    +----------+----------+------+-----+---------+-------+
+    | uid      | char(20) | NO   | PRI | NULL    |       |
+    | password | char(32) | NO   |     | NULL    |       |
+    +----------+----------+------+-----+---------+-------+
 
 ### 查看创建结果
 
 同数据库一样，可以使用 `SHOW` 查看创建表的结果。
 
-~~~text:no-line-numbers
-mysql> SHOW CREATE TABLE user1\G
-*************************** 1. row ***************************
-       Table: user1
-Create Table: CREATE TABLE `user1` (
-  `name` char(20) DEFAULT NULL,
-  `age` int DEFAULT NULL,
-  `gender` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+~~~sql:no-line-numbers
+SHOW CREATE TABLE user1\G
 ~~~
 
-~~~text:no-line-numbers
+    *************************** 1. row ***************************
+        Table: user1
+    Create Table: CREATE TABLE `user1` (
+    `name` char(20) DEFAULT NULL,
+    `age` int DEFAULT NULL,
+    `gender` tinyint(1) DEFAULT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+~~~sql:no-line-numbers
 mysql> SHOW CREATE TABLE user2\G
-*************************** 1. row ***************************
-       Table: user2
-Create Table: CREATE TABLE `user2` (
-  `uid` char(20) NOT NULL COMMENT '用户的ID',
-  `password` char(32) NOT NULL COMMENT '密码的MD5值',
-  PRIMARY KEY (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 ~~~
+
+    *************************** 1. row ***************************
+        Table: user2
+    Create Table: CREATE TABLE `user2` (
+    `uid` char(20) NOT NULL COMMENT '用户的ID',
+    `password` char(32) NOT NULL COMMENT '密码的MD5值',
+    PRIMARY KEY (`uid`)
+    ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 
 ## 3. 删除数据表
 
@@ -155,85 +160,135 @@ DROP TABLE user2;
 DROP TABLE IF EXISTS user2;
 ~~~
 
-## 4. 修改记录
+## 4. 修改表结构
 
-### UPDATE关键字
+对表结构的修改，需要使用 `ALTER` 关键字。
 
-关键字 `UPDATE` 可以修改表中已存在的记录，配合 `WHERE` 选中要修改的值，`SET` 设置新的值。
+### 增加和删除列
 
-~~~sql
-UPDATE table_name
-SET field1=value1,field2=value2,...
-WHERE condition;
-~~~
+增加列时，使用 `ADD` 关键字。要增加的列的写法与创建表时相似。
 
-这里关键字 `WHERE` 的用法和 `SELECT` 查询数据时的用法完全相同，用于筛选特定的数据。
-
-### 修改记录示例
-
-首先创建下面的数据表 `person`，插入一些测试数据。
-
-~~~sql
-CREATE TABLE person (
-    name varchar(64) COMMENT '姓名',
-    age smallint COMMENT '年龄',
-    gender char(4) COMMENT '性别'
+~~~sql:no-line-numbers
+ALTER TABLE table_name ADD (
+    field1 datatype1 [...],
+    field2 datatype2 [...],
+    ...
 );
-
-INSERT INTO person VALUES ('Emily',25,'F'),
-('James',32,'M'),('Emma',18,'F'),('William',40,'M'),
-('Olivia',27,'F'),('Benjamin',35,'M'),('Ava',22,'F'),
-('Alexander',29,'M'),('Sophia',31,'F'),('Jacob',37,'M');
 ~~~
 
-将 `Alexander` 的姓名修改为 `Alex`。
+在 `user1` 表中新增一列 `birthday`。
 
 ~~~sql:no-line-numbers
-UPDATE person SET name='Alex' WHERE name='Alexander';
--- Query OK, 1 row affected
--- Rows matched: 1  Changed: 1  Warnings: 0
+ALTER TABLE user1 ADD ( birthday date );
 ~~~
 
-将所有人的年龄增加 $1$ 岁。
+要删除列，只要将 `ADD` 关键字变为 `DROP`，后接要删除的列名。
 
 ~~~sql:no-line-numbers
-UPDATE person SET age=age+1;
--- Query OK, 10 rows affected (0.01 sec)
--- Rows matched: 10  Changed: 10  Warnings: 0
+ALTER TABLE table_name DROP field;
 ~~~
 
-## 5. 删除记录
-
-### DELETE关键字
-
-使用关键字 `DELETE FROM` 删除表中的记录。
+删除 `user1` 表中的 `birthday` 列。
 
 ~~~sql:no-line-numbers
-DELETE FROM table_name
-WHERE condition;
+ALTER TABLE user1 DROP birthday;
 ~~~
 
-### 删除记录示例
+### 修改列属性
 
-继续对之前的 `person` 表进行操作。
-
-删除姓名为 `James` 的记录。
+关键字 `MODIFY` 可以修改列的类型和约束条件。后接要修改的列名，且必须是已经存在的列。
 
 ~~~sql:no-line-numbers
-DELETE FROM person WHERE name='James';
--- Query OK, 1 row affected
+ALTER TABLE table_name MODIFY field new_datatype [...];
 ~~~
 
-删除年龄小于 $30$ 的记录。
+将 `user1` 表中 `name` 的类型由 `char(20)` 改为 `char(40)`，且不为空。
 
 ~~~sql:no-line-numbers
-DELETE FROM person WHERE age<30;
--- Query OK, 4 rows affected
+DESC user1;
 ~~~
 
-删除所有记录。
+    +--------+------------+------+-----+---------+-------+
+    | Field  | Type       | Null | Key | Default | Extra |
+    +--------+------------+------+-----+---------+-------+
+    | name   | char(20)   | YES  |     | NULL    |       |
+    | age    | int        | YES  |     | NULL    |       |
+    | gender | tinyint(1) | YES  |     | NULL    |       |
+    +--------+------------+------+-----+---------+-------+
 
 ~~~sql:no-line-numbers
-DELETE FROM person;
--- Query OK, 5 rows affected
+ALTER TABLE user1 MODIFY name char(40) NOT NULL;
+~~~
+
+~~~sql:no-line-numbers
+mysql> DESC user1;
+~~~
+
+    +--------+------------+------+-----+---------+-------+
+    | Field  | Type       | Null | Key | Default | Extra |
+    +--------+------------+------+-----+---------+-------+
+    | name   | char(40)   | NO   |     | NULL    |       |
+    | age    | int        | YES  |     | NULL    |       |
+    | gender | tinyint(1) | YES  |     | NULL    |       |
+    +--------+------------+------+-----+---------+-------+
+
+## 5. 修改名称
+
+### 修改表名
+
+修改表名需要用到 `RENAME` 关键字，其后的 `TO` 可以省略不写，对表名的修改不影响表的结构。
+
+~~~sql:no-line-numbers
+ALTER TABLE old_table_name RENAME [TO] new_table_name;
+~~~
+
+::: info 参数说明
+
+- `old_table_name`：被修改的旧表名。
+- `new_table_name`：修改后的新表名。
+
+:::
+
+将 `user1` 表改名为 `users`。
+
+~~~sql:no-line-numbers
+SHOW TABLES;
+~~~
+
+    +----------------+
+    | Tables_in_mydb |
+    +----------------+
+    | user1          |
+    +----------------+
+
+~~~sql:no-line-numbers
+ALTER TABLE user1 RENAME TO users;
+SHOW TABLES;
+~~~
+
+    +----------------+
+    | Tables_in_mydb |
+    +----------------+
+    | users          |
+    +----------------+
+
+### 修改列名
+
+修改列名使用关键字 `CHANGE`，语法与 `MODIFY` 修改列属性基本一致，它也可以修改列属性。唯一的区别是 `CHANGE` 指定的列名后需要填写新的列名称。
+
+~~~sql:no-line-numbers
+ALTER TABLE table_name CHANGE old_field new_field datatype [...];
+~~~
+
+::: info 参数说明
+
+- `old_field`：被修改的旧列名。
+- `new_field`：修改后的新列名。
+
+:::
+
+修改 `user1` 表中 `name` 列的名称为 `username`。
+
+~~~sql:no-line-numbers
+ALTER TABLE users CHANGE name username char(40) NOT NULL;
 ~~~

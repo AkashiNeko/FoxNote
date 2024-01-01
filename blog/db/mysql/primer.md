@@ -171,7 +171,7 @@ Query OK, 0 rows affected (0.02 sec)
 ~~~
 
 ~~~text:no-line-numbers
-mysql> show tables;
+mysql> SHOW TABLES;
 +----------------+
 | Tables_in_mydb |
 +----------------+
