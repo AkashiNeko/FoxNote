@@ -1,7 +1,0 @@
-  <svg id="noise-svg">
-    <!-- gives background a bit of texture -->
-    <filter id='noiseFilter'>
-        <feTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch' />
-    </filter>
-    <rect id="noise-rect" filter='url(#noiseFilter)' />
-  </svg>
