@@ -1,5 +1,5 @@
 ---
-title: 数据表的操作
+title: 修改表结构
 date: 2023-12-21
 isOriginal: true
 icon: "/icon/db_mysql_post.svg"
@@ -8,7 +8,7 @@ category:
 tag:
   - SQL
 excerpt: 数据表是数据库中的一个基本组成单位，数据以表的形式进行组织和存储。
-order: 3
+order: 4
 ---
 
 ## 1. 创建数据表

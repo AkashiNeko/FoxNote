@@ -4,7 +4,7 @@ export default sidebar({
     "/": [
         {
             text: "C++学习笔记",
-            icon: "/icon/cpp.svg",
+            icon: "/icon/cpp0.svg",
             link: "/cpp/",
             prefix: "cpp/",
             children: "structure",

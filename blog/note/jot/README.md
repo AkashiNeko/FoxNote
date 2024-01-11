@@ -1,8 +1,8 @@
 ---
-title: 类和对象
+title: 笔记
 article: false
 index: false
-icon: "/icon/cpp_oop.svg"
+icon: "/icon/note.svg"
 ---
 
 <AutoCatalog />

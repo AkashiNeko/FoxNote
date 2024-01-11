@@ -1,16 +1,14 @@
 ---
-title: 友元函数和友元类
+title: 友元
 date: 2022-08-13
 isOriginal: true
-icon: "/icon/cpp_oop_post.svg"
+icon: "/icon/cpp2.svg"
 category:
   - C++
 tag:
-  - 编程语法
-  - 面向对象
   - 友元
-excerpt: 友元是一种特殊的关系，它允许一个类或函数访问另一个类的私有成员。
-order: 3
+excerpt: C++友元函数和友元类
+order: 5
 ---
 
 ## 1. 友元

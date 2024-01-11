@@ -1,5 +1,5 @@
 ---
-title: 记录的增删查改
+title: 删除记录
 date: 2023-12-22
 isOriginal: true
 icon: "/icon/db_mysql_post.svg"
@@ -7,7 +7,7 @@ category:
   - MySQL
 tag:
   - SQL
-excerpt: 记录的增删查改：插入（INSERT）、删除（DELETE）、查询（SELECT）和修改（UPDATE）。
+excerpt: 删除数据表中已存在的记录
 order: 4
 ---
 

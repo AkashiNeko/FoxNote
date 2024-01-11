@@ -8,7 +8,7 @@ export default navbar([
     },
     {
         text: "C++",
-        icon: "/icon/cpp.svg",
+        icon: "/icon/cpp0.svg",
         link: "/cpp/",
     },
     {

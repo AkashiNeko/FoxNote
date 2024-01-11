@@ -1,22 +1,18 @@
 ---
-title: 对象的资源转移
+title: 移动构造函数
 date: 2022-08-16
 isOriginal: true
-icon: "/icon/cpp_oop_post.svg"
+icon: "/icon/cpp2.svg"
 category:
   - C++
 tag:
-  - 编程语法
-  - 右值引用
-  - 移动构造
-  - 移动赋值
-excerpt: C++11新增的移动构造和移动赋值运算符，用于高效地转移对象资源。
+  - 右值
+  - 构造函数
+excerpt: C++对象的资源转移构造
 order: 6
 ---
 
-## 1. 移动构造函数
-
-### 右值引用
+## 右值引用
 
 在C++11中，可以使用 `std::move()` 将对象转换为右值引用（将亡值），完成资源转移。
 
@@ -26,7 +22,7 @@ std::string s2(std::move(s1));
 // move之后: s1 = "", s2 = "Hello world";
 ~~~
 
-### 移动构造的功能
+## 移动构造的功能
 
 顾名思义，移动构造也是构造函数的一种。移动构造可以更高效地转移资源（浅拷贝），比如 `std::string` 的移动构造。
 
@@ -51,7 +47,7 @@ public:
 };
 ~~~
 
-### 移动构造的实现
+## 移动构造的实现
 
 以之前的Stack类举例，下面是Stack类的移动构造函数。它的主要工作是将 `_data` 指向的空间的管理权从右值交给新对象，并将临时对象的内容清空。
 
@@ -61,58 +57,3 @@ Stack(Stack&& s) :_top(s._top), _capacity(s._capacity), _data(s._data) {
     s._data = nullptr;
 }
 ~~~
-
-## 2. 移动赋值运算符
-
-### 移动赋值的功能
-
-与拷贝赋值运算符、移动构造函数类似，移动赋值运算符是通过右值引用的方式将对象的资源移动给新对象。
-
-~~~cpp
-class A {
-public:
-    A& operator=(A&& a);
-};
-~~~
-
-为了支持连续赋值操作，它和拷贝赋值运算符同样，在数据移动之前，先清空当前的数据，移动完成后返回自身的引用。
-
-::: info std::string 的移动赋值运算符
-
-~~~cpp
-std::string s1 = "Hello, world";
-std::string s2;
-s2 = std::move(s1);
-// move之后，s1 = ""，s2 = "Hello, world";
-~~~
-
-:::
-
-### 移动赋值的实现
-
-::: info Stack类的移动赋值运算符
-
-移动赋值运算符主要完成以下三个工作
-
-- 清除当前管理的资源
-- 移动资源
-- 清空临时对象
-
-~~~cpp
-Stack& operator=(Stack&& s) {
-    // 清空当前管理的资源
-    free(_data);
-    _data = nullptr;
-
-    // 移动资源
-    _capacity = s._capacity;
-    _top = s._top;
-    _data = s._data;
-
-    // 清空临时对象
-    s._top = s._capacity = 0;
-    s._data = nullptr;
-}
-~~~
-
-:::
