@@ -11,8 +11,6 @@ excerpt: 从数据表中查询记录
 order: 2
 ---
 
-## SELECT关键字
-
 关键字 `SELECT` 可以执行语句或执行函数，比如：
 
 数学运算。
@@ -50,8 +48,6 @@ SELECT UPPER('hello') AS uppercase;
     +-----------+
     | HELLO     |
     +-----------+
-
-## 查询记录示例
 
 关键字 `SELECT` 可以用于选择列名，`FROM` 关键字后接要查询的表。
 

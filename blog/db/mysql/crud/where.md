@@ -1,5 +1,5 @@
 ---
-title: 查询条件和约束
+title: 指定查询条件
 date: 2024-01-12
 isOriginal: true
 icon: "/icon/db_mysql_post.svg"
@@ -7,7 +7,7 @@ category:
   - MySQL
 tag:
   - SQL
-excerpt: 指定SELECT查询的条件
+excerpt: 使用 WHERE 指定查询条件
 order: 3
 ---
 
@@ -20,8 +20,6 @@ FROM table_name
 [ORDER BY field [ASC|DESC]]
 [LIMIT max [OFFSET page]];
 ~~~
-
-## 指定查询条件
 
 `WHERE` 用于指定查询条件，它支持以下的运算符。（假设有 $x$、$y$、$z$ 三个整数）
 
@@ -73,96 +71,3 @@ SELECT name,age FROM student WHERE age>19;
     | Brian |   20 |
     | Emma  |   20 |
     +-------+------+
-
-## 查询结果排序
-
-`ORDER` 用于对结果进行排序，其后可以接 `ASC` 进行升序排序，接 `DESC` 进行降序排序，默认为升序。
-
-假设要排序的列名为 `id`，对该列进行升序排序。
-
-~~~sql:no-line-numbers
-SELECT ... ORDER BY id
-SELECT ... ORDER BY id ASC
-~~~
-
-降序排序。
-
-~~~sql:no-line-numbers
-SELECT ... ORDER BY id DESC
-~~~
-
-对之前的 `student` 表进行查询。
-
-查询所有学生的信息，并按年龄排序。
-
-~~~sql:no-line-numbers
-SELECT * FROM student ORDER BY age;
-~~~
-
-    +-------+------+--------+
-    | name  | age  | gender |
-    +-------+------+--------+
-    | David |   18 | M      |
-    | Chloe |   19 | F      |
-    | Alice |   20 | M      |
-    | Brian |   20 | M      |
-    | Emma  |   20 | F      |
-    | Faith |   21 | F      |
-    +-------+------+--------+
-
-查询所有学生的信息，先按性别升序排序，同时按性别降序排序。
-
-~~~sql:no-line-numbers
-SELECT * FROM student ORDER BY gender ASC, age DESC;
-~~~
-
-    +-------+------+--------+
-    | name  | age  | gender |
-    +-------+------+--------+
-    | Faith |   21 | F      |
-    | Emma  |   20 | F      |
-    | Chloe |   19 | F      |
-    | Alice |   20 | M      |
-    | Brian |   20 | M      |
-    | David |   18 | M      |
-    +-------+------+--------+
-
-## 查询结果切片
-
-关键字 `LIMIT` 可以单独使用，也和 `OFFSET` 配合使用，对查询结果进行切片。`LIMIT` 设置最多显示的记录条数，`OFFSET` 指定开始位置。
-
-构建下面的表和数据进行测试。
-
-~~~sql:no-line-numbers
-CREATE TABLE limit_test ( n int );
-INSERT INTO limit_test VALUES (0),(1),(2),(3),(4),(5),(6),(7),(8),(9);
-~~~
-
-查询所有记录，但最多显示3条。
-
-~~~sql:no-line-numbers
-SELECT * FROM limit_test LIMIT 3;
-~~~
-
-    +------+
-    | n    |
-    +------+
-    |    0 |
-    |    1 |
-    |    2 |
-    +------+
-
-查询所有记录，最多显示3条，且从第5条开始显示。
-
-~~~sql:no-line-numbers
-SELECT * FROM limit_test LIMIT 5, 3;
-SELECT * FROM limit_test LIMIT 3 OFFSET 5;
-~~~
-
-    +------+
-    | n    |
-    +------+
-    |    5 |
-    |    6 |
-    |    7 |
-    +------+

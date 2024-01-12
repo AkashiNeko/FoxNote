@@ -8,10 +8,8 @@ category:
 tag:
   - SQL
 excerpt: 更改数据表中已存在的记录
-order: 4
+order: 6
 ---
-
-## UPDATE关键字
 
 关键字 `UPDATE` 可以修改表中已存在的记录，配合 `WHERE` 选中要修改的值，`SET` 设置新的值。
 
@@ -22,8 +20,6 @@ WHERE condition;
 ~~~
 
 这里关键字 `WHERE` 的用法和 `SELECT` 查询数据时的用法完全相同，用于筛选特定的数据。
-
-## 修改记录示例
 
 首先创建下面的数据表 `person`，插入一些数据用于测试。
 
