@@ -5,6 +5,7 @@ index: false
 icon: "/icon/cpp1.svg"
 dir:
   order: 1
+  link: true
 ---
 
 <AutoCatalog />
