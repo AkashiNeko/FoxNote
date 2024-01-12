@@ -8,7 +8,7 @@ category:
 tag:
   - SQL
 excerpt: 更改数据表中已存在的记录
-order: 3
+order: 4
 ---
 
 ## UPDATE关键字

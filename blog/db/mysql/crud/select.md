@@ -13,87 +13,149 @@ order: 2
 
 ## SELECT关键字
 
+关键字 `SELECT` 可以执行语句或执行函数，比如：
+
+数学运算。
+
+~~~sql:no-line-numbers
+SELECT 1 + 2 + 3;
+~~~
+
+    +-----------+
+    | 1 + 2 + 3 |
+    +-----------+
+    |         6 |
+    +-----------+
+
+设置别名，使用 `AS` 关键字，可以省略不写。
+
+~~~sql:no-line-numbers
+SELECT 114 * 514 AS result;
+~~~
+
+    +--------+
+    | result |
+    +--------+
+    |  58596 |
+    +--------+
+
+执行函数：
+
+~~~sql:no-line-numbers
+SELECT UPPER('hello') AS uppercase;
+~~~
+
+    +-----------+
+    | uppercase |
+    +-----------+
+    | HELLO     |
+    +-----------+
+
+## 查询记录示例
+
 关键字 `SELECT` 可以用于选择列名，`FROM` 关键字后接要查询的表。
 
 ~~~sql:no-line-numbers
 SELECT field1, field2, ...
 FROM table_name
-[WHERE condition]
-[ORDER BY field [ASC|DESC]]
-[LIMIT number];
 ~~~
 
-::: info 参数说明
+使用下面的数据进行测试。
 
-- `field..`：列属性名称。设为 `*` 表示选择所有列。
-- `table_name`：数据表名称。
-- `condition`：指定筛选条件。
+| name | age | gender |
+| :-: | :-: | :-: |
+| David | 18 | M |
+| Chloe | 19 | F |
+| Alice | 20 | M |
+| Faith | 21 | F |
+| Brian | 20 | M |
+| Emma | 20 | F |
 
-:::
+~~~sql
+CREATE TABLE student (
+    name varchar(64) COMMENT '姓名',
+    age smallint COMMENT '年龄',
+    gender char(4) COMMENT '性别'
+);
+INSERT INTO student (name, age, gender) VALUES
+('David', 18, 'M'),('Chloe', 19, 'F'),('Alice', 20, 'M'),
+('Faith', 21, 'F'),('Brian', 20, 'M'),('Emma', 20, 'F');
+~~~
 
-## 查看记录示例
-
-以上面的 `student` 表举例，查询之前插入的记录。
-
-查看所有学生的信息。
+全列查询，`*` 表示选中所有列。
 
 ~~~sql:no-line-numbers
 SELECT * FROM student;
 ~~~
 
-| name | age | gender | birthday |
-| :-: | :-: | :-: | :-: |
-| 张三 | 18 | 男 | 2003-06-01 |
-| 李四 | 19 | 女 | NULL |
-| 王五 | 20 | 男 | NULL |
-| 赵六 | 21 | 女 | NULL |
-| 孙七 | 20 | 男 | NULL |
-| 周八 | 20 | 女 | NULL |
+    +-------+------+--------+
+    | name  | age  | gender |
+    +-------+------+--------+
+    | David |   18 | M      |
+    | Chloe |   19 | F      |
+    | Alice |   20 | M      |
+    | Faith |   21 | F      |
+    | Brian |   20 | M      |
+    | Emma  |   20 | F      |
+    +-------+------+--------+
 
-查看所有男生的信息。
-
-~~~sql:no-line-numbers
-SELECT * FROM student WHERE gender='男';
-~~~
-
-| name | age  | gender | birthday |
-| :-: | :-: | :-: | :-: |
-| 张三 | 18 | 男 | 2003-06-01 |
-| 王五 | 20 | 男 | NULL |
-| 孙七 | 20 | 男 | NULL |
-
-查看年龄大于 `19` 的学生的姓名和年龄。
+查询姓名和年龄。
 
 ~~~sql:no-line-numbers
-SELECT name,age FROM student WHERE age>19;
+SELECT name, age FROM student;
 ~~~
 
-| name | age |
-| :-: | :-: |
-| 王五 | 20 |
-| 赵六 | 21 |
-| 孙七 | 20 |
+    +-------+------+
+    | name  | age  |
+    +-------+------+
+    | David |   18 |
+    | Chloe |   19 |
+    | Alice |   20 |
+    | Faith |   21 |
+    | Brian |   20 |
+    | Emma  |   20 |
+    +-------+------+
 
-查看所有女生的信息，按年龄排序。
+查询平均年龄，使用内置函数 `AVG` 取平均值。
 
 ~~~sql:no-line-numbers
-SELECT * FROM student WHERE gender='女' ORDER BY age;
+SELECT AVG(age) average FROM student;
 ~~~
 
-| name | age | gender | birthday |
-| :-: | :-: | :-: | :-: |
-| 李四 | 19 | 女 | NULL |
-| 周八 | 20 | 女 | NULL |
-| 赵六 | 21 | 女 | NULL |
+    +---------+
+    | average |
+    +---------+
+    | 19.6667 |
+    +---------+
 
-查看年龄最小的前 $3$ 位学生的信息。
+查询结果去重，使用 `DISTINCT` 关键字。
 
 ~~~sql:no-line-numbers
-SELECT * FROM student ORDER BY age LIMIT 3;
+SELECT DISTINCT age FROM student;
 ~~~
 
-| name | age  | gender | birthday   |
-| :-: | :-: | :-: | :-: |
-| 张三 |   18 | 男     | 2003-06-01 |
-| 李四 |   19 | 女     | NULL       |
-| 周八 |   19 | 女     | NULL       |
+    +------+
+    | age  |
+    +------+
+    |   18 |
+    |   19 |
+    |   20 |
+    |   21 |
+    +------+
+
+查询姓名和年龄，并将所有姓名大写，将年龄显示为新增一岁。
+
+~~~sql:no-line-numbers
+SELECT UPPER(name), age+1 FROM student;
+~~~
+
+    +-------------+-------+
+    | UPPER(name) | age+1 |
+    +-------------+-------+
+    | DAVID       |    19 |
+    | CHLOE       |    20 |
+    | ALICE       |    21 |
+    | FAITH       |    22 |
+    | BRIAN       |    21 |
+    | EMMA        |    21 |
+    +-------------+-------+

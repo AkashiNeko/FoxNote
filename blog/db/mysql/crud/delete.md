@@ -8,7 +8,7 @@ category:
 tag:
   - SQL
 excerpt: 删除数据表中已存在的记录
-order: 4
+order: 5
 ---
 
 ## 1. 插入记录

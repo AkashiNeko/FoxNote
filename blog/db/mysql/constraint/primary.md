@@ -1,5 +1,5 @@
 ---
-title: MySQL表的约束
+title: 主键约束
 date: 2023-12-24
 isOriginal: true
 icon: "/icon/db_mysql_post.svg"
