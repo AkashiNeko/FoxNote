@@ -6,7 +6,6 @@ index: false
 icon: "/icon/db_mysql.svg"
 dir:
   order: 4
-  link: true
 ---
 
 <AutoCatalog />

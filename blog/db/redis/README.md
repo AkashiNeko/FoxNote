@@ -4,7 +4,7 @@ article: false
 index: false
 icon: "/icon/db_redis.svg"
 dir:
-  link: true
+  order: 2
 ---
 
 ## TODO
