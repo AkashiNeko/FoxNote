@@ -1,8 +1,8 @@
 ---
-title: is_valid
+title: dns_query
 article: false
 icon: "/icon/proj0.svg"
-order: 11
+order: 12
 ---
 
 DNS查询。参数为域名字符串，`use_tcp` 指定查询时使用的协议，默认为 `true` 使用TCP进行查询，设为 `false` 则使用UDP查询。查询失败时抛出 `NanoExcept` 异常。

@@ -17,7 +17,7 @@ bool operator==(const std::string& other) const;
 
 ~~~cpp
 nano::Addr addr(0);
-addr == 0; // true
+addr == (nano::addr_t)0; // true
 addr == std::string("0.0.0.0"); // true
 addr == "127.0.0.1"; // false
 ~~~
