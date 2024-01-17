@@ -6,4 +6,22 @@ dir:
   link: true
 ---
 
-<AutoCatalog />
+`Addr` 类封装了4字节的IPv4地址。
+
+## 类型
+
+- `addr_t`：操作系统提供的原生IPv4地址类型。
+
+## 成员函数
+
+- +[`Addr`](./addr.md)（构造函数）
+- +[`~Addr`](./~addr.md)（析构函数）
+- +[`operator=`](./operator=.md)（赋值运算符）
+- +[`operator==`](./operator==.md)（相等运算符）
+- +[`operator!=`](./operator!=.md)（不相等运算符）
+- +[`net_order`](./net_order.md)
+- +[`get`](./get.md)
+- +[`set`](./set.md)
+- +[`to_string`](./to_string.md)
+- +[`is_valid`](./is_valid.md)
+- +[`dns_query`](./dns_query.md)
