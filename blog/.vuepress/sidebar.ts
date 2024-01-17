@@ -30,5 +30,12 @@ export default sidebar({
             prefix: "note/",
             children: "structure",
         },
+        {
+            text: "一些小玩意",
+            icon: "/icon/proj0.svg",
+            link: "/proj/",
+            prefix: "proj/",
+            children: "structure",
+        }
     ],
 });
