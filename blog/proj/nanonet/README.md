@@ -141,11 +141,11 @@ class UdpSocket {
 
 ## 类型定义
 
-- `sock_t`：系统原生套接字对象。
-- `addr_t`：IPv4地址，大小为4字节。
-- `port_t`：端口号，大小为2字节。
+- [`addr_t`](./addr/addr_t.md)
+- `port_t`
+- `sock_t`
 
-## 库的类和接口
+## 类和接口
 
 - [`Addr`](./addr/)
 - `Port`
