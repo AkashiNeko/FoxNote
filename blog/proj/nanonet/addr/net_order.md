@@ -5,7 +5,7 @@ icon: "/icon/proj0.svg"
 order: 7
 ---
 
-将地址转换为网络字节序（大端）。
+将地址转换为网络字节序（大端字节序）。
 
 ~~~cpp:no-line-numbers
 addr_t net_order() const;

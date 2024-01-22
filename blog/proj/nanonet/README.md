@@ -142,13 +142,13 @@ class UdpSocket {
 ## 类型定义
 
 - [`addr_t`](./addr/addr_t.md)
-- `port_t`
+- [`port_t`](./port/port_t.md)
 - `sock_t`
 
 ## 类和接口
 
 - [`Addr`](./addr/)
-- `Port`
+- [`Port`](./port/)
 - `AddrPort`
 - `SocketBase`
 - `Socket`

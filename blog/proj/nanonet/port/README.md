@@ -1,22 +1,22 @@
 ---
-title: Addr
+title: Port
 article: false
 icon: "/icon/proj0.svg"
 dir:
   link: true
-  order: 1
+  order: 2
 ---
 
-`Addr` 类封装了4字节的IPv4地址。
+`Port` 类封装了2字节的端口号。
 
 ## 类型
 
-- [`addr_t`](./addr_t.md)：操作系统提供的原生IPv4地址类型。
+- [`port_t`](./port_t.md)：操作系统提供的原生端口号类型。
 
 ## 成员函数
 
-- +[`Addr`](./addr.md)（构造函数）
-- +[`~Addr`](./~addr.md)（析构函数）
+- +[`Port`](./port.md)（构造函数）
+- +[`~Port`](./~port.md)（析构函数）
 - +[`operator=`](./operator=.md)
 - +[`operator==`](./operator==.md)
 - +[`operator!=`](./operator!=.md)
@@ -24,5 +24,3 @@ dir:
 - +[`get`](./get.md)
 - +[`set`](./set.md)
 - +[`to_string`](./to_string.md)
-- +[`is_valid`](./is_valid.md)
-- +[`dns_query`](./dns_query.md)

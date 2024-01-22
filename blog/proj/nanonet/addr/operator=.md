@@ -8,7 +8,6 @@ order: 4
 拷贝与赋值。
 
 ~~~cpp:no-line-numbers
-Addr& operator=(const Addr&);
 Addr& operator=(addr_t other);
 Addr& operator=(const char* other);
 Addr& operator=(const std::string& other);
