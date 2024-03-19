@@ -11,26 +11,6 @@ excerpt: C++对象的销毁和资源回收
 order: 3
 ---
 
-类中隐藏了一些特殊的成员函数，由编译器默认生成。
-
-~~~cpp
-class A {
-public:
-    // 1. 默认构造函数（Default Constructor）
-    A() = default;
-    // 2. 析构函数（Destructor）
-    ~A() = default;
-    // 3. 拷贝构造函数（Copy Constructor）
-    A(const A&) = default;
-    // 4. 拷贝赋值运算符（Copy AssignmentOperator）
-    A& operator=(const A&) = default;
-    // 5. 移动构造函数（Move Constructor）
-    A(A&&) = default;
-    // 6. 移动赋值运算符（Move AssignmentOperator）
-    A& operator=(A&&) = default;
-};
-~~~
-
 ## 什么是析构函数
 
 ::: info 析构函数
