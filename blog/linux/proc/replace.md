@@ -1,5 +1,5 @@
 ---
-title: 进程替换
+title: 进程空间替换
 date: 2022-08-26
 isOriginal: true
 icon: "/icon/linux_proc_post.svg"
@@ -9,7 +9,7 @@ tag:
   - 进程
   - 程序替换
 excerpt: 进程替换指的是将正在运行的进程从内存中移除，并将一个新的进程加载到内存中，然后继续执行。
-order: 4
+order: 10
 ---
 
 ## 1. 进程替换
