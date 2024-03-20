@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "^2.0.0-rc.8",
-    "@vuepress/client": "^2.0.0-rc.8",
+    "vuepress/client": "^2.0.0-rc.8",
     "@vuepress/plugin-shiki": "2.0.0-rc.18",
     "chart.js": "^4.4.1",
     "echarts": "^5.4.3",
