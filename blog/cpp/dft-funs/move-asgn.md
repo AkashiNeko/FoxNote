@@ -2,7 +2,7 @@
 title: 移动赋值运算符
 date: 2022-08-16
 isOriginal: true
-icon: "/icon/cpp2.svg"
+icon: book
 category:
   - C++
 tag:

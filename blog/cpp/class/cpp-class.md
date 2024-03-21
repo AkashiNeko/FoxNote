@@ -2,7 +2,7 @@
 title: C++类
 date: 2022-08-09
 isOriginal: true
-icon: "/icon/cpp2.svg"
+icon: book
 category:
   - C++
 tag:

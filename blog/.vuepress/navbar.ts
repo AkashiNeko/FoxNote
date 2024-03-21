@@ -8,17 +8,17 @@ export default navbar([
     },
     {
         text: "C++",
-        icon: "/icon/cpp0.svg",
+        icon: "/icon/cpp/cpp.svg",
         link: "/cpp/",
     },
     {
         text: "Linux",
-        icon: "/icon/linux.svg",
+        icon: "/icon/linux/linux.svg",
         link: "/linux/",
     },
     {
         text: "数据库",
-        icon: "/icon/db.svg",
+        icon: "/icon/db/db.svg",
         link: "/db/",
     },
     {

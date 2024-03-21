@@ -2,7 +2,7 @@
 title: 指定查询条件
 date: 2024-01-12
 isOriginal: true
-icon: "/icon/db_mysql_post.svg"
+icon: book
 category:
   - MySQL
 tag:

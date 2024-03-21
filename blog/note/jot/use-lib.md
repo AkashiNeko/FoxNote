@@ -2,7 +2,7 @@
 title: 动静态库的使用
 date: 2023-02-13
 isOriginal: true
-icon: "/icon/lib.svg"
+icon: book
 category:
   - Note
 tag:

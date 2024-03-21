@@ -2,7 +2,7 @@
 title: 基础I/O和文件描述符
 date: 2022-08-25
 isOriginal: true
-icon: "/icon/linux_io_post.svg"
+icon: book
 category:
   - Linux
 tag:

@@ -2,7 +2,7 @@
 title: 静态成员
 date: 2022-08-11
 isOriginal: true
-icon: "/icon/cpp2.svg"
+icon: book
 category:
   - C++
 tag:

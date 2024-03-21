@@ -4,21 +4,21 @@ export default sidebar({
     "/": [
         {
             text: "C++学习笔记",
-            icon: "/icon/cpp0.svg",
+            icon: "/icon/cpp/cpp.svg",
             link: "/cpp/",
             prefix: "cpp/",
             children: "structure",
         },
         {
             text: "Linux操作系统",
-            icon: "/icon/linux.svg",
+            icon: "/icon/linux/linux.svg",
             link: "/linux/",
             prefix: "linux/",
             children: "structure",
         },
         {
             text: "数据库技术",
-            icon: "/icon/db.svg",
+            icon: "/icon/db/db.svg",
             link: "/db/",
             prefix: "db/",
             children: "structure",
@@ -31,11 +31,12 @@ export default sidebar({
             children: "structure",
         },
         {
-            text: "一些小玩意",
-            icon: "/icon/proj0.svg",
+            text: "项目",
+            icon: "/icon/project.svg",
             link: "/proj/",
             prefix: "proj/",
             children: "structure",
         }
     ],
+    "/proj/nanonet": [],
 });

@@ -1,25 +1,25 @@
 ---
-title: 登录MySQL
+title: 初识MySQL
 date: 2023-12-19
 isOriginal: true
-icon: "/icon/db_mysql_post.svg"
+icon: book
 category:
   - MySQL
 tag:
   - 数据库
-excerpt: 登录到MySQL
+excerpt: 初识MySQL
 order: 1
 ---
 
-本系列的 `MySQL` 使用目前（2023.12）最新的 8.0.35 版本，在 Ubuntu 23.10 上，可以直接安装该版本。
+本系列使用的 MySQL 为目前（2023.12）最新的 8.0.35 版本，操作系统为 Ubuntu Server 23.10。在该系统上，可以直接使用包管理器 `apt` 安装 MySQL。
 
 ~~~bash:no-line-numbers
 sudo apt install mysql-server mysql-client
 ~~~
 
-`MySQL` 数据库系统采用了C/S架构，它的服务端是一个网络服务器，负责管理和处理数据库的存储、查询和事务处理等任务。`MySQL` 服务端接收来自客户端的请求，并执行相应的操作。
+MySQL 数据库系统采用了C/S架构，它的服务端是一个网络服务器，负责管理和处理数据库的存储、查询和事务处理等任务。MySQL 服务端接收来自客户端的请求，并执行相应的操作。
 
-启动 `MySQL` 服务后，使用 `netstat` 命令可以查询到它正在监听 `3306` 端口，这是 `MySQL` 的默认网络通信端口。
+启动 MySQL 服务后，使用 `netstat` 命令可以查询到它正在监听 `3306` 端口，这是 MySQL 的默认网络通信端口。
 
 ~~~text:no-line-numbers
 $ sudo systemctl start mysql
@@ -27,7 +27,7 @@ $ netstat -ntl | grep 3306
 tcp    0    0 0.0.0.0:3306    0.0.0.0:*    LISTEN
 ~~~
 
-使用 `mysql` 命令登录，连接到 `MySQL` 服务端。`mysql` 命令有下面几个常见的选项。
+使用 `mysql` 命令登录，连接到 MySQL 服务端。`mysql` 命令有下面几个常见的选项。
 
 ::: info mysql命令的选项
 
@@ -39,7 +39,7 @@ tcp    0    0 0.0.0.0:3306    0.0.0.0:*    LISTEN
 
 :::
 
-我们用 `root` 用户登录到 `MySQL`。
+我们用 `root` 用户登录到 MySQL。
 
 ~~~text:no-line-numbers
 $ mysql -u root -p
@@ -58,3 +58,5 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 mysql>
 ~~~
+
+出现的交互式终端就是命令行式的 MySQL 客户端，在这里就可以使用 SQL 语句和 MySQL 服务端进行交互了。

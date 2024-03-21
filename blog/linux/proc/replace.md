@@ -2,7 +2,7 @@
 title: 进程空间替换
 date: 2022-08-26
 isOriginal: true
-icon: "/icon/linux_proc_post.svg"
+icon: book
 category:
   - Linux
 tag:

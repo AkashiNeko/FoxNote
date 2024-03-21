@@ -2,7 +2,7 @@
 title: 函数的参数
 date: 2024-03-20
 isOriginal: true
-icon: "/icon/cpp2.svg"
+icon: book
 category:
   - C++
 excerpt: 相比C函数，C++函数提供了缺省参数和函数重载功能。

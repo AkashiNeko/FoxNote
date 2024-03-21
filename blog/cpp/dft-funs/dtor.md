@@ -2,7 +2,7 @@
 title: 析构函数
 date: 2022-08-14
 isOriginal: true
-icon: "/icon/cpp2.svg"
+icon: book
 category:
   - C++
 tag:

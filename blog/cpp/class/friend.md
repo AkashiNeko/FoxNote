@@ -2,7 +2,7 @@
 title: 友元
 date: 2022-08-13
 isOriginal: true
-icon: "/icon/cpp2.svg"
+icon: book
 category:
   - C++
 tag:

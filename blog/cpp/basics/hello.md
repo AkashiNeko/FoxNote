@@ -2,7 +2,7 @@
 title: 第一个C++程序
 date: 2024-03-19
 isOriginal: true
-icon: "/icon/cpp2.svg"
+icon: book
 category:
   - C++
 excerpt: 第一个C++程序

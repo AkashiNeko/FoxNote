@@ -2,7 +2,7 @@
 title: 类的默认成员函数
 date: 2022-08-14
 isOriginal: true
-icon: "/icon/cpp2.svg"
+icon: book
 category:
   - C++
 excerpt: C++类中的6个默认成员函数

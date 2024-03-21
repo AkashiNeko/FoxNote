@@ -2,7 +2,7 @@
 title: 进程调度
 date: 2022-08-21
 isOriginal: true
-icon: "/icon/linux_proc_post.svg"
+icon: book
 category:
   - Linux
 tag:

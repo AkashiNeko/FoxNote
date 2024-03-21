@@ -2,7 +2,7 @@
 title: 拷贝构造函数
 date: 2022-08-15
 isOriginal: true
-icon: "/icon/cpp2.svg"
+icon: book
 category:
   - C++
 tag:

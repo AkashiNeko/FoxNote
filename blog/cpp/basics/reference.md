@@ -2,7 +2,7 @@
 title: 左值引用
 date: 2024-03-20
 isOriginal: true
-icon: "/icon/cpp2.svg"
+icon: book
 category:
   - C++
 excerpt: C++在指针的基础上提供了引用，能够更方便地操作对象。

@@ -2,7 +2,7 @@
 title: 终止时的状态码
 date: 2022-08-24
 isOriginal: true
-icon: "/icon/linux_proc_post.svg"
+icon: book
 category:
   - Linux
 tag:

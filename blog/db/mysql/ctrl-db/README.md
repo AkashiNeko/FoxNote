@@ -1,9 +1,9 @@
 ---
-title: 数据库的操作
+title: 操作MySQL库
 date: 2023-12-20
 article: false
 index: false
-icon: "/icon/db_mysql.svg"
+icon: "/icon/db/mysql.svg"
 dir:
   order: 2
 ---

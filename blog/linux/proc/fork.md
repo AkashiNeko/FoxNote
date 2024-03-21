@@ -2,7 +2,7 @@
 title: 创建子进程
 date: 2022-08-24
 isOriginal: true
-icon: "/icon/linux_proc_post.svg"
+icon: book
 category:
   - Linux
 tag:

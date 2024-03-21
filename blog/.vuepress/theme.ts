@@ -33,7 +33,7 @@ export default hopeTheme({
 
     displayFooter: true,
 
-    backToTop: true,
+    // backToTop: true,
 
     blog: {
         name: "AkashiNeko",

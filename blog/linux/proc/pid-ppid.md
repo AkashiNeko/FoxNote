@@ -2,7 +2,7 @@
 title: PID和PPID
 date: 2022-08-20
 isOriginal: true
-icon: "/icon/linux_proc_post.svg"
+icon: book
 category:
   - Linux
 tag:

@@ -1,8 +1,11 @@
 ---
 title: 数据库技术
 index: false
-icon: "/icon/db.svg"
+icon: "/icon/db/db.svg"
 excerpt: 数据库是一个组织和存储数据的集合，它被设计用于高效地存储、检索、管理和更新数据
+dir:
+  order: 3
+sticky: 3
 ---
 
 > 数据库是一个组织和存储数据的集合，它被设计用于高效地存储、检索、管理和更新数据。

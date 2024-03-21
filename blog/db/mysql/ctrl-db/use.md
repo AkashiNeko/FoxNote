@@ -2,7 +2,7 @@
 title: 选择使用数据库
 date: 2023-12-20
 isOriginal: true
-icon: "/icon/db_mysql_post.svg"
+icon: book
 category:
   - MySQL
 tag:

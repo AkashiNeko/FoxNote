@@ -2,7 +2,7 @@
 title: 匿名管道通信
 date: 2022-08-30
 isOriginal: true
-icon: "/icon/linux_proc_post.svg"
+icon: book
 category:
   - Linux
 tag:

@@ -2,7 +2,7 @@
 title: 动静态库的制作
 date: 2023-02-12
 isOriginal: true
-icon: "/icon/lib.svg"
+icon: book
 category:
   - Note
 tag:

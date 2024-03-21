@@ -2,7 +2,7 @@
 title: I/O重定向
 date: 2022-08-28
 isOriginal: true
-icon: "/icon/linux_io_post.svg"
+icon: book
 category:
   - Linux
 tag:

@@ -2,7 +2,7 @@
 title: 成员函数
 date: 2022-08-09
 isOriginal: true
-icon: "/icon/cpp2.svg"
+icon: book
 category:
   - C++
 excerpt: C++类的成员函数

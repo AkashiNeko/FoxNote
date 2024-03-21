@@ -2,7 +2,7 @@
 title: 默认成员函数
 article: false
 index: false
-icon: "/icon/cpp1.svg"
+icon: "/icon/cpp/class.svg"
 dir:
   order: 2
 ---

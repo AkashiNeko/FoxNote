@@ -2,7 +2,7 @@
 title: epoll的LT模式和ET模式
 date: 2023-12-09
 isOriginal: true
-icon: "/icon/linux_io_post.svg"
+icon: book
 category:
   - Linux
 tag:

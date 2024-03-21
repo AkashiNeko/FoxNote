@@ -2,7 +2,7 @@
 title: 命名空间
 date: 2024-03-19
 isOriginal: true
-icon: "/icon/cpp2.svg"
+icon: book
 category:
   - C++
 excerpt: namespace关键字

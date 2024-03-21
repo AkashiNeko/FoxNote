@@ -2,7 +2,7 @@
 title: SQL语句
 date: 2023-12-19
 isOriginal: true
-icon: "/icon/db_mysql_post.svg"
+icon: book
 category:
   - MySQL
 tag:
@@ -11,7 +11,7 @@ excerpt: 结构化查询语言SQL
 order: 2
 ---
 
-成功登录到可交互的界面后，就可以开始用 `SQL` 语句和 `MySQL` 进行交互了。
+为了操作 MySQL 数据库，需要使用名为 **SQL** 的语言与它进行交互。
 
 ::: info SQL
 
@@ -25,7 +25,7 @@ order: 2
 
 :::
 
-下面用 `SQL` 语句简单地创建一个数据库 `mydb`，在其中的表 `user` 中插入一条记录。
+下面使用 `SQL` 语句简单地创建一个数据库 `mydb`，在其中的表 `user` 中插入一条记录。
 
 `MySQL` 的关键字不区分大小写，比如关键字 `CREATE` 和 `create` 的作用是完全相同的。
 

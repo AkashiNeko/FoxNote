@@ -1,10 +1,10 @@
 ---
 title: C++学习笔记
-article: false
 index: false
-icon: "/icon/cpp0.svg"
+icon: "/icon/cpp/cpp.svg"
 dir:
-  link: true
+  order: 1
+sticky: 1
 ---
 
 <AutoCatalog />

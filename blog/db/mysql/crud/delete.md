@@ -2,7 +2,7 @@
 title: 删除记录
 date: 2023-12-22
 isOriginal: true
-icon: "/icon/db_mysql_post.svg"
+icon: book
 category:
   - MySQL
 tag:

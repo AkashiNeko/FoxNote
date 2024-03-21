@@ -2,7 +2,7 @@
 title: 进程状态
 date: 2022-08-21
 isOriginal: true
-icon: "/icon/linux_proc_post.svg"
+icon: book
 category:
   - Linux
 tag:
