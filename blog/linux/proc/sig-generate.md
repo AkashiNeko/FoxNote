@@ -1,5 +1,5 @@
 ---
-title: 进程信号
+title: 进程信号的产生
 date: 2022-09-05
 isOriginal: true
 icon: book
@@ -8,7 +8,7 @@ category:
 tag:
   - IPC
   - 信号
-excerpt: Linux中的进程信号量是一种用于进程间通信的机制，它允许一个进程向另一个进程发送通知。
+excerpt: Linux中的进程信号是一种用于进程间通信的机制，它允许一个进程向另一个进程发送通知。
 order: 15
 ---
 
@@ -72,9 +72,17 @@ $ echo $?
 
 `CTRL` + `\`：进程退出信号为 131 - 128 = 3 号信号 `SIGQUIT`。
 
-### kill命令发送信号
+### 系统调用发送信号
 
-`kill` 命令可以向进程发送信号，使用方法为：
+Linux 提供了系统调用 `kill()`，它的功能是向指定PID的进程发送指定的信号。
+
+~~~c
+#include <signal.h>
+
+int kill(pid_t pid, int sig);
+~~~
+
+Linux 还提供了 `kill` 命令，使用 `kill` 命令发送信号时，它进行了对 `kill()` 的调用。
 
 ~~~bash
 kill -信号名或编号 PID
@@ -100,7 +108,15 @@ $ echo $?
 130
 ~~~
 
-### 硬件异常产生的信号
+除了 `kill()` 之外，还有 `raise()` 系统调用。它的功能是向自身的进程发送指定的信号。
+
+~~~c
+#include <signal.h>
+
+int raise(int sig);
+~~~
+
+### 硬件异常产生信号
 
 除零运算时，进程将收到 `SIGFPE` 信号。
 
