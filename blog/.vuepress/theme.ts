@@ -39,14 +39,14 @@ export default hopeTheme({
         name: "AkashiNeko",
 
         description: "akashineko@qq.com",
-        timeline: "无情的写博客机器QwQ..",
+        timeline: "及时当勉励，岁月不待人。",
         roundAvatar: true,
         medias: {
             GitHub: ["https://github.com/AkashiNeko", "./blog/.vuepress/intro_icon/github.svg"],
             LeetCode: ["https://leetcode.cn/u/akashineko/", "./blog/.vuepress/intro_icon/leetcode.svg"],
             QQ: ["https://wpa.qq.com/msgrd?v=3&uin=1006554341&site=qq&menu=yes&jumpflag=1", "./blog/.vuepress/intro_icon/qq.svg"],
             BiliBili: ["https://space.bilibili.com/107816649", "./blog/.vuepress/intro_icon/bilibili.svg"],
-            Qzone: ["https://user.qzone.qq.com/1006554341", "./blog/.vuepress/intro_icon/qzone.svg"],
+            Qzone: ["https://user.qzone.qq.com/1006554341/main", "./blog/.vuepress/intro_icon/qzone.svg"],
             CSDN: ["https://blog.csdn.net/qq_45412824", "./blog/.vuepress/intro_icon/csdn.svg"],
         },
     },
@@ -67,7 +67,7 @@ export default hopeTheme({
     plugins: {
 
         prismjs: {
-            light: "ghcolors",
+            light: "vs",
             dark: "vsc-dark-plus",
         },
         // prismjs: false,

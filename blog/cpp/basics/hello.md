@@ -1,6 +1,6 @@
 ---
 title: 第一个C++程序
-date: 2024-03-19
+date: 2022-07-01
 isOriginal: true
 icon: book
 category:
