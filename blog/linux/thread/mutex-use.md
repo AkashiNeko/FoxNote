@@ -1,5 +1,5 @@
 ---
-title: 互斥锁
+title: 互斥锁的使用
 date: 2023-07-04
 isOriginal: true
 icon: book
@@ -32,7 +32,9 @@ do {
 } while (0);
 ~~~
 
-## 2. pthread中的互斥锁
+## 2. 互斥锁的使用
+
+### 互斥锁操作接口
 
 `pthread` 库中提供了互斥锁 `pthread_mutex_t` 类型，以及相关的接口。
 
@@ -86,7 +88,9 @@ $ ./main
 cnt = 200000
 ~~~
 
-另外，`pthread` 中还提供了三个宏。
+### 静态初始化器
+
+另外，`pthread` 中还提供了一些宏。
 
 ~~~c
 pthread_mutex_t fastmutex   = PTHREAD_MUTEX_INITIALIZER;
@@ -94,4 +98,10 @@ pthread_mutex_t recmutex    = PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP;
 pthread_mutex_t errchkmutex = PTHREAD_ERRORCHECK_MUTEX_INITIALIZER_NP;
 ~~~
 
-## ... TODO
+这些宏是互斥锁的静态初始化器，用于以静态方式初始化互斥锁。它们都可以将互斥锁初始化为静态分配的对象。也就是说，如果使用这些宏，就不需要再调用 `pthread_mutex_init()` 初始化和 `pthread_mutex_destroy()` 销毁互斥锁了。
+
+- `PTHREAD_MUTEX_INITIALIZER`：常规的互斥锁，对应 `pthread_mutex_init()` 第二个参数为空时初始化的互斥锁。
+
+- `PTHREAD_RECURSIVE_MUTEX_INITIALIZER_NP`：可递归（可重入）的互斥锁，它允许同一线程多次获取该互斥锁，而不会导致死锁。
+
+- `PTHREAD_ERRORCHECK_MUTEX_INITIALIZER_NP`：带有错误检查的互斥锁，提供了对多次锁定同一互斥锁的错误检查机制。如果同一线程多次锁定该互斥锁，将会在调用 `pthread_mutex_lock()` 锁定时返回错误码 `EPERM`。
