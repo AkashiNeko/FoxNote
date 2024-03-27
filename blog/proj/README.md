@@ -5,4 +5,4 @@ index: false
 icon: "/icon/project.svg"
 ---
 
-<AutoCatalog />
+<Catalog />

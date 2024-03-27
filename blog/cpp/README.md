@@ -7,4 +7,4 @@ dir:
 sticky: 1
 ---
 
-<AutoCatalog />
+<Catalog />

@@ -65,4 +65,4 @@ sticky: 3
 
 :::
 
-<AutoCatalog />
+<Catalog />
