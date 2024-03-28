@@ -29,9 +29,20 @@ int pthread_cond_timedwait(pthread_cond_t *cond, pthread_mutex_t *mutex, const s
 int pthread_cond_destroy(pthread_cond_t *cond);
 ~~~
 
-当线程执行到 `pthread_cond_wait()` 时，该线程会被阻塞住。被阻塞住的线程需要使用 `pthread_cond_signal()` 或 `pthread_cond_broadcast()` 唤醒，如果有多个线程正在被条件变量阻塞，那么前者的作用是随机唤醒其中一个线程，后者是唤醒所有阻塞中的线程。
+当某个线程执行 `pthread_cond_wait()` 时，该线程会被阻塞住，并释放互斥锁等待直到被唤醒。被阻塞住的线程需要使用 `pthread_cond_signal()` 或 `pthread_cond_broadcast()` 唤醒，如果有多个线程正在被阻塞，那么前者的作用是随机唤醒其中一个线程，后者是唤醒所有阻塞中的线程。线程被唤醒后，会尝试重新获得锁。
 
-~~~c
+它们大致的工作流程如下表。
+
+| 事件 | 互斥锁状态 | 线程状态 |
+| :-: | :-: | :-: |
+| ... | 锁定🔒 | 运行⏸ |
+| 调用 `pthread_cond_wait()` | 解除🔓 | 阻塞⏹ |
+| ... | 解除🔓 | 阻塞⏹ |
+| 收到唤醒通知 | 尝试锁定🔐 | 阻塞⏹ |
+| 获取锁成功 | 锁定🔒 | 运行⏸ |
+| ... | 锁定🔒 | 运行⏸ |
+
+~~~c{12,25}
 #include <stdio.h>
 #include <pthread.h>
 #include <unistd.h>
@@ -42,8 +53,10 @@ pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 void* routine(void* arg) {
     const char* n = (const char*)arg;
     while (1) {
+        pthread_mutex_lock(&mutex);
         pthread_cond_wait(&cond, &mutex);
         printf("thread %s: hello\n", n);
+        pthread_mutex_unlock(&mutex);
     }
     return NULL;
 }
@@ -73,6 +86,19 @@ main thread: signal
 thread 2: hello
 main thread: signal
 thread 1: hello
+...
 ~~~
 
-## TODO
+如果将上面代码中的 `pthread_cond_signal` 改为 `pthread_cond_broadcast`，那么主线程每次都会唤醒所有线程。
+
+~~~txt:no-line-numbers
+$ ./main 
+main thread: signal
+thread 2: hello
+thread 1: hello
+main thread: signal
+thread 2: hello
+thread 1: hello
+~~~
+
+需要注意的是，就算 `pthread_cond_broadcast()` 同时放行了所有线程，接下来这些线程也会因为竞争锁，而依次执行。
