@@ -1,8 +1,18 @@
 import { viteBundler } from '@vuepress/bundler-vite'
 import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
+import { getDirname, path } from "@vuepress/utils";
+const __dirname = getDirname(import.meta.url);
 
 export default defineUserConfig({
+
+    alias: {
+        "@theme-hope/modules/blog/components/BlogHero": path.resolve(
+          __dirname,
+          "./components/BlogHero.vue",
+        ),
+    },
+
     bundler: viteBundler({
         viteOptions: {},
         vuePluginOptions: {},
