@@ -11,9 +11,9 @@ excerpt: 初识POSIX线程库pthread，线程的创建和回收方法。
 order: 2
 ---
 
-`pthread`（POSIX Threads）是一个线程库，用于在类Unix操作系统中进行多线程编程。它定义了应用程序与操作系统之间的接口，使不同 Unix 系统上编写的程序可以具有可移植性。[wiki](https://zh.wikipedia.org/zh-cn/POSIX%E7%BA%BF%E7%A8%8B)
+ pthread（POSIX Threads）是一个线程库，用于在类Unix操作系统中进行多线程编程。它定义了应用程序与操作系统之间的接口，使不同 Unix 系统上编写的程序可以具有可移植性。[wiki](https://zh.wikipedia.org/zh-cn/POSIX%E7%BA%BF%E7%A8%8B)
 
-`pthread` 的库文件位于 `/usr/libx32/` 目录下，头文件位于 `/usr/include/pthread.h`。
+ pthread 的库文件位于 `/usr/libx32/` 目录下，头文件位于 `/usr/include/pthread.h`。
 
 ~~~c:no-line-numbers
 $ ls /usr/libx32/libpthread*
@@ -23,11 +23,11 @@ $ ls /usr/include/pthread.h
 /usr/include/pthread.h
 ~~~
 
-如果使用了 `pthread` 库，编译时需要额外链接这个库。比如 `g++` 编译器需要带上参数 `-lpthread`。
+如果使用了 pthread 库，编译时需要额外链接这个库。比如 `g++` 编译器需要带上参数 `-lpthread`。
 
 ## 1. 线程的创建
 
-`pthread` 库中提供了一系列的函数调用，它们都以 `pthread_` 开头。要创建一个线程，需要使用其中的 `pthread_create()` 函数。
+ pthread 库中提供了一系列的函数调用，它们都以 `pthread_` 开头。要创建一个线程，需要使用其中的 `pthread_create()` 函数。
 
 ~~~c
 #include <pthread.h>
@@ -63,7 +63,7 @@ int pthread_create(pthread_t *restrict thread,
 
 ## 2. 线程的回收
 
-和内存申请，子进程创建一样，用完后的资源必须被回收。在线程退出之后，需要回收它的资源。`pthread` 库中提供了 `pthread_join()` 函数，它可以让执行完的线程“加入”到当前的执行流，完成资源回收。
+和内存申请，子进程创建一样，用完后的资源必须被回收。在线程退出之后，需要回收它的资源。 pthread 库中提供了 `pthread_join()` 函数，它可以让执行完的线程“加入”到当前的执行流，完成资源回收。
 
 ~~~c
 #include <pthread.h>
@@ -118,7 +118,7 @@ int main() {
 }
 ~~~
 
-编译时链接 `pthread` 库。
+编译时链接 pthread 库。
 
 ~~~bash:no-line-numbers
 gcc main.c -o main -lpthread
