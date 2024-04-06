@@ -1,9 +1,9 @@
 ---
-title: MySQL概述
+title: 初识MySQL
 date: 2023-12-19
 article: false
 index: false
-icon: "/icon/db/mysql.svg"
+icon: "/icon/mysql/folder.svg"
 dir:
   order: 1
 ---

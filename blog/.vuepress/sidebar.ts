@@ -17,10 +17,17 @@ export default sidebar({
             children: "structure",
         },
         {
-            text: "数据库技术",
-            icon: "/icon/db/db.svg",
-            link: "/db/",
-            prefix: "db/",
+            text: "MySQL数据库",
+            icon: "/icon/mysql/mysql.svg",
+            link: "/mysql/",
+            prefix: "mysql/",
+            children: "structure",
+        },
+        {
+            text: "Redis数据库",
+            icon: "/icon/redis/redis.svg",
+            link: "/redis/",
+            prefix: "redis/",
             children: "structure",
         },
         {

@@ -7,4 +7,4 @@ dir:
   order: 2
 ---
 
-## TODO
+<Catalog />

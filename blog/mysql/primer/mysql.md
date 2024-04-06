@@ -1,5 +1,5 @@
 ---
-title: 初识MySQL
+title: 安装MySQL
 date: 2023-12-19
 isOriginal: true
 icon: book
@@ -11,7 +11,7 @@ excerpt: 初识MySQL
 order: 1
 ---
 
-本系列使用的 MySQL 为目前（2023.12）最新的 8.0.35 版本，操作系统为 Ubuntu Server 23.10。在该系统上，可以直接使用包管理器 `apt` 安装 MySQL。
+本系列使用的 MySQL 为目前（2023.12）最新的 8.0.35 版本，在 Linux 操作系统上，往往可以使用自带的软件包管理器来安装 MySQL，比如在 Ubuntu 上可以直接使用 `apt` 命令安装 MySQL。
 
 ~~~bash:no-line-numbers
 sudo apt install mysql-server mysql-client

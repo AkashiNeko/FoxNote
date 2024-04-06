@@ -1,9 +1,9 @@
 ---
-title: 操作MySQL表
+title: 操作数据表
 date: 2023-12-21
 article: false
 index: false
-icon: "/icon/db/mysql.svg"
+icon: "/icon/mysql/folder.svg"
 dir:
   order: 3
 ---

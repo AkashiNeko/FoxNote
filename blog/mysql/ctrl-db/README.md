@@ -1,11 +1,11 @@
 ---
-title: 数据的约束
+title: 操作数据库
 date: 2023-12-20
 article: false
 index: false
-icon: "/icon/db/mysql.svg"
+icon: "/icon/mysql/folder.svg"
 dir:
-  order: 6
+  order: 2
 ---
 
 <Catalog />

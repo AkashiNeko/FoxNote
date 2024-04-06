@@ -17,9 +17,14 @@ export default navbar([
         link: "/linux/",
     },
     {
-        text: "数据库",
-        icon: "/icon/db/db.svg",
-        link: "/db/",
+        text: "MySQL",
+        icon: "/icon/mysql/mysql.svg",
+        link: "/mysql/",
+    },
+    {
+        text: "Redis",
+        icon: "/icon/redis/redis.svg",
+        link: "/redis/",
     },
     {
         text: "随笔",
