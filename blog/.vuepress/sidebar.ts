@@ -31,8 +31,8 @@ export default sidebar({
             children: "structure",
         },
         {
-            text: "小狐狸的随笔",
-            icon: "/icon/note.svg",
+            text: "🖌️小狐狸的随笔",
+            // icon: "/icon/note.svg",
             link: "/note/",
             prefix: "note/",
             children: "structure",

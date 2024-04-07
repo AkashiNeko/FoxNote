@@ -1,7 +1,7 @@
 ---
 title: C++学习笔记
-index: false
 icon: "/icon/cpp/cpp.svg"
+index: false
 dir:
   order: 1
 sticky: 100

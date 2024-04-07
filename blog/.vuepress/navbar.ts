@@ -2,8 +2,7 @@ import { navbar } from "vuepress-theme-hope";
 
 export default navbar([
     {
-        text: "主页",
-        icon: "/icon/home.svg",
+        text: "🏠主页",
         link: "/",
     },
     {
@@ -27,8 +26,7 @@ export default navbar([
         link: "/redis/",
     },
     {
-        text: "随笔",
-        icon: "/icon/note.svg",
+        text: "🖌️随笔",
         link: "/note/",
     },
 ]);
