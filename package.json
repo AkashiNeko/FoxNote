@@ -1,0 +1,28 @@
+{
+  "name": "foxnote",
+  "version": "2.0.0",
+  "description": "qwq",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "docs:build": "vuepress build blog",
+    "docs:clean-dev": "vuepress dev blog --clean-cache",
+    "docs:dev": "vuepress dev blog",
+    "docs:update-package": "npx vp-update"
+  },
+  "devDependencies": {
+    "@vuepress/bundler-vite": "2.0.0-rc.17",
+    "@vuepress/plugin-catalog": "2.0.0-rc.52",
+    "@vuepress/plugin-shiki": "2.0.0-rc.52",
+    "chart.js": "^4.4.7",
+    "echarts": "^5.6.0",
+    "katex": "^0.16.19",
+    "mathjax-full": "^3.2.2",
+    "mermaid": "^10.9.3",
+    "sass-embedded": "^1.83.1",
+    "vue": "^3.5.13",
+    "vuepress": "2.0.0-rc.17",
+    "vuepress-theme-hope": "2.0.0-rc.57"
+  },
+  "packageManager": "pnpm@9.12.1+sha512.e5a7e52a4183a02d5931057f7a0dbff9d5e9ce3161e33fa68ae392125b79282a8a8a470a51dfc8a0ed86221442eb2fb57019b0990ed24fab519bf0e1bc5ccfc4"
+}
