@@ -42,12 +42,7 @@ export default hopeTheme({
         timeline: "qwq",
         roundAvatar: true,
         medias: {
-            GitHub: ["https://github.com/AkashiNeko", "./blog/.vuepress/intro_icon/github.svg"],
-            // LeetCode: ["https://leetcode.cn/u/akashineko/", "./blog/.vuepress/intro_icon/leetcode.svg"],
-            // QQ: ["https://wpa.qq.com/msgrd?v=3&uin=1006554341&site=qq&menu=yes&jumpflag=1", "./blog/.vuepress/intro_icon/qq.svg"],
-            // BiliBili: ["https://space.bilibili.com/107816649", "./blog/.vuepress/intro_icon/bilibili.svg"],
-            // Qzone: ["https://user.qzone.qq.com/1006554341/main", "./blog/.vuepress/intro_icon/qzone.svg"],
-            // CSDN: ["https://blog.csdn.net/qq_45412824", "./blog/.vuepress/intro_icon/csdn.svg"],
+            GitHub: ["https://github.com/AkashiNeko"],
         },
     },
 
